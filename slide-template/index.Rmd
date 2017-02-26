@@ -1,0 +1,12 @@
+---
+title: "Duke Color Palatte for Xarnigan Slides"
+subtitle: "Template for<br>A DVS presentation"
+author: "John Little"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+* http://libjohn.github.io/slide-template/
+
+    * [duke-slide template vignette](duke_slide_template.html)
+    * [github repo](https://github.com/libjohn/slide-template-dukeu)

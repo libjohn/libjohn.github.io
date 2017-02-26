@@ -1,0 +1,51 @@
+---
+title: "John R Little"
+output: html_document
+---
+
+## My Workshops
+* [Intro2R](http://rpubs.com/libjohn/intro2r-dvs) -- A tidyverse workshop
+* [Introduction to R](r-introduction/Intro-to-R.html) -- My quick-reference to R
+* [OpenRefine](openrefine) -- A web-based, hands-on workbook supplementing the in-person workshop on data cleaning.  OpenRefine is an Open Source data science tool for data cleaning, transformation, clustering, editing, augmenting, and more
+* [Regular Expressions](regex/) -- An Introduction to Regular Expressions guide for students.  This is the presentation and hands-on exercises for the in-person workshop
+* [Twitter Stream Gathering](http://libjohn.github.io/twitter-gather/) -- Presentation and training materials for a non-programmer workshop on twitter stream gathering tools
+* [Web Scraping](https://docs.google.com/presentation/d/1QVUR3B4QDgM5fLBtFditwKyGwij0hM1qDCUL56vs34k/edit?usp=sharing) -- A Google Slides presentation and self-study workbook on how to scrape data from web sources
+
+## R Learning Series
+* [R we having fun yet‽](https://github.com/data-and-visualization/Rfun)  
+
+## Presentations
+* [Using R to Orchestrate APIs](rcs2017)
+* [rvest & httr for Web Scraping](rfun-scrape)
+
+## Data & Visualization Services Department 
+* [Upcoming Workshops](http://library.duke.edu/data/news) 
+* [Past Workshops](http://library.duke.edu/data/news/past-workshops)  
+* [Recordings of Workshops](http://library.capture.duke.edu/Panopto/Pages/Sessions/List.aspx#folderID=%22647ef5c3-825a-4f22-8e06-0238601d1cb1%22)
+* [DVS github](https://github.com/data-and-visualization)
+
+## Other
+* [Slide Template](slide-template) -- Combines Duke Color Palette with Xaringan slide package
+    
+## Contact Me / Social Media  
+
+* For my **in-person** clients:  [Schedule me via http://v.gd/littleconsult](http://duke.libcal.com/appointment/2695) 
+* [Old ways](http://library.duke.edu/about/directory/staff/1441) -- best option
+* [Tumblr](http://jrlittle.tumblr.com/) -- not so much for messaging, I was using this for public micro-notes
+* [Twitter](https://twitter.com/john_little) -- fallow, but it’s a way to get in touch
+* [Linkedin](https://www.linkedin.com/in/johnrobertlittle) -- o.k. I don't really use this
+* [My github](https://github.com/libjohn)
+
+[![xkcd - I have five phone numbers which should I use](http://imgs.xkcd.com/comics/phone_numbers.png)](http://xkcd.com/1789/)
+
+
+    
+
+&nbsp;  
+
+&nbsp;
+
+&nbsp; 
+
+
+updated:  `r Sys.Date()`

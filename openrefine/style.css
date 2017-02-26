@@ -1,0 +1,45 @@
+.or-menu {
+    background-color: rgba(0,0,0,.2);
+    padding: 3px;
+    font-style: italic;
+}
+.red {
+    background-color: rgba(183, 98, 114,.4);
+    padding: 3px;
+}
+.highlight-yellow {
+    background-color: rgba(255,255,0,.4);
+    padding: 3px;
+}
+.highlight-yellow-fixed {
+    background-color: rgba(255,255,0,.4);
+    font-family: monospace;  
+    padding: 3px;
+}
+.highlight-turq-fixed {
+    background-color: rgba(0,255,255,.4);
+    font-family: monospace;  
+    padding: 3px;
+}
+.highlight-green-fixed {
+    background-color: rgba(0,255,0,.4);
+    font-family: monospace;  
+    padding: 3px;
+}
+em {
+  font-variant: small-caps;
+}
+img.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto  
+}
+div.video {
+ display: block;
+ width: 100%; 
+}
+div.video iframe {
+  width: 70%; /* or, leave this line out and control width in the iframe code */
+  margin-left: 15%; /* or, set to auto */
+  margin-right: 15% /* or, set to auto */
+}
