@@ -4,8 +4,20 @@
     <title>rtweet for Rfun</title>
     <meta charset="utf-8">
     <meta name="author" content="John Little" />
-    <meta name="date" content="2017-03-23" />
+    <meta name="date" content="2017-03-24" />
     <link href="libs/remark-css-0.0.1/example.css" rel="stylesheet" />
+    <script src="libs/htmlwidgets-0.8/htmlwidgets.js"></script>
+    <script src="libs/d3-4.5.0/d3.min.js"></script>
+    <script src="libs/forceNetwork-binding-0.4/forceNetwork.js"></script>
+    <script src="libs/jquery-1.12.4/jquery.min.js"></script>
+    <link href="libs/leaflet-0.7.7/leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-0.7.7/leaflet.js"></script>
+    <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+    <link href="libs/leaflet-label-0.2.2/leaflet.label.css" rel="stylesheet" />
+    <script src="libs/leaflet-label-0.2.2/leaflet.label.js"></script>
+    <script src="libs/Proj4Leaflet-0.7.2/proj4-compressed.js"></script>
+    <script src="libs/Proj4Leaflet-0.7.2/proj4leaflet.js"></script>
+    <script src="libs/leaflet-binding-1.1.0.9000/leaflet.js"></script>
     <link rel="stylesheet" href="duke.css" type="text/css" />
   </head>
   <body>
@@ -15,10 +27,16 @@ class: center, middle, inverse, title-slide
 # rtweet for Rfun
 ## Packages to gather and analyse tweets
 ### John Little
-### 2017-03-23
+### 2017-03-24
 
 ---
 
+exclude: true
+
+## Setup for the GraphTweet slides
+
+
+---
 class: center, bottom
 background-image:  url(http://library.duke.edu/data/sites/default/files/datagis/images/data_gis_logo.png)
 
@@ -96,12 +114,12 @@ class: middle, center, softblue
 ## Gathering is Easy
 
 ```{}
-search_tweets("marchmadness", n=1000, lang = "en")`
+mm_tweets &lt;- search_tweets("marchmadness", n=1000, lang = "en")
 ```
 
 
 ```{}
-users_data(search_tweets)
+users_data(mm_tweets)
 ```
 
 
@@ -204,6 +222,46 @@ background-image: url(images/network_graph.png)
 
 2. Launch Gephi &gt; Open Graph File &gt; graphTweets.graphml
 
+---
+class: center, middle
+
+## More graphTweets Examples
+
+For the next few slides see [my R Notebook](network_graph_more_examples.nb.html) for code details 
+
+
+---
+class: middle
+### graphTweets -- Identify Edges
+
+![](slides_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+```
+dukmbb &lt;- search_tweets("dukembb", n=100, lang = "en")
+```
+---
+### Edges with NetworkD3
+
+<div id="htmlwidget-74e163f76487f5d7be05" style="width:504px;height:504px;" class="forceNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-74e163f76487f5d7be05">{"x":{"links":{"source":[24,24,37,37,45,77,29,83,60,84,84,18,2,2,78,78,54,54,19,19,4,13,13,91,1,51,51,58,58,3,3,39,44,52,9,9,61,30,30,49,49,70,70,96,67,66,11,85,85,85,86,79,79,79,78,88,31,25,25,22,69,69,16,76,50,50,82,82,59,42,42,46,35,35,5,5,6,7,81,56,56,36,36,36,36,8,8,0,0,23,23,23,12,12,12,12,47,17,17,55,55,55,55,55,55,55,55,65,63,63,63,63,43,90,27,53,74,74,87,87,87,15,72,72,72,72,28,10,38,71,71,71,64],"target":[96,33,96,33,32,32,32,94,32,96,33,32,32,75,32,62,96,33,32,57,32,96,33,32,32,32,57,96,33,96,33,32,32,32,96,33,32,96,33,68,32,96,33,33,32,32,32,32,57,75,32,25,20,32,48,32,32,20,32,32,32,57,32,32,32,62,35,32,32,32,62,32,82,32,32,95,32,32,32,32,75,71,73,34,32,0,32,8,32,87,92,32,71,73,34,32,32,21,32,41,40,94,95,26,93,32,34,32,71,73,34,32,32,32,32,32,32,57,23,92,32,32,80,89,14,32,32,32,32,73,34,32,32],"value":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"colour":["#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666"]},"nodes":{"name":["_3Dave","_iDunSeenTimes","_TheReal35","2Eazee","accmbb","AdamBischoff4","agent_kush","aidbrown","aint__eazy","ALLCAPS_","amareashowoff","ANGELxRIVERAA","artstigators","Asia_Bean","AVBoysHoops","CadeUllman","CHAMPAGNEPEPl","ChampsHoops","Chesney_joyner","CoachGG824","comcastcares","Corey_Maggette","DalyDailyDo","DarkKnight0618","Dawson_Perkins","Deaderspin","DiamondHeels","DianaDuRant4","dmehaffie2684","DontBeAnUCH","Double_D94","DreGmoney","DukeMBB","DukeMBB?","DukeU","ednwy","Elliezixuan","Eshaluvsu","ethanleevazquez","flacko_kg","GamecockMBB","GamecockWBB","genealogy_jill","Greenpineaple","hoopstar1222","HW_OnTheRise","iamkidree","iMattyJayy","JamesAnastasia5","Jaydub08240709","Jeffmil68673513","JockJayB","Josh5976","joshrea389","kayslt","kuhnu2012","kyliekuhn5","KyrieIrving!!","lastname_ADAMS","lauren_kennard","leah_hatherly13","LilCool21","LukeKennard5","mambomoondog","mariotartaglion","marshallibt","MikeTommasone1","Miller_Stephen1","monwell571","Mreastwood34","MrWhatley","NasherMuseum","NickyGwin","ninachanel","nthonyDG","QCook323!!","rhasley01","Rjay_H","rlrepohar","rubdirtinit","RyanJamesMN","SouljaSeann","stevenjr85","stevewolf44","taqeelah94","tbrock33","telbreezy305","ThatWasVeseyyy","This_is_Mike_","trejones03","trinidadjosh03","UlisesR_10","umichbball","UNC","UNC_Basketball","UofSC","WaltD336"],"group":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"nodesize":[8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8]},"options":{"NodeID":"name","Group":"group","colourScale":"d3.scaleOrdinal(['#3182bd'])","fontSize":7,"fontFamily":"serif","clickTextSize":17.5,"linkDistance":50,"linkWidth":"'1.5px'.toString()","charge":-30,"opacity":0.6,"zoom":false,"legend":false,"arrows":false,"nodesize":true,"radiusCalculation":"d.nodesize","bounded":false,"opacityNoHover":1,"clickAction":null}},"evals":[],"jsHooks":[]}</script>
+
+---
+
+### Nodes plot from [Coene's example 2](http://john-coene.com/packages/graphTweets/examples#example_02)
+
+![](slides_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
+
+
+---
+### Geocode tweeters with ggmap and leaflet
+
+<div id="htmlwidget-93dcdcd1944df6696b1c" style="width:504px;height:504px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-93dcdcd1944df6696b1c">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[[34.00043,36.069144,39.325714,35.071416,35.905477,35.410244,27.91818,1,35.9132,38.25031,36.069144,52.75008,44.00013,7.11525,33.025944,33.025944,35.50069,41.850033,35.9132,41.850033,35.50069,41.850033,39.750471,40.714269,18.24829,27.59114,29.69106,1,35.26002,40.742185,42.76537,34.656799,39.778,34.656799,39.778,34.656799,38,34.656799,36.069144,36.069144,34.656799,36.069144,47.60621,34.656799,32.42993,47.33333,35.410244,39.956309,13.46334,39.956309,42.065281,39.956309,35.065318,40.714269,43.45035,35.410244,35.58458,31.55143,35.410244,42.81424,40.756095,47.2997222,39.962998,35.850295,35.410244,35.410244],[-81.00009,-79.765156,-84.55239,-83.778309,-79.090077,-81.202959,-110.89973,7,-79.05584,-92.50046,-79.765156,-55.78127,-120.50139,-7.51973,-83.915021,-83.915021,-80.00032,-87.650052,-79.05584,-87.650052,-80.00032,-87.650052,-84.268593,-74.005973,-66.49989,-80.34422,-95.2091,7,-80.804151,-73.992602,-71.46757,-82.535325,-74.72667,-82.535325,-74.72667,-82.535325,-3.5,-82.535325,-79.765156,-79.765156,-82.535325,-79.765156,-122.332071,-82.535325,-97.83227,13.33333,-81.202959,-82.680692,144.75381,-82.680692,-91.078891,-82.680692,-80.524866,-74.005973,-73.32483,-81.202959,-80.778871,-81.91676,-81.202959,-73.93957,-111.900719,-96.515,-76.727139,-79.023205,-81.202959,-81.202959],null,null,null,{"clickable":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Eshaluvsu","HW_OnTheRise","Rjay_H","stevewolf44","leah_hatherly13","taqeelah94","Chesney_joyner","_TheReal35","rlrepohar","kayslt","CoachGG824","accmbb","Asia_Bean","UlisesR_10","_iDunSeenTimes","_iDunSeenTimes","JockJayB","lastname_ADAMS","2Eazee","flacko_kg","flacko_kg","Josh5976","Josh5976","ALLCAPS_","Double_D94","Jaydub08240709","MrWhatley","Jaydub08240709","WaltD336","Jaydub08240709","Miller_Stephen1","MikeTommasone1","ANGELxRIVERAA","telbreezy305","rubdirtinit","rlrepohar","DalyDailyDo","Mreastwood34","CHAMPAGNEPEPl","stevenjr85","genealogy_jill","stevenjr85","genealogy_jill","stevenjr85","iamkidree","stevenjr85","ednwy","ednwy","stevenjr85","ednwy","AdamBischoff4","stevenjr85","agent_kush","SouljaSeann","Elliezixuan","aint__eazy","_3Dave","aint__eazy","DarkKnight0618","aint__eazy","iMattyJayy","ChampsHoops","kuhnu2012","mambomoondog","Greenpineaple","trinidadjosh03","DianaDuRant4","joshrea389","nthonyDG","NickyGwin","dmehaffie2684","NasherMuseum","DianaDuRant4","DianaDuRant4"],null,null,null,null,null,null]}],"setView":[[39.81039,-98.556102],3,[]],"limits":{"lat":[1,52.75008],"lng":[-122.332071,144.75381]}},"evals":[],"jsHooks":[]}</script>
+
+---
+
+### Notes on previous slide
+
+Although rtweet has `lookup_coords()` I did not find it to be successful for my test.  It may work fine upon further review.  I chose to use ggmap and leaflet.  see [my R Notebook](network_graph_more_examples.nb.html) for code details 
 
 ---
 class: orange
