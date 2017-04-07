@@ -4,7 +4,7 @@
     <title>Web Data</title>
     <meta charset="utf-8">
     <meta name="author" content="John Little" />
-    <meta name="date" content="2017-04-05" />
+    <meta name="date" content="2017-04-07" />
     <link href="libs/remark-css-0.0.1/example.css" rel="stylesheet" />
     <link rel="stylesheet" href="duke.css" type="text/css" />
   </head>
@@ -15,7 +15,7 @@ class: center, middle, inverse, title-slide
 # Web Data
 ## DSVIL 2017
 ### John Little
-### 2017-04-05
+### 2017-04-07
 
 ---
 
@@ -32,31 +32,335 @@ background-image:  url(https://www.lib.ncsu.edu/sites/default/files/styles/large
 Preexisting and clean data sets such as the General Social Survey (GSS) or Census data are readily available, cover long periods of time, and have well documented codebooks. Meanwhile, researchers increasingly want to gather their own data from websites which provides a different layer of complexity; accessing content from these sources requires different tools and new techniques.  In this workshop we will use an open-source data wrangling tool (OpenRefine) to gather and clean data from webpages, and "crawl" whole websites, discuss and use Application Programming Interfaces (API), and give examples of how APIs are used with social media sources such as Twitter.
 
 ---
-## Resources 
+## Outline
 
-The following text will support the Web Scraping / Twitter stream gathering workshop
+1. **Crawl** whole website -- webscraper.io  *45 minutes*
 
-- [Web Scraping](https://docs.google.com/presentation/d/1QVUR3B4QDgM5fLBtFditwKyGwij0hM1qDCUL56vs34k/edit#slide=id.p)
+2. **Scrape** and **Parse** -- OpenRefine  *25 minutes*
 
-    - [docs.google.com/presentation/.../](https://docs.google.com/presentation/d/1QVUR3B4QDgM5fLBtFditwKyGwij0hM1qDCUL56vs34k/edit#slide=id.p)
+3. **Discuss** and use an **API** (Application Programming Interfaces) *15 minutes*
 
-- The [OpenRefine Workbook](https://libjohn.github.io/openrefine/)
-
-    - https://libjohn.github.io/openrefine/
-
-- [Twitter Stream Gathering](https://libjohn.github.io/twitter-gather/slides.html)
-
-    - https://libjohn.github.io/twitter-gather/slides.html
-
-- [Regular Expressions](https://libjohn.github.io/regex/slides/)
-
-    - https://libjohn.github.io/regex/slides/
+4. **Examples** of social media API -- TAGS *25 minutes*
 
 ---
 background-image: url(http://4.bp.blogspot.com/-XXCVJfR7jeU/Uh022FJuDVI/AAAAAAAADQA/3x5Fep2oJhM/s320/Data_Science_VD.png)
 
 
 [Data Science Core Skills](http://www.datasciencecentral.com/profiles/blogs/data-scientist-core-skills) Mitchel Sanders (2013)
+
+---
+class: softblue
+## Crawl
+
+.pull-left[ 
+Moving across or through a website in an attempt to gather data from more than one page (URL)
+]
+
+.pull-right[ 
+
+![sloth](images/crawling_med.jpg)
+
+]
+
+---
+## Demonstration
+
+Congressional Press Releases
+
+- Representative Nancy Pelosi’s Press Releases
+    - CONTENT
+        - Structure of the [Press Release subsection](http://pelosi.house.gov/news/press-releases/) of the site
+            - Pagination
+            - Links to each release
+            - Common elements of release
+    - TOOL
+        - [Webscraper.io](http://Webscraper.io) tool works inside of Chrome
+            - Tutorials
+            - Documentation
+            - Community
+            - Free 
+                - Alternatively, Fee for Service
+
+---
+background-image: url(images/selector_graph.png)
+
+
+---
+class: orange
+
+## Now You Try It
+
+1. Download &amp; Install [Webscraper.io](http://Webscraper.io) ; restart your Chrome browser
+
+2. Use one of the following sites
+
+    - http://pelosi.house.gov/news/press-releases/ 
+    - http://butterfield.house.gov/media-center/press-releases 
+    - https://walker.house.gov/media-center/press-releases 
+    - http://www.donnelly.senate.gov/newsroom/press 
+    - https://price.house.gov/press-releases/ (difficult pagination)
+
+3. Follow [Intructions](https://docs.google.com/document/d/17iKQG9JfREEEThz_Qeai5lvv5mYPRsixi0MKbS6aIsM/edit#heading=h.hdqpl186tuyo) 1-8
+
+    - Substitute the site you picked from step b (above)
+    
+    - (instructions: http://v.gd/webscraping1111 ) 
+    
+---
+class: softblue
+
+.pull-left[
+
+## Scrape
+
+![scraping propolis](images/Scraping_propolis.jpg) 
+
+Using tools to gather data you can see on a webpage
+
+]
+
+.pull-right[
+
+## Parse
+
+Analyzing the strings and symbols to reveal only the data you need
+
+
+![strain honey from comb](images/strain_comb.jpg)
+
+]
+
+---
+class: softblue
+
+## HTML
+
+Hypertext Markup Language
+
+
+```html
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;!-- created 2010-01-01 --&gt;
+ &lt;head&gt;
+  &lt;title&gt;sample&lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;p&gt;Voluptatem accusantium
+   totam rem aperiam.&lt;/p&gt;
+ &lt;/body&gt;
+&lt;/html&gt;
+```
+
+---
+
+## URL
+
+![elements of a URL](images/URL.PNG)
+
+- Server sends back marked-up content
+
+    - HTML
+    - CSS StyleSheets
+    - JavaScript
+    
+- Browser parses the HTML
+    
+---
+## OpenRefine (Fetch &amp; Parse)
+
+- Scrape
+
+    - Add column by fetching URL...
+    
+- Parse 
+
+    - BeautifulSoup Libraries
+         - Refine uses the Jython Libraries and has Jsoup
+         - jSoup is a Java library built on BeautifulSoup -- a tool for HTML Extraction
+    - Resources
+        - [Step-by-step example](https://libjohn.github.io/openrefine/start.html#api)
+    - Documentation
+        - [OpenRefine’s documentation](https://github.com/OpenRefine/OpenRefine/wiki/StrippingHTML) on HTML Parsing
+        - [jSoup Documentation](http://jsoup.org/cookbook/extracting-data/selector-syntax)
+
+---
+class: orange
+
+## Now You Try It
+
+- [Step-by-Step](https://docs.google.com/document/d/173DBCKrfXWT2yGlFeGQ-zaCh5TefwxctL1CoTTQTS1Y/):  1-5
+
+     - URL: http://v.gd/parsing2222 
+
+- Stop after step 5. Unless you're speedy and then give step 6 (regex) a try
+
+    - More information on [Regular Expressions](https://libjohn.github.io/regex/slides/)
+    
+---
+class: softblue
+## API
+
+### Application Program Interface 
+
+A set of rules and protocols used to build a software application.  In the context of Web Scraping an API is a method used to gather clean data from a website (i.e. data that is not wrapped in HTML, Javascript, bound in HTTP, etc.)
+
+- Built for machine-to-machine interactions
+
+- Instructions for programs
+
+![API schematic](images/api.png)
+
+
+---
+## Why Use APIs?
+
+### The Web has lots of stuff
+
+- frontier beyond curated datasets
+
+- stuff is wrapped in HTML
+
+- HTML is transported over HTTP but composed for h2m consumption
+
+???
+
+To get BULK Data!
+
+--
+
+## Intellectual Property rights bear serious consideration
+
+---
+class: softblue
+
+### Client / Server 
+
+![](images/Client-server-model.svg.png) 
+
+- Same as h2m but now m2m
+
+---
+
+### h2m Simulation...
+
+- Person enters a URL
+
+![Parts of URL](images/URL.PNG)
+
+--
+    
+- Client &amp; server negotiate handshake (*dramatization...*)
+
+--
+
+.right[![dramatization: good handshake](images/good-handshake.gif)]
+
+---
+
+- Web Browser parses the HTML
+
+--
+
+.right[![happy parsing dance](images/result-happyDance.gif)]
+
+???
+
+Ever seen HTML before?  
+    
+---
+class: softblue
+## JSON
+
+* [Javascript Object Notation](https://en.wikipedia.org/wiki/JSON) is a language-independent data format
+* Currently the most common data data format for asynchronous client/server communication format
+* Consists of key-value pairs
+
+
+```json
+# from https://en.wikipedia.org/wiki/JSON
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "isAlive": true,
+  "age": 25,
+  "address": {
+    "streetAddress": "21 2nd Street",
+    "city": "New York",
+    "state": "NY",
+    "postalCode": "10021-3100"
+  },
+  "phoneNumbers": [
+    {
+      "type": "home",
+      "number": "212 555-1234"
+    },
+    {
+      "type": "office",
+      "number": "646 555-4567"
+    },
+    {
+      "type": "mobile",
+      "number": "123 456-7890"
+    }
+  ],
+  "children": [],
+  "spouse": null
+}
+```
+
+---
+
+## m2m -- development
+
+- Make [R] interface with the web
+
+- Same as h2m but now m2m
+
+*dramatization...*
+
+--
+
+.right[![dramatization: confused about the protocol](images/development-confusion.gif)]
+
+---
+
+## Demonstration
+
+- Demonstration
+    - using an API to http://omdb.org (OMDB is like IMDB.com)
+    - http://libjohn.github.io/rcs2017
+- Hands-on
+    - using An API Of Ice And Fire -- http://anapioficeandfire.com/
+
+---
+class: orange
+
+## Now You Try
+
+link to API hands-on parsing GoogleMaps API
+
+---
+## Twitter / TAGS
+
+https://libjohn.github.io/twitter-gather/slides.html#1
+
+---
+class: soft-blue
+
+
+Twitter Definitions
+
+Not sure this slide needs to be here
+
+---
+class: orange
+
+## Now You Try
+
+
+
+
 
 ---
 ## Thank You For Attending
@@ -93,12 +397,45 @@ background-image: url(http://4.bp.blogspot.com/-XXCVJfR7jeU/Uh022FJuDVI/AAAAAAAA
 ]
 
 ---
+## Resources 
+
+The following text will support the Web Scraping / Twitter stream gathering workshop
+
+- [Web Scraping](https://docs.google.com/presentation/d/1QVUR3B4QDgM5fLBtFditwKyGwij0hM1qDCUL56vs34k/edit#slide=id.p)
+
+    - [docs.google.com/presentation/.../](https://docs.google.com/presentation/d/1QVUR3B4QDgM5fLBtFditwKyGwij0hM1qDCUL56vs34k/edit#slide=id.p)
+
+- The [OpenRefine Workbook](https://libjohn.github.io/openrefine/)
+
+    - https://libjohn.github.io/openrefine/
+
+- [Twitter Stream Gathering](https://libjohn.github.io/twitter-gather/slides.html)
+
+    - https://libjohn.github.io/twitter-gather/slides.html
+
+- [Regular Expressions](https://libjohn.github.io/regex/slides/)
+
+    - https://libjohn.github.io/regex/slides/
+
+---
+## Image Credits
+
+- [Sloth](https://www.flickr.com/photos/ndanger/4425407800/in/photolist-aHctY-7K4nyu-5GWYyx-bwwbvt-bwwe7r-bwwbNr-S8zN-bwwekD-S8AM-dXgyC-bwwdkM-nJsop-B6SZ-bwwcaF-bwweB6-bwwcw6-bwwdtv-bwwaUx-bwwcUD-bwwcMn-bwwbdt-bwwdci-4wQdR-5jWS4P-xR5Wd-aZ1zL2-2kbBbL-s2hYyV-qYyRTS-9SDuok-62grYS-9Y8DY3-bvMPWn-bvV6wK-7Sxoah-Lwv5Z-8Znq63-6zatgS-cTR7h-oqwqZ-ziEuE-38Fp1D-7yAuKp-oQejEx-iJyMWk-dbJrj-a7K52r-f4rdX-4TJtNh-8F73H6) by [Dave Gingrich](https://www.flickr.com/photos/ndanger/)
+- [Scraping Propolis](https://commons.wikimedia.org/wiki/File:Scraping_propolis.jpg) by [fishermansdaughter](https://www.flickr.com/photos/fishermansdaughter/)
+- [URL](https://commons.wikimedia.org/wiki/File:Uniform_Resource_Locator_%28URL%29_example.PNG)
+- [API schematic](https://moz.com/blog/apis-for-datadriven-marketers)
+- [Client / Server](https://commons.wikimedia.org/wiki/File:Client-server-model.svg)
+- [Good human handshake](http://giphy.com/gifs/thomas-U2XboRuN89Idi)
+- [happy parsed dance](http://giphy.com/gifs/80s-1980s-thomas-dolby-wCKmBd7oNtA4g)
+
+
+---
 class: center, middle
 ## Shareable under CC BY-NC license 
 
 Data, presentation, and handouts are shareable under [CC BY-NC license](https://creativecommons.org/licenses/by-nc/4.0/)
 
-![This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.](https://licensebuttons.net/l/by-nc/4.0/88x31.png "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License")
+![This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.](images/cc-by-nc.png "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License")
     </textarea>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
