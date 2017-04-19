@@ -4,7 +4,7 @@
     <title>Web Data</title>
     <meta charset="utf-8">
     <meta name="author" content="John Little" />
-    <meta name="date" content="2017-04-07" />
+    <meta name="date" content="2017-04-19" />
     <link href="libs/remark-css-0.0.1/example.css" rel="stylesheet" />
     <link rel="stylesheet" href="duke.css" type="text/css" />
   </head>
@@ -15,7 +15,7 @@ class: center, middle, inverse, title-slide
 # Web Data
 ## DSVIL 2017
 ### John Little
-### 2017-04-07
+### 2017-04-19
 
 ---
 
@@ -86,7 +86,7 @@ background-image: url(images/selector_graph.png)
 
 
 ---
-class: orange
+class: green
 
 ## Now You Try It
 
@@ -185,7 +185,7 @@ Hypertext Markup Language
         - [jSoup Documentation](http://jsoup.org/cookbook/extracting-data/selector-syntax)
 
 ---
-class: orange
+class: green
 
 ## Now You Try It
 
@@ -334,32 +334,65 @@ class: softblue
     - using An API Of Ice And Fire -- http://anapioficeandfire.com/
 
 ---
-class: orange
+class: green
 
 ## Now You Try
 
-link to API hands-on parsing GoogleMaps API
+1. [v.gd/parsing3333](https://docs.google.com/document/d/1ZiHC1v595tf2NAhv4vVdRYy-Ro78Bc37Y0gs1TfGBco/)
 
 ---
-## Twitter / TAGS
+class: softblue
 
-https://libjohn.github.io/twitter-gather/slides.html#1
+## TAGS:  a tool for collecting Twitter streams
+
+- TAGS (“New Sheets”; Version 6.1ns)
+
+    - Form driven (not command line)
+    - Minimal setup
+    - Data are collected in Google Sheets
+    - Gather twitter stream data by type
+        - screen-name stream data
+        - screen-name status updates
+        - twitter user favorited tweets
+        - Search term for last 7 days:  hashtag stream, username, boolean logic
+        - Limit by date
+        - Schedule to run hourly - set your interval, or run once.
+        - 3 minute setup-video; easy to use - https://youtu.be/Vm0kjAvH5HM 
+        - Outputs:  raw CSV structured data, plus default social graph visualizations
 
 ---
-class: soft-blue
-
-
-Twitter Definitions
-
-Not sure this slide needs to be here
+background-image: url(images/tags-screen1.png)
 
 ---
-class: orange
+background-image: url(images/gsheets-results1.png)
 
-## Now You Try
+---
+background-image: url(images/network-graph.png)
+
+---
+class: green
+
+## Now You Try...
+
+1. Go to Tags - https://tags.hawksey.info/ 
+
+2. Get Tags &gt; Get version 6.1 (requires Google Account)
+
+    - Make a **copy** of the TAGS 6.1 Template
+    - In the Searchbox search either a hashtag or a Twitter handle
+        - @ViolaDavis
+    - TAGS &gt; Run Now  (requires a Twitter Account ; Authorize TAGS)
+    - Wait for results (maybe 60 seconds)
+    
+3. Results are found in the "Archive" sheet
 
 
+--
+## More on Twitter
 
+- Easy Tools:  [Twitter &amp; APIs](https://libjohn.github.io/twitter-gather/) | [video](http://library.capture.duke.edu/Panopto/Pages/Viewer.aspx?id=82e1fe62-a003-4160-871e-765e027fc1b0)
+
+- Great Analysis Tools: [with R](https://libjohn.github.io/rtweet/slides.html) | [video](https://warpwire.duke.edu/w/iZ4BAA/)
 
 
 ---

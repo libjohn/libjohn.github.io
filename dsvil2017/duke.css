@@ -27,7 +27,22 @@ h1, h2, h3 {
 .softblue h1, .softblue h2, .softblue h3 {
   color: #001A57;
   line-height: 0.8em;
-  text-shadow: 0 0 20px #728302;
+  text-shadow: 0 0 10px #728302;
+}
+
+.green {
+  background-color: #728302;
+  color: #FFD960;
+}
+.green h1, .green h2, .green h3 {
+  color: #001A57;
+  line-height: 0.8em;
+  text-shadow: 0 0 10px #FFD960;
+}
+
+.green a, .green a > code {
+	color: rgb(19,2,131);
+	text-decoration: none;
 }
 
 .inverse {
@@ -74,3 +89,5 @@ h4 {
   font-family: 'Yanone Kaffeesatz';
   font-weight: normal;
 }
+
+
