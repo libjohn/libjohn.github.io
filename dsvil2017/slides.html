@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Web Data</title>
+    <title>Web Scraping</title>
     <meta charset="utf-8">
     <meta name="author" content="John Little" />
-    <meta name="date" content="2017-04-19" />
+    <meta name="date" content="2017-04-20" />
     <link href="libs/remark-css-0.0.1/example.css" rel="stylesheet" />
     <link rel="stylesheet" href="duke.css" type="text/css" />
   </head>
@@ -12,15 +12,15 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Web Data
+# Web Scraping
 ## DSVIL 2017
 ### John Little
-### 2017-04-19
+### 2017-04-20
 
 ---
 
 class: center, middle
-background-image:  url(https://www.lib.ncsu.edu/sites/default/files/styles/large/public/DSVIL%20Vertical%20Logo_0.jpg?itok=Ox09jpwk)
+background-image:  url(https://www.lib.ncsu.edu/sites/default/files/styles/large/public/DSVIL%20Vertical%20Logo_0.jpg)
 
 ---
 ## Today...
@@ -47,6 +47,14 @@ background-image: url(http://4.bp.blogspot.com/-XXCVJfR7jeU/Uh022FJuDVI/AAAAAAAA
 
 
 [Data Science Core Skills](http://www.datasciencecentral.com/profiles/blogs/data-scientist-core-skills) Mitchel Sanders (2013)
+
+---
+class: inverse, middle, center
+
+# Crawl
+
+WebScraper.io in Chrome Browser
+
 
 ---
 class: softblue
@@ -106,6 +114,13 @@ class: green
     
     - (instructions: http://v.gd/webscraping1111 ) 
     
+---
+class: inverse, middle, center
+
+# Scrape &amp; Parse
+
+OpenRefine using "Fetch URL" &amp; "parseHTML"
+
 ---
 class: softblue
 
@@ -183,6 +198,7 @@ Hypertext Markup Language
     - Documentation
         - [OpenRefine’s documentation](https://github.com/OpenRefine/OpenRefine/wiki/StrippingHTML) on HTML Parsing
         - [jSoup Documentation](http://jsoup.org/cookbook/extracting-data/selector-syntax)
+        - [CSS](http://flukeout.github.io/)
 
 ---
 class: green
@@ -193,10 +209,18 @@ class: green
 
      - URL: http://v.gd/parsing2222 
 
-- Stop after step 5. Unless you're speedy and then give step 6 (regex) a try
+- Stop after step 5 
 
-    - More information on [Regular Expressions](https://libjohn.github.io/regex/slides/)
+    - If you're speedy, give step 6 (Parsing) a try
+    - [HTML Viewer](http://codebeautify.org/htmlviewer/)
     
+---
+class: inverse, middle, center
+
+# API
+
+using OpenRefine &amp; ParseJSON
+
 ---
 class: softblue
 ## API
@@ -327,11 +351,15 @@ class: softblue
 
 ## Demonstration
 
-- Demonstration
-    - using an API to http://omdb.org (OMDB is like IMDB.com)
-    - http://libjohn.github.io/rcs2017
-- Hands-on
-    - using An API Of Ice And Fire -- http://anapioficeandfire.com/
+- Demonstration in OpenRefine
+
+    - http://www.omdbapi.com/?t=rocky&amp;y=&amp;plot=full&amp;r=json
+    - [JSON Viewr](http://jsonviewer.stack.hu/)
+    - parseJson().imdbID
+        - Actors
+        - Writer
+        - Title
+        
 
 ---
 class: green
@@ -339,6 +367,13 @@ class: green
 ## Now You Try
 
 1. [v.gd/parsing3333](https://docs.google.com/document/d/1ZiHC1v595tf2NAhv4vVdRYy-Ro78Bc37Y0gs1TfGBco/)
+
+---
+class: inverse, middle, center
+
+# Social Media
+
+Gather Twitter streams using the TAGS app for Google Sheets
 
 ---
 class: softblue
@@ -386,8 +421,73 @@ class: green
     
 3. Results are found in the "Archive" sheet
 
+---
+## Analysis
 
---
+TAGS offers 
+
+- Summary Sheet 
+
+- Dashboard Sheet 
+
+- TAGS Explorer 
+    - Network graphs
+    - Top Tweets
+    - Top Hashtags
+    - Top Conversations
+    - Sheet must be publicly available 
+    
+- TAGS Archive 
+    - Search filters of the archive
+
+---
+class: green
+
+## Now You Try...
+
+Using your Twitter stream archive and TAGS, visualize the network of a twitter user
+
+1. TAGS &amp;gt; Add Summary Sheet
+
+2. TAGS &amp;gt; Add Dashboard Sheet
+
+3. Make your Google Sheet Public
+
+    - Share button &amp;gt; Done
+    - &amp;lt;img src="images/Google-Share-button.png" style="vertical-align: top;"&amp;gt;
+    
+4. On the *Readme/Settings* Sheet &amp;gt; TAGSExplorer
+
+---
+## Historical Twitter Data
+
+- Last 7 Days from the Twitter API
+
+- [gnip.com](http://gnip.com) for historical data
+
+- **Plan Ahead**
+
+---
+## Other Analysis Tools
+
+### Simple 
+
+- Netylics - https://netlytic.org/
+
+- SocioViz - http://socioviz.net/ 
+
+### Visual Text Analysis
+
+- Voyant - http://voyant-tools.org/
+
+- Overview - https://www.overviewdocs.com/
+
+### Network Graph Analysis    
+
+- Gephi - https://gephi.org/
+
+
+---
 ## More on Twitter
 
 - Easy Tools:  [Twitter &amp; APIs](https://libjohn.github.io/twitter-gather/) | [video](http://library.capture.duke.edu/Panopto/Pages/Viewer.aspx?id=82e1fe62-a003-4160-871e-765e027fc1b0)
