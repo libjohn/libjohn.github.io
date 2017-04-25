@@ -4,7 +4,7 @@
     <title>Web Scraping</title>
     <meta charset="utf-8">
     <meta name="author" content="John Little" />
-    <meta name="date" content="2017-04-20" />
+    <meta name="date" content="2017-04-25" />
     <link href="libs/remark-css-0.0.1/example.css" rel="stylesheet" />
     <link rel="stylesheet" href="duke.css" type="text/css" />
   </head>
@@ -15,7 +15,7 @@ class: center, middle, inverse, title-slide
 # Web Scraping
 ## DSVIL 2017
 ### John Little
-### 2017-04-20
+### 2017-04-25
 
 ---
 
@@ -40,7 +40,7 @@ Preexisting and clean data sets such as the General Social Survey (GSS) or Censu
 
 3. **Discuss** and use an **API** (Application Programming Interfaces) *15 minutes*
 
-4. **Examples** of social media API -- TAGS *25 minutes*
+4. **Examples** of **social media** Analysis &amp; APIs -- TAGS *25 minutes*
 
 ---
 background-image: url(http://4.bp.blogspot.com/-XXCVJfR7jeU/Uh022FJuDVI/AAAAAAAADQA/3x5Fep2oJhM/s320/Data_Science_VD.png)
@@ -80,7 +80,7 @@ Congressional Press Releases
         - Structure of the [Press Release subsection](http://pelosi.house.gov/news/press-releases/) of the site
             - Pagination
             - Links to each release
-            - Common elements of release
+            - Information Content Structure:  Web Site &amp; Web Page(s)
     - TOOL
         - [Webscraper.io](http://Webscraper.io) tool works inside of Chrome
             - Tutorials
@@ -110,7 +110,7 @@ class: green
 
 3. Follow [Intructions](https://docs.google.com/document/d/17iKQG9JfREEEThz_Qeai5lvv5mYPRsixi0MKbS6aIsM/edit#heading=h.hdqpl186tuyo) 1-8
 
-    - Substitute the site you picked from step b (above)
+    - Substitute the site you picked from step 2 (above)
     
     - (instructions: http://v.gd/webscraping1111 ) 
     
@@ -191,8 +191,8 @@ Hypertext Markup Language
 - Parse 
 
     - BeautifulSoup Libraries
-         - Refine uses the Jython Libraries and has Jsoup
-         - jSoup is a Java library built on BeautifulSoup -- a tool for HTML Extraction
+         - Refine uses GREL Expressions to transform data
+         - jSoup is a Java library implementation of BeautifulSoup -- a tool for HTML Extraction
     - Resources
         - [Step-by-step example](https://libjohn.github.io/openrefine/start.html#api)
     - Documentation
@@ -201,19 +201,66 @@ Hypertext Markup Language
         - [CSS](http://flukeout.github.io/)
 
 ---
+## Demonstration -- Process Outline
+
+1. Fetch HTML by URL from Web Server
+
+    - Edit column &gt; Add column by fetching URL...
+
+2. Parse HTML
+
+    - Edit column &gt; Add column based on this column
+        - `parseHTML()`
+        - `select("HTML/CSS handle")`
+            - in Chrome:  highlight text &gt; right-click &gt; inspect (Chrome Developer Mode)
+            - choose an array element, typically `[0]`
+            - convert element:
+                - `htmlText()`
+                - `htmlAttr("attribute handle")`
+                
+---
+###  Parsing by HTML elements and CSS
+
+1. Edit Column &gt; Add column based on this column
+
+    - `value.parseHtml().select("div.contentdata")[0].htmlText()`
+    - `value.parseHtml().select("title")[0].htmlText()`
+
+###  Parsing by Brute Force
+
+2. Edit Column &gt; Add column based on this column
+
+    - `value.split("&lt;/title&gt;")[0]`
+    - Edit Cells &gt; Transform &gt; `value.split("&lt;title&gt;")[1]`
+
+---
 class: green
 
 ## Now You Try It
 
-- [Step-by-Step](https://docs.google.com/document/d/173DBCKrfXWT2yGlFeGQ-zaCh5TefwxctL1CoTTQTS1Y/):  1-5
+1. [Step-by-Step Worksheet](https://docs.google.com/document/d/173DBCKrfXWT2yGlFeGQ-zaCh5TefwxctL1CoTTQTS1Y/):  Complete the *fetching* and *brute force* parsing method in steps 1-4
 
-     - URL: http://v.gd/parsing2222 
+2. Complete the parsing example in Step 5
 
-- Stop after step 5 
+3. If you're speedy try the various parsing examples in step 6 
 
-    - If you're speedy, give step 6 (Parsing) a try
-    - [HTML Viewer](http://codebeautify.org/htmlviewer/)
+    - HTML Viewer: http://codebeautify.org/htmlviewer/
+
+---
+## Demonstrate -- Part 2
+
+From price-press_releases.csv
+
+- `value.parseHtml().select("div.contentdata")[0].select("strong")`
+
+- `value.parseHtml().select("div.contentdata")[0].select("strong")[2].htmlText()`
+
+- `value.parseHtml().select("div#centerbox")[0].select("a")[3].htmlAttr("href")`
+
+- `forEach(value.parseHtml().select("div#centerbox")[0].select("a"),j,j.htmlAttr("href")).join("|||")`
     
+
+
 ---
 class: inverse, middle, center
 
@@ -239,21 +286,17 @@ A set of rules and protocols used to build a software application.  In the conte
 ---
 ## Why Use APIs?
 
-### The Web has lots of stuff
+--
 
-- frontier beyond curated datasets
+- Get data in BULK
 
-- stuff is wrapped in HTML
-
-- HTML is transported over HTTP but composed for h2m consumption
-
-???
-
-To get BULK Data!
+    - frontier beyond curated datasets
+    - better data structures and eliminates HTML (JSON is easier to parse)
+    - Easier to generate tidy dataframes
 
 --
 
-## Intellectual Property rights bear serious consideration
+## Intellectual Property must be considered
 
 ---
 class: softblue
@@ -266,7 +309,7 @@ class: softblue
 
 ---
 
-### h2m Simulation...
+### Simulation...
 
 - Person enters a URL
 
@@ -337,7 +380,7 @@ class: softblue
 
 ## m2m -- development
 
-- Make [R] interface with the web
+- Make [OR] interface with the web API
 
 - Same as h2m but now m2m
 
@@ -354,8 +397,8 @@ class: softblue
 - Demonstration in OpenRefine
 
     - http://www.omdbapi.com/?t=rocky&amp;y=&amp;plot=full&amp;r=json
-    - [JSON Viewr](http://jsonviewer.stack.hu/)
-    - parseJson().imdbID
+    - [JSON Viewer](http://jsonviewer.stack.hu/)
+    - `parseJson().imdbID`
         - Actors
         - Writer
         - Title
@@ -380,7 +423,7 @@ class: softblue
 
 ## TAGS:  a tool for collecting Twitter streams
 
-- TAGS (“New Sheets”; Version 6.1ns)
+- TAGS (“New Sheets”; Version 6.1)
 
     - Form driven (not command line)
     - Minimal setup
@@ -454,7 +497,7 @@ Using your Twitter stream archive and TAGS, visualize the network of a twitter u
 3. Make your Google Sheet Public
 
     - Share button &amp;gt; Done
-    - &amp;lt;img src="images/Google-Share-button.png" style="vertical-align: top;"&amp;gt;
+    - &lt;img src="images/Google-Share-button.png" style="vertical-align: top;"&gt;
     
 4. On the *Readme/Settings* Sheet &amp;gt; TAGSExplorer
 
@@ -485,6 +528,44 @@ Using your Twitter stream archive and TAGS, visualize the network of a twitter u
 ### Network Graph Analysis    
 
 - Gephi - https://gephi.org/
+
+---
+background-image: url(images/keys6a.jpg)
+
+## API Keys
+
+.left-column[
+- You can 
+    - Regenerate keys
+    - Change access permissions
+    - Delete the keys/application
+    - Keep your *Secret Key* a secret!
+]
+
+.right-column.pull-right[
+- A way for the Service Host to know how their API is being used
+
+- Register your Application at the Twitter API Dashboard 
+]
+
+&amp;lt;!-- Image credit:  http://www.publicdomainpictures.net/view-image.php?image=167489  --&amp;gt;
+
+---
+## Where are my Keys?
+
+1. http://apps.twitter.com
+
+    - Name = TAGS Twitter Data (must be unique across Twittersphere)
+    - Description = My TAGS application collects my Twitter Searches
+    - Web Site = A page that connects to you, or better to your application (e.g. A results report)
+    - Callback URL = https://script.google.com/macros/
+    - Read the developer rules and accept the terms
+
+2. Get your keys
+
+    - Click on the *Keys and Access Tokens* Tab
+        - Consumer Key (API Key)
+        - Consumer Secret (API Secret)
 
 
 ---
