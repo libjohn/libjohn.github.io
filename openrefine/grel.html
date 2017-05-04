@@ -26,7 +26,7 @@
 <meta name="author" content="John Little">
 
 
-<meta name="date" content="2017-01-23">
+<meta name="date" content="2017-05-04">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -96,9 +96,9 @@
 <li class="chapter" data-level="1.1" data-path="start.html"><a href="start.html#getting-started"><i class="fa fa-check"></i><b>1.1</b> Getting Started</a></li>
 <li class="chapter" data-level="1.2" data-path="start.html"><a href="start.html#shutting-down-openrefine"><i class="fa fa-check"></i><b>1.2</b> Shutting Down OpenRefine</a></li>
 <li class="chapter" data-level="1.3" data-path="start.html"><a href="start.html#facets-cluster"><i class="fa fa-check"></i><b>1.3</b> Facets &amp; Cluster</a><ul>
-<li class="chapter" data-level="" data-path="start.html"><a href="start.html#handson-facets"><i class="fa fa-check"></i>Facet &amp; Cluster</a></li>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#facet-cluster"><i class="fa fa-check"></i>Facet &amp; Cluster</a></li>
 <li class="chapter" data-level="" data-path="start.html"><a href="start.html#compound-facets"><i class="fa fa-check"></i>Compound Facets</a></li>
-<li class="chapter" data-level="" data-path="start.html"><a href="start.html#mass-edit"><i class="fa fa-check"></i>Mass Editing</a></li>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#mass-editing"><i class="fa fa-check"></i>Mass Editing</a></li>
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="start.html"><a href="start.html#split-data-in-cells"><i class="fa fa-check"></i><b>1.4</b> Split data in cells</a></li>
 <li class="chapter" data-level="1.5" data-path="start.html"><a href="start.html#concatenate-cells-together"><i class="fa fa-check"></i><b>1.5</b> Concatenate cells together</a></li>
@@ -115,14 +115,14 @@
 </ul></li>
 <li class="chapter" data-level="2" data-path="grel.html"><a href="grel.html"><i class="fa fa-check"></i><b>2</b> Hands-on: GREL</a><ul>
 <li class="chapter" data-level="2.1" data-path="grel.html"><a href="grel.html#custom-facets"><i class="fa fa-check"></i><b>2.1</b> Custom Facets</a><ul>
-<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#grel-compound"><i class="fa fa-check"></i>Download new Data then Create a new OpenRefine Project:</a></li>
+<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#download-new-data-then-create-a-new-openrefine-project"><i class="fa fa-check"></i>Download new Data then Create a new OpenRefine Project:</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="grel.html"><a href="grel.html#grel-to-transform-and-normalize"><i class="fa fa-check"></i><b>2.2</b> GREL to Transform and Normalize</a><ul>
 <li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#regular-expression"><i class="fa fa-check"></i>Regular Expression</a></li>
 <li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#filter"><i class="fa fa-check"></i>Filter</a></li>
 <li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#facet"><i class="fa fa-check"></i>Facet</a></li>
 <li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#cluster"><i class="fa fa-check"></i>Cluster</a></li>
-<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#mass-editing"><i class="fa fa-check"></i>Mass Editing</a></li>
+<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#mass-editing-1"><i class="fa fa-check"></i>Mass Editing</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="hands-on-reshape.html"><a href="hands-on-reshape.html"><i class="fa fa-check"></i><b>3</b> Hands-on: reshape</a><ul>
@@ -136,13 +136,7 @@
 <li class="chapter" data-level="4.3" data-path="hands-on-dates.html"><a href="hands-on-dates.html#reproducible"><i class="fa fa-check"></i><b>4.3</b> Reproducible</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span><ul>
-<li class="chapter" data-level="" data-path=""><a href="#hands-on-answers"><i class="fa fa-check"></i>Hands-on Answers</a><ul>
-<li class="chapter" data-level="" data-path="hands-on-dates.html"><a href="hands-on-dates.html#appendix-facets"><i class="fa fa-check"></i>facets</a></li>
-<li class="chapter" data-level="" data-path="hands-on-dates.html"><a href="hands-on-dates.html#appendix-compound"><i class="fa fa-check"></i>compound facets</a></li>
-<li class="chapter" data-level="" data-path="hands-on-dates.html"><a href="hands-on-dates.html#appendix-mass-edit"><i class="fa fa-check"></i>mass edit cells</a></li>
-<li class="chapter" data-level="" data-path="hands-on-dates.html"><a href="hands-on-dates.html#appendix-grel"><i class="fa fa-check"></i>GREL: Custom Facets, filter, cluster and edit, mass edit</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="hands-on-dates.html"><a href="hands-on-dates.html#additional-documentation"><i class="fa fa-check"></i>Additional Documentation</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#additional-documentation"><i class="fa fa-check"></i>Additional Documentation</a></li>
 </ul></li>
 </ul>
 
@@ -167,7 +161,7 @@
 <p>In this example you will open a new data set to practice importing a different type of data, this time comma separated value, or CSV. Last time you imported a tab separated value, or TSV. OpenRefine will important many types of data. Being aware of different data formats, and having the ability to open those data are valuable skills. In fact, one of the most frequently stumbling blocks with data tools is the simple problem of importing the data. Practice and learn…</p>
 <div id="custom-facets" class="section level2">
 <h2><span class="header-section-number">2.1</span> Custom Facets</h2>
-<div id="grel-compound" class="section level3 unnumbered">
+<div id="download-new-data-then-create-a-new-openrefine-project" class="section level3 unnumbered">
 <h3>Download new Data then Create a new OpenRefine Project:</h3>
 <p>We’ll use a <strong>subset</strong><a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a> of data from the Raleigh Open Data portal: “Raleigh Police Incident Data 2005plus2014.csv”.</p>
 <ol style="list-style-type: decimal">
@@ -184,9 +178,17 @@
 <li><strong>Isolate data</strong>: you have incident data without location information
 <ul>
 <li><span class="or-menu">Location &gt; Facet &gt; Customized facets &gt; Facet by blank</span></li>
-<li>Click true (True = cell is blank ; False = cell has data)<br />
+<li>Click true (True = cell is blank ; False = cell has data)</li>
+<li><ul class="no-bullet">
+<div class="challenge">
+<li>
+How many matching rows have no location data?
 </li>
-<li><em>How many matching rows have no location data?</em> (<a href="hands-on-dates.html#appendix-grel">answer</a>)</li>
+<p>
+10,576
+</p>
+</div>
+</ul></li>
 </ul></li>
 </ol>
 <blockquote>
@@ -201,26 +203,47 @@ DATA:      12/31/2014 11:05:00 PM
 Position:  0123  6    1        2
                       1        0
 </pre>
-<p>To take the year“2014”, use expression: <code>value[6,10]</code><a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a><br />
-To take the hour, use <code>value[11,13]</code><br />
-To take PM (or AM), use <code>value[20,22]</code></p>
+<blockquote>
+<p>For Example…<br />
+- To take the year“2014”, use expression: <code>value[6,10]</code><a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a><br />
+- To take the hour, use <code>value[11,13]</code><br />
+- To take PM (or AM), use <code>value[20,22]</code></p>
+</blockquote>
 <ol start="3" style="list-style-type: decimal">
 <li>Create a Custom Facet to Sort by Year
 <ul>
 <li><span class="or-menu">INC DATETIME &gt; Facet &gt; Custom text facet … </span><br />
 </li>
-<li>Expression = <code>value[6,10]</code> <span class="or-menu">&gt; OK </span><br />
-</li>
+<li>Expression = <code>value[6,10]</code> <span class="or-menu"> &gt; OK </span></li>
 </ul></li>
-<li>Sort the facet by Count
+</ol>
+<ol start="4">
+<li>
+Sort the facet by Count
+</li>
 <ul>
-<li><em>Which year has the most missing data?</em> (<a href="hands-on-dates.html#appendix-grel">answer</a>)<br />
+<div class="challenge">
+<li>
+Which year has the most missing data?
 </li>
-<li><em>How many rows match that year?</em><br />
+<p>
+2005
+</p>
+</div>
+<div class="challenge">
+<li>
+How many rows match that year?
 </li>
-<li>Click “<strong>Remove All</strong>” in the Facet/Filter sidebar<br />
+<p>
+10,007 rows with missing location data
+</p>
+</div>
+<li>
+Click “<strong>Remove All</strong>” in the Facet/Filter sidebar
 </li>
-</ul></li>
+</ul>
+</ol>
+<ol start="5" style="list-style-type: decimal">
 <li>Keep only the data with location values, i.e. delete all rows that have<br />
 no location data…
 <ul>
@@ -254,14 +277,14 @@ no location data…
 <ul>
 <li><span class="or-menu">Latitude &gt; Edit cells &gt; Transform … </span>
 <ol style="list-style-type: decimal">
-<li>Expression - <code>value.replace(&quot;(&quot;,&quot;&quot;)</code> <span class="or-menu">&gt; OK </span><br />
+<li>Expression = <code>value.replace(&quot;(&quot;,&quot;&quot;)</code> <span class="or-menu">&gt; OK </span><br />
 </li>
 <li><span class="or-menu">Latitude &gt; Edit cells &gt; Common transformations &gt; Trim leading and trailing whitespace </span><br />
 </li>
 </ol></li>
 <li><span class="or-menu">Longitude &gt; Edit cells &gt; Transform … </span>
 <ol style="list-style-type: decimal">
-<li>Expression - <code>value.replace(&quot;)&quot;,&quot;&quot;)</code> <span class="or-menu">&gt; OK </span><br />
+<li>Expression = <code>value.replace(&quot;)&quot;,&quot;&quot;)</code> <span class="or-menu">&gt; OK </span><br />
 </li>
 <li><span class="or-menu">Longitude &gt; Edit cells &gt; Common transformations &gt; Trim leading and trailing whitespace </span></li>
 </ol></li>
@@ -286,27 +309,53 @@ no location data…
 <div id="filter" class="section level3 unnumbered">
 <h3>Filter</h3>
 <ol start="8" style="list-style-type: decimal">
-<li>Create a Text Filter: Explore your data to find how many incident descriptions involve bicycles
-<ol style="list-style-type: decimal">
-<li><span class="or-menu">LCR DESC &gt;Text filter </span><br />
+<li>Create a Text Filter: Explore your data to find how many incident descriptions involve bicycles<br />
+
+<ol type="1">
+<li>
+<span class="or-menu">LCR DESC &gt;Text filter </span>
 </li>
-<li>In the filter box, enter the term bicycle<br />
+<li>
+In the filter box, enter the term <code>bicycle</code>
 </li>
-<li><em>How many matching rows of data use the word “Bicycle” in the description?</em> (<a href="hands-on-dates.html#appendix-grel">answer</a>)</li>
-</ol></li>
+<div class="challenge">
+<li>
+How many matching rows of data use the word “bicycle” in the description?
+</li>
+<p>
+251
+</p></li>
+</ol>
+</div>
 </ol>
 </div>
 <div id="facet" class="section level3 unnumbered">
 <h3>Facet</h3>
-<ol start="9" style="list-style-type: decimal">
-<li>Make a Text Facet on the LCR DESC column
-<ol style="list-style-type: decimal">
-<li><span class="or-menu">LCR DESC &gt; Facet &gt; Text facet </span><br />
+<ol start="9">
+<li>
+Make a Text Facet on the LCR DESC column
 </li>
-<li><em>How many Bicycle categories exist in the facet window?</em><br />
+<ol>
+<li>
+<span class="or-menu">LCR DESC &gt; Facet &gt; Text facet</span>
 </li>
-<li><em>Which facet is most often used “LCR DESC” facet?</em></li>
-</ol></li>
+<div class="challenge">
+<li>
+How many Bicycle categories exist in the facet window?
+</li>
+<p>
+6
+</p>
+</div>
+<div class="challenge">
+<li>
+Which facet is most often used “LCR DESC” facet?
+</li>
+<p>
+LARCENY/BICYCLES ($50-$199) - 119
+</p>
+</div>
+</ol>
 </ol>
 </div>
 <div id="cluster" class="section level3 unnumbered">
@@ -324,7 +373,7 @@ no location data…
 </li>
 </ul></li>
 <li>For each row, check “Merge?” and change the “New Cell Value”
-<ol style="list-style-type: decimal">
+<ol style="list-style-type: lower-roman">
 <li>to <code>Felony</code> in the first row<br />
 </li>
 <li>to <code>Not Felony</code> in the second row<br />
@@ -333,29 +382,49 @@ no location data…
 </li>
 <li>Try other “Methods” and “Keying Functions”. “Merge Selected &amp; Re-Cluster” after each operation<br />
 </li>
-<li>Close<br />
-6.<em>How many “Not Felony” bicycle larcenies were recorded?</em> (<a href="hands-on-dates.html#appendix-grel">answer</a>)</li>
+<li>Close</li>
+<li><ul class="no-bullet">
+<div class="challenge">
+<li>
+How many “Not Felony” bicycle larcenies were recorded?
+</li>
+<p>
+There are 234 “Not Felony” items after clustering using both “key collision” and “nearest neighbor” methods of clustering
+</p>
+</div>
+</ul></li>
 </ol></li>
 </ul></li>
 </ol>
 </div>
-<div id="mass-editing" class="section level3 unnumbered">
+<div id="mass-editing-1" class="section level3 unnumbered">
 <h3>Mass Editing</h3>
 <ol start="11" style="list-style-type: decimal">
-<li>Mass Edit cells in LCR DESC Facet: <code>LCR DESC &gt; Facet &gt; Text facet</code>
+<li>Mass Edit cells in LCR DESC Facet: <span class="or-menu">LCR DESC &gt; Facet &gt; Text facet</span>
 <ul>
 <li>Mouseover &amp; Edit “LARCENY/BICYCLE/FELONY/$200- …”<br />
 </li>
 <li>delete “/FELONY”</li>
 <li>Add an “S” to ‘BICYCLE’ &gt; Apply</li>
 </ul></li>
-<li><em>How many rows match the “LARCENY/BICYCLES ($200-$1000)” Category</em> (<a href="hands-on-dates.html#appendix-grel">answer</a>)<br />
+<li><ul class="no-bullet">
+<div class="challenge">
+<li>
+How many rows match the “LARCENY/BICYCLES ($200-$1000)” Category
 </li>
+<p>
+There are 115 observatins (or rows) matching “LARCENY/BICYCLES ($200-$1,000)” category
+</p>
+</div>
+</ul></li>
 <li>Export as an Excel File
 <ul>
 <li><span class="or-menu">Export &gt; Excel </span></li>
 </ul></li>
 </ol>
+<!-- special thanks to the folks at software carpentry.  I riffed from their
+workshop template to create the Q&A javacript/style.  See https://github.com/swcarpentry/workshop-template -->
+<script src="assets/js/qa.js"></script>
 
 </div>
 </div>
