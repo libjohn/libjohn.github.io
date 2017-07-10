@@ -1,6 +1,10 @@
 # See http://libjohn.github.io
 
-# How I build and serve my website
+## Site Transition
+
+- I'm in a transition away from using the R-Markdown websute ti **blogdown**.  You can find my new site at http://libjohn.info 
+
+## How I build and serve this website
 
 - The back-end of this website is built at http://github.com/libjohn/website using Rmarkdown-website [builder](http://rmarkdown.rstudio.com/rmarkdown_websites.html)
 - The web pages are served via [GitHub Pages](https://pages.github.com/) at **http://libjohn.github.io**
