@@ -11,7 +11,7 @@
 
 
 
-<title>Git Workshop - Outline</title>
+<title>Git Workshop - Hands-on</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -310,71 +310,119 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Git Workshop - Outline</h1>
+<h1 class="title toc-ignore">Git Workshop - Hands-on</h1>
 
 </div>
 
 
-<div id="overview" class="section level2">
-<h2>Overview</h2>
+<div id="notes" class="section level1">
+<h1>Notes</h1>
 <ol style="list-style-type: decimal">
-<li>Git</li>
-<li><p>GitHub and GitLab and Bitbucket</p>
+<li><p>git</p>
 <ul>
-<li>Duke’s GitLab</li>
+<li><p>lost in the forest -</p>
+<ul>
+<li><img src="https://twoknobbytires.files.wordpress.com/2012/05/img_4829.jpg" /> [^https://blog.twoknobbytires.com/category/iowa-mountain-biking-trails/]</li>
 </ul></li>
-<li>Markdown<br />
+<li>breadcrumbs</li>
+<li><p>repository</p></li>
+</ul></li>
+</ol>
+<p>============================</p>
+<div id="hands-on-a-quickstart" class="section level2">
+<h2>Hands-On: a quickstart</h2>
+<div id="generate-ssh-keys-do-this-once-per-workstation" class="section level3">
+<h3>Generate SSH Keys (Do this once per workstation)</h3>
+<ul>
+<li><a href="https://gitlab.oit.duke.edu/help/ssh/README" class="uri">https://gitlab.oit.duke.edu/help/ssh/README</a></li>
+</ul>
+</div>
+<div id="make-a-repository" class="section level3">
+<h3>Make a Repository</h3>
+<ol style="list-style-type: decimal">
+<li>Duke’s GitLab – <a href="https://gitlab.oit.duke.edu" class="uri">https://gitlab.oit.duke.edu</a></li>
+<li>Duke Shibboleth Login</li>
+<li>New Project</li>
+<li><p>Add a project name: <code>test-one</code> &gt; Create Project</p>
+<ul>
+<li>Notice command line instructions. Could come in handy<br />
 </li>
-<li><p>Orchestrating with RStudio</p>
-<ul>
-<li>Masks the CLI</li>
-<li>Easier to get started</li>
-<li>PowerUsers can still use commands</li>
 </ul></li>
-</ol>
-</div>
-<div id="prerequisites-load-install-software" class="section level2">
-<h2><strong>Prerequisites</strong>: Load &amp; Install Software</h2>
-<div id="load-install-software-before-the-workshop" class="section level3">
-<h3>Load &amp; Install Software <strong>Before the Workshop</strong></h3>
-<p>To complete the hands-on portion of the workshop you’ll need software pre-installed. Due to the nature of the workshop we will not have time to troubleshoot installations during the workshop. Please be sure to perform the following steps <strong>on the laptop you will bring to the workshop</strong>.</p>
-</div>
-<div id="required-software" class="section level3">
-<h3>Required Software</h3>
-<p><strong>Download and install</strong>. I recommend accepting the install defaults for the following:</p>
+<li>Make a README file (click the README link) &gt; <code>Commit changes</code></li>
+<li><p>Make a license file (click the LICENSE link)</p>
 <ul>
-<li><p><strong>Git</strong>: <a href="https://git-scm.com/downloads" class="uri">https://git-scm.com/downloads</a></p>
+<li>click <em>Appply a license format</em> &gt; choose <em>The Unlicense</em> (or paste in a Creative Commons License) &gt; <code>Commit changes</code><br />
+</li>
+</ul></li>
+<li><p>Make a .gitignore file (click the .gitignore link)</p>
+<ul>
+<li>click <em>Apply a .gitignore format</em> &gt; choose <em>R</em> &gt; <code>Commit changes</code><br />
+</li>
+</ul></li>
+<li><p>Bring the repo down locally via RStudio</p>
 <ol style="list-style-type: decimal">
-<li>Download and install Git <br> <img src="../images/git_os.png" title="Click on the link to your OS" /></li>
-<li>Run the install and accept all the defaults</li>
+<li>Back at your GitLab repo <code>https://gitlab.oit.duke.edu/&lt;&lt;your-NetID&gt;&gt;/test-one</code>, copyURL to clipboard (click icon)</li>
+<li>Launch RStudio, Menubar: <em>File &gt; New Project</em> &gt; Version Control &gt; Git &gt; paste the URL from the step above into <em>Repository URL:</em></li>
 </ol></li>
-<li><p><strong>R</strong>: <a href="http://archive.linux.duke.edu/cran/" class="uri">http://archive.linux.duke.edu/cran/</a></p>
-<ul>
-<li>If you have not installed R before choose <em>install R for the first time</em></li>
-<li>If you already have R installed on your workstation I recommend running the latest version, but any reasonably current version should be fine.</li>
-</ul></li>
-<li><p><strong>RStudio</strong>: <a href="https://www.rstudio.com/products/rstudio/download/#download" class="uri">https://www.rstudio.com/products/rstudio/download/#download</a> <br> <img src="../images/rstudio_download.png" title="Click *Download Rstudio Desktop*" /></p></li>
-<li><p>If you haven’t yet, install each of those programs</p></li>
-</ul>
-</div>
-<div id="verify-your-access-to-dukes-gitlab" class="section level3">
-<h3>Verify your Access to <strong>Duke’s</strong> GitLab</h3>
-<p>During the Workshop we will use <a href="https://gitlab.oit.duke.edu">Duke’s Gitlab</a> implementation. To complete the hands-on portion of the workshop, you <strong>must log-in</strong> – <strong>in advance</strong> of the workshop – and ensure you have NetID access to <a href="https://gitlab.oit.duke.edu" class="uri">https://gitlab.oit.duke.edu</a>. If you do not have access to <strong>Duke’s</strong> GitLab, <a href="https://oit.duke.edu/help">contact OIT</a>.</p>
-<ul>
-<li>Be certain you login via “Duke Shibboleth Login” using your NetID <br> <img src="../images/gitlab_shib_login.png" /></li>
-</ul>
-</div>
-<div id="genearte-ssh-keys-in-advance-of-the-workshop" class="section level3">
-<h3>Genearte SSH keys in Advance of the Workshop</h3>
-<p>I recommend generating your SSH keys in advance of the workshop. To do so, you should have already installed Git to your laptop. Then follow these instructions for generating the keys. We will cover key configuration in the workshop although you will find the explanation easier to if you generate your keys in advance.</p>
-<ol style="list-style-type: decimal">
-<li><p>To begin, open a shell <strong>from RStudio</strong></p>
-<ul>
-<li>In RStudio &gt; Menubar &gt; <code>Tools &gt; Shell...</code> <br> <img src="../images/shell.png" /></li>
-</ul></li>
-<li>Follow the instructions <a href="https://gitlab.oit.duke.edu/help/ssh/README" class="uri">https://gitlab.oit.duke.edu/help/ssh/README</a></li>
-<li><p>Close the Shell</p></li>
 </ol>
+</div>
+<div id="edit-commit-and-push-your-repo-in-rstudio" class="section level3">
+<h3>Edit, Commit, and Push your Repo in RStudio</h3>
+<ol style="list-style-type: decimal">
+<li>In the Files Pane, Open the README.md file</li>
+<li><p>In the Editor Pane, modify your README with <a href="https://en.wikipedia.org/wiki/Markdown#Example">Markdown</a></p>
+<ul>
+<li>Make a Subheading with the word “Purpose”: <code>##Purpose</code></li>
+<li>A blank line, then “This is my first Git repository. I’m going to push this file via RStudio”</li>
+</ul></li>
+<li>Save the changes to this file</li>
+<li><p>In the Git pane:</p>
+<ol style="list-style-type: decimal">
+<li>Check each of the staged files</li>
+<li>Click <em>commit</em> and provide a message: <code>this is my first edit of a README and supporting files</code></li>
+<li>Click the <em>commit</em> button to engage your commit process with the message, then close</li>
+<li>Click the <em>Push</em> arrow, then close, then close the commit dialogue box<br />
+</li>
+</ol></li>
+<li><p>View your changes back at gitLab: <code>https://gitlab.oit.duke.edu/&lt;&lt;your-NetID&gt;&gt;/test-one</code></p></li>
+</ol>
+</div>
+<div id="pull" class="section level3">
+<h3>Pull</h3>
+<p>The next time you open your project in RStudio the first step you should take is to <em>Pull</em> from the gitLab repo. Then make your changes, then commit and push. If you forget to <em>Pull</em> you make have to resolve some conflicts so get into the habit of pulling before you make edits.</p>
+</div>
+<div id="public-or-private-repositories" class="section level3">
+<h3>Public or Private Repositories</h3>
+<ul>
+<li><code>https://gitlab.oit.duke.edu/&lt;&lt;your-NetID&gt;&gt;/test-one</code> &gt; Settings &gt; Scroll to <em>Project Visibility</em> &gt; right-hand drop-down list: Private | Public</li>
+<li>Add a Description (Optional)</li>
+<li>Add Tags (Optional)</li>
+</ul>
+</div>
+<div id="public-hubs-v-dukes-hub" class="section level3">
+<h3>Public Hubs v Duke’s Hub</h3>
+<ul>
+<li><p>Public Hubs: GitHub, GitLab, Bitbucket</p>
+<ul>
+<li>public by default</li>
+<li>can pay for privacy</li>
+<li>large user communities</li>
+</ul></li>
+<li><p>Duke’s GitLab can make</p>
+<ul>
+<li>Works with your NetID</li>
+<li>Same Functionality as above</li>
+<li>Price is right</li>
+<li>Can make any repo public, private by default</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="resources" class="section level2">
+<h2>Resources</h2>
+<ul>
+<li><a href="https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf">RMarkdown Cheatsheet</a></li>
+</ul>
 </div>
 </div>
 
