@@ -324,39 +324,77 @@ div.tocify {
 <ul>
 <li><a href="https://gitlab.oit.duke.edu/help/ssh/README" class="uri">https://gitlab.oit.duke.edu/help/ssh/README</a></li>
 </ul>
-<p>This step was covered in the <a href="outline.html#genearte_ssh_keys_in_advance_of_the_workshop">Outline Section</a></p>
+<p>This step was covered in the <a href="outline.html#generate_ssh_keys_in_advance_of_the_workshop">Outline Section</a></p>
 </div>
 <div id="make-a-repository" class="section level2">
 <h2>Make a Repository</h2>
 <ol style="list-style-type: decimal">
-<li>Duke’s GitLab – <a href="https://gitlab.oit.duke.edu" class="uri">https://gitlab.oit.duke.edu</a></li>
+<li>Duke’s GitLab – <a href="https://gitlab.oit.duke.edu" target="_blank">https://gitlab.oit.duke.edu</a></li>
 <li>Duke Shibboleth Login</li>
-<li>New Project</li>
-<li><p>Add a project name: <code>test-one</code> &gt; Create Project</p>
+<li><p>New Project</p>
 <ul>
-<li>Notice command line instructions. Could come in handy<br />
-</li>
+<li><img src="images/new_gitlab_project_button.png" title="fig:" /></li>
 </ul></li>
-<li>Make a README file (click the README link) &gt; <code>Commit changes</code></li>
-<li><p>Make a license file (click the LICENSE link)</p>
+<li><p>Add a project name. Use the name <em>test-one</em></p>
 <ul>
-<li>click <em>Appply a license format</em> &gt; choose <em>MIT</em> (or paste in a Creative Commons License) &gt; <code>Commit changes</code><br />
-</li>
+<li><img src="images/project_name.png" /> <code>--&gt;</code> <code>test-one</code></li>
+<li><img src="images/create_project.png" /> – Create Project</li>
+<li>On the Next Page, notice the section below <em>Command line instructions</em>. That information could come in handy. For future repositories, you may want to make a note of those <em>Git</em> commands.</li>
 </ul></li>
-<li><p>Make a .gitignore file (click the .gitignore link)</p>
-<ul>
-<li>click <em>Apply a .gitignore format</em> &gt; choose <em>R</em> &gt; <code>Commit changes</code><br />
-</li>
-</ul></li>
-<li><p>Bring the repo down locally via RStudio</p>
+<li><p>Make a README file</p>
 <ol style="list-style-type: decimal">
-<li>Back at your GitLab repo <code>https://gitlab.oit.duke.edu/&lt;&lt;your-NetID&gt;&gt;/test-one</code>, copyURL to clipboard (click icon)</li>
-<li>Launch RStudio, Menubar: <em>File &gt; New Project</em> &gt; Version Control &gt; Git &gt; paste the URL from the step above into <em>Repository URL:</em></li>
+<li><img src="images/readme.png" /> <br>Open in a New Tab, click the README link<br />
+</li>
+<li>Commit changes</li>
+</ol></li>
+<li><p>Make a license file (Open in a New Tab, click the LICENSE link)</p>
+<ol style="list-style-type: decimal">
+<li><img src="images/license.png" /> <br>click <em>Appply a license format</em> &gt; choose <em>MIT</em> (or paste in a Creative Commons License)</li>
+<li>Commit changes</li>
+</ol></li>
+<li><p>Make a .gitignore file (Open in a New Tab, click the .gitignore link)</p>
+<ol style="list-style-type: decimal">
+<li><p>click <em>Apply a .gitignore format</em></p>
+<ul>
+<li>choose <em>R</em></li>
+</ul></li>
+<li><p>Commit changes</p></li>
+</ol></li>
+<li><p>Congratulations. You’ve just created your first GitLab repository. Click <em>test-one</em> in the top-left of your screen and you’ll see your repository – including the three files you just created.</p></li>
+</ol>
+</div>
+<div id="clone" class="section level2">
+<h2>Clone</h2>
+<p>Using RStudio, clone your repository. This will pull down the whole repo including the three files you just created.</p>
+<div id="bring-the-repo-down-locally-via-rstudio" class="section level3">
+<h3>Bring the repo down locally via RStudio</h3>
+<ol style="list-style-type: decimal">
+<li><p>Copy GitLab URL to clipboard</p>
+<ul>
+<li><img src="images/copy_repo.png" /> – Copy the repo URL</li>
+<li>repo <code>https://gitlab.oit.duke.edu/&lt;&lt;your-NetID&gt;&gt;/test-one</code>, copyURL to clipboard (click icon)</li>
+</ul></li>
+<li><p>Launch RStudio and create a <em>New Project…</em></p>
+<ol style="list-style-type: decimal">
+<li><p>Menubar: <em>File &gt; New Project…</em> &gt; Version Control &gt; Git &gt; paste the URL from the step above into <em>Repository URL:</em> <br></p>
+<div class="figure">
+<img src="images/project_version_git.png" />
+
+</div></li>
+<li><p>Create Project</p></li>
 </ol></li>
 </ol>
 </div>
-<div id="edit-commit-and-push-your-repo-in-rstudio" class="section level2">
-<h2>Edit, Commit, and Push your Repo in RStudio</h2>
+</div>
+<div id="push-edit-and-commit" class="section level2">
+<h2>Push: Edit and Commit</h2>
+<p>This time you’ll make local changes by editing your local repository. After saving the changes you’ll <em>add</em> and <em>commit</em> the changes. Lastly, you will <em>push</em> your changes up to the remote repoistory.</p>
+<div class="figure">
+<img src="images/push.png" />
+
+</div>
+<div id="edit" class="section level3">
+<h3>Edit</h3>
 <ol style="list-style-type: decimal">
 <li>In the Files Pane, Open the README.md file</li>
 <li><p>In the Editor Pane, modify your README with <a href="markdown.html">Markdown</a></p>
@@ -364,7 +402,12 @@ div.tocify {
 <li>Make a Subheading with the word “Purpose”: <code>##Purpose</code></li>
 <li>A blank line, then “This is my first Git repository. I’m going to push this file via RStudio”</li>
 </ul></li>
-<li>Save the changes to this file</li>
+<li><p>Save the changes to this file</p></li>
+</ol>
+</div>
+<div id="commit-push" class="section level3">
+<h3>Commit &amp; Push</h3>
+<ol style="list-style-type: decimal">
 <li><p>In the Git pane:</p>
 <ol style="list-style-type: decimal">
 <li>Check each of the staged files</li>
@@ -376,9 +419,14 @@ div.tocify {
 <li><p>View your changes back at GitLab: <code>https://gitlab.oit.duke.edu/&lt;&lt;your-NetID&gt;&gt;/test-one</code></p></li>
 </ol>
 </div>
+</div>
 <div id="pull" class="section level2">
 <h2>Pull</h2>
 <p>The next time you open your project in RStudio the first step you should take is to <em>Pull</em> from the GitLab repo. Then make your changes, then commit and push. If you forget to <em>Pull</em> you make have to resolve some conflicts so get into the habit of pulling before you make edits.</p>
+<div class="figure">
+<img src="images/git_push_pull.png" />
+
+</div>
 </div>
 <div id="public-or-private-repositories" class="section level2">
 <h2>Public or Private Repositories</h2>
