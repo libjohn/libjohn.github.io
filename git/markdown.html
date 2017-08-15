@@ -328,24 +328,35 @@ div.tocify {
  
 Paragraphs are separated by a blank line.
 
-Text attributes _italic_, *italic*, __bold__, **bold**, `monospace`.
+Text attributes *italic*, **bold**, `monospace`.
 
 A [link](http://example.com).
 
 Bullet list:
-
-* apples  
-* oranges  
-* pears  
+- apples  
+- oranges  
+- pears  
 
 Numbered list:
-
 1. apples
 2. oranges
-3. pears</code></pre>
+3. pears
+
+Footnote:
+
+Method 1:
+now is the time.[^random_id]
+[random_id]: citation and/or link text here
+
+Method 2: 
+(possibly only works in R Markdown)
+now is the time.^[citation and/or link text here]
+
+
+</code></pre>
 </div>
 <div id="r-markdown" class="section level2">
-<h2>R markdown</h2>
+<h2>R Markdown</h2>
 <ul>
 <li><p><a href="https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf">RMarkdown Cheatsheet</a></p></li>
 <li><p><a href="http://rmarkdown.rstudio.com/lesson-1.html" class="uri">http://rmarkdown.rstudio.com/lesson-1.html</a></p></li>
