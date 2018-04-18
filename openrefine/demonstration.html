@@ -6,9 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Cleaning Data with OpenRefine</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="This lab workbook contains hands-on material supplementing the OpenRefine workshops">
-  <meta name="generator" content="bookdown 0.3.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Cleaning Data with OpenRefine" />
   <meta property="og:type" content="book" />
@@ -26,7 +25,7 @@
 <meta name="author" content="John Little">
 
 
-<meta name="date" content="2017-05-04">
+<meta name="date" content="2018-04-18">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -35,7 +34,6 @@
   
 <link rel="prev" href="workshop-outline.html">
 <link rel="next" href="start.html">
-
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -81,6 +79,7 @@
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html"><i class="fa fa-check"></i>Demonstration</a><ul>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#load-data"><i class="fa fa-check"></i>Load Data</a></li>
 <li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#navigating-the-project"><i class="fa fa-check"></i>Navigating the “Project”</a></li>
 <li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#facets"><i class="fa fa-check"></i>Facets</a></li>
 <li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#rows-vs.records"><i class="fa fa-check"></i>Rows vs. Records</a></li>
@@ -90,6 +89,7 @@
 <li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#concatenate"><i class="fa fa-check"></i>Concatenate</a></li>
 <li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#find-replace"><i class="fa fa-check"></i>Find &amp; Replace</a></li>
 <li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#facet-by-blank"><i class="fa fa-check"></i>Facet by Blank</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#text-filter"><i class="fa fa-check"></i>Text filter</a></li>
 <li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#custom-facet"><i class="fa fa-check"></i>Custom Facet</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="start.html"><a href="start.html"><i class="fa fa-check"></i><b>1</b> Hands-on: basic transformations</a><ul>
@@ -128,7 +128,7 @@
 <li class="chapter" data-level="3" data-path="hands-on-reshape.html"><a href="hands-on-reshape.html"><i class="fa fa-check"></i><b>3</b> Hands-on: reshape</a><ul>
 <li class="chapter" data-level="3.1" data-path="hands-on-reshape.html"><a href="hands-on-reshape.html#ingest-excel-data"><i class="fa fa-check"></i><b>3.1</b> Ingest Excel data</a></li>
 <li class="chapter" data-level="3.2" data-path="hands-on-reshape.html"><a href="hands-on-reshape.html#facets-1"><i class="fa fa-check"></i><b>3.2</b> Facets</a></li>
-<li class="chapter" data-level="3.3" data-path="hands-on-reshape.html"><a href="hands-on-reshape.html#text-filter"><i class="fa fa-check"></i><b>3.3</b> Text Filter</a></li>
+<li class="chapter" data-level="3.3" data-path="hands-on-reshape.html"><a href="hands-on-reshape.html#text-filter-1"><i class="fa fa-check"></i><b>3.3</b> Text Filter</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="hands-on-dates.html"><a href="hands-on-dates.html"><i class="fa fa-check"></i><b>4</b> Hands-on: dates</a><ul>
 <li class="chapter" data-level="4.1" data-path="hands-on-dates.html"><a href="hands-on-dates.html#dates"><i class="fa fa-check"></i><b>4.1</b> Dates</a></li>
@@ -157,11 +157,14 @@
             <section class="normal" id="section-">
 <div id="demonstration" class="section level1 unnumbered">
 <h1>Demonstration</h1>
+<div id="load-data" class="section level2 unnumbered">
+<h2>Load Data</h2>
 <ol style="list-style-type: decimal">
 <li><span class="or-menu">Create Project &gt; Web Addresses (URLs) &gt; </span> <code>https://raw.githubusercontent.com/libjohn/openrefine/master/data/bicycle-subset-phm-collection.tsv</code></li>
 <li>Uncheck - “Quotation marks are used to enclose” (bottom-right)</li>
 <li>Project Name to “bicycle categories”</li>
 </ol>
+</div>
 <div id="navigating-the-project" class="section level2 unnumbered">
 <h2>Navigating the “Project”</h2>
 <ul>
@@ -195,7 +198,7 @@
 <div id="rows-vs.records" class="section level2 unnumbered">
 <h2>Rows vs. Records</h2>
 <ul>
-<li><p>Row v Records <a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p></li>
+<li><p>Row v Records <a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p></li>
 <li><span class="or-menu">Categories &gt; edit cells &gt; split multi-valued cells &gt;</span> separator = <code>|</code>
 <ol style="list-style-type: decimal">
 <li><em>Now how many Category choices exist?</em></li>
@@ -209,7 +212,7 @@
 <h2>Web Scrape &amp; API</h2>
 <p><em>Scraping data from an API or Webpage</em></p>
 <ul>
-<li><span class="or-menu">Persistent Link &gt; Edit column &gt; Add column by fetching URLs…</span></li>
+<li><span class="or-menu">new_link &gt; Edit column &gt; Add column by fetching URLs…</span></li>
 <li>New column name = <code>Web Data</code></li>
 <li><em>Notice</em> Throttle delay
 <ol style="list-style-type: decimal">
@@ -223,44 +226,56 @@
 <h2>Parsing Data</h2>
 <p>A Brief Introduction</p>
 <ul>
-<li>Look fora big block of gobbly text in the “Web Data” column. That is JSON formatted data<br />
+<li>Look fora big block of gobbly text in the “Web Data” column. That is HTML formatted data<br />
 </li>
 <li>Typically, after fetching data, you’ll need to parse it<br />
 </li>
-<li>You can use GREL <a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> to parse data and isolate a specific bit of desired information
+<li>You can use GREL <a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> to parse data and isolate a specific bit of desired information
 <ul>
 <li><strong>GREL</strong> is the advanced power of OpenRefine. <a href="grel.html#grel">We will come back to this</a></li>
 </ul></li>
-<li>For example, you can transform the data in the retrieved cells with a <a href="https://github.com/libjohn/guides/blob/master/regex/regex.Rmd">regular expression</a> to gather only the title of each object
+<li>For example, you can transform the data in the retrieved cells with a <a href="https://github.com/libjohn/guides/blob/master/regex/regex.Rmd">regular expression</a> to gather only the title of each object<br />
+</li>
+<li><span class="or-menu">Web Data &gt; Edit column &gt; Add column based on this column…</span>
 <ol style="list-style-type: decimal">
-<li><code>value.parseHtml().select(&quot;div b&quot;)[0].htmlText()</code></li>
+<li>New Column Name = <code>Web Page Title</code></li>
+<li>Expression = <code>value.parseHtml().select(&quot;h1.object-page__title&quot;)[0].htmlText()</code></li>
 </ol></li>
 </ul>
 </div>
 <div id="split" class="section level2 unnumbered">
 <h2>Split</h2>
 <ul>
-<li>remove faceting &gt; split on “production dates” &gt; split on “ - “</li>
+<li><p>remove faceting: click <span class="or-menu">Remove All</span> in the facet sidebar</p></li>
+<li><span class="or-menu"> Production Date &gt; Edit column &gt; Split into several columns…</span>
+<ol style="list-style-type: decimal">
+<li>Seperator = <code>-</code> (i.e. “space dash space”)</li>
+</ol></li>
 </ul>
 </div>
 <div id="concatenate" class="section level2 unnumbered">
 <h2>Concatenate</h2>
 <ul>
 <li><span class="or-menu">Height &gt; Edit column &gt; Add column based on this column</span></li>
-<li>GREL expression = <code>value + &quot; x &quot; + cells[&quot;Width&quot;].value</code></li>
+<li>GREL Expression = <code>value + &quot; x &quot; + cells[&quot;Width&quot;].value</code></li>
 </ul>
 </div>
 <div id="find-replace" class="section level2 unnumbered">
 <h2>Find &amp; Replace</h2>
 <ul>
 <li><span class="or-menu">Dimension &gt; Edit cells &gt; Transform</span></li>
-<li>GREL = <code>value.replace(&quot;mm&quot;,&quot;&quot;)</code></li>
+<li>GREL Expression = <code>value.replace(&quot;mm&quot;,&quot;&quot;)</code></li>
 </ul>
 </div>
 <div id="facet-by-blank" class="section level2 unnumbered">
 <h2>Facet by Blank</h2>
 <ul>
-<li><span class="or-menu">Dimension &gt; Facet &gt; Customized facet &gt; facet by blank</span> ## Text filter</li>
+<li><span class="or-menu">Dimension &gt; Facet &gt; Customized facet &gt; facet by blank</span></li>
+</ul>
+</div>
+<div id="text-filter" class="section level2 unnumbered">
+<h2>Text filter</h2>
+<ul>
 <li>Clear all facets</li>
 <li>Title = <code>bmx</code></li>
 </ul>
@@ -277,9 +292,9 @@
 </div>
 <div class="footnotes">
 <hr />
-<ol start="2">
-<li id="fn2"><p>Row v Records <a href="http://kb.refinepro.com/2012/03/difference-between-record-and-row.html">Explained</a><a href="demonstration.html#fnref2">↩</a></p></li>
-<li id="fn3"><p><a href="https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language">General Refine Expression Language</a><a href="demonstration.html#fnref3">↩</a></p></li>
+<ol start="1">
+<li id="fn1"><p>Row v Records <a href="http://kb.refinepro.com/2012/03/difference-between-record-and-row.html">Explained</a><a href="demonstration.html#fnref1">↩</a></p></li>
+<li id="fn2"><p><a href="https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language">General Refine Expression Language</a><a href="demonstration.html#fnref2">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -288,8 +303,9 @@
         </div>
       </div>
 <a href="workshop-outline.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="start.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
-
+<a href="start.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
@@ -298,17 +314,18 @@
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
