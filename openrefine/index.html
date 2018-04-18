@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Cleaning Data with OpenRefine</title>
+  <meta name="description" content="This lab workbook contains hands-on material supplementing the OpenRefine workshops">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Cleaning Data with OpenRefine" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This lab workbook contains hands-on material supplementing the OpenRefine workshops" />
+  <meta name="github-repo" content="libjohn/openrefine" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Cleaning Data with OpenRefine" />
+  
+  <meta name="twitter:description" content="This lab workbook contains hands-on material supplementing the OpenRefine workshops" />
+  
+
+<meta name="author" content="John Little">
+
+
+<meta name="date" content="2018-04-18">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+<link rel="next" href="workshop-outline.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html"><i class="fa fa-check"></i>Workshop Outline</a><ul>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#workshop-structure"><i class="fa fa-check"></i>Workshop Structure</a><ul>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#testimonial"><i class="fa fa-check"></i>Testimonial</a></li>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#workshop-philosophy"><i class="fa fa-check"></i>Workshop Philosophy</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#workshop-video"><i class="fa fa-check"></i>Workshop Video</a></li>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#for-best-results"><i class="fa fa-check"></i>For best results</a></li>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#overview"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#comparative-advantage"><i class="fa fa-check"></i>Comparative Advantage</a></li>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#characteristics"><i class="fa fa-check"></i>Characteristics</a><ul>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#general"><i class="fa fa-check"></i>General</a></li>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#video"><i class="fa fa-check"></i>Video</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html"><i class="fa fa-check"></i>Demonstration</a><ul>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#load-data"><i class="fa fa-check"></i>Load Data</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#navigating-the-project"><i class="fa fa-check"></i>Navigating the “Project”</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#facets"><i class="fa fa-check"></i>Facets</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#rows-vs.records"><i class="fa fa-check"></i>Rows vs. Records</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#web-scrape-api"><i class="fa fa-check"></i>Web Scrape &amp; API</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#parsing-data"><i class="fa fa-check"></i>Parsing Data</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#split"><i class="fa fa-check"></i>Split</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#concatenate"><i class="fa fa-check"></i>Concatenate</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#find-replace"><i class="fa fa-check"></i>Find &amp; Replace</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#facet-by-blank"><i class="fa fa-check"></i>Facet by Blank</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#text-filter"><i class="fa fa-check"></i>Text filter</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#custom-facet"><i class="fa fa-check"></i>Custom Facet</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="start.html"><a href="start.html"><i class="fa fa-check"></i><b>1</b> Hands-on: basic transformations</a><ul>
+<li class="chapter" data-level="1.1" data-path="start.html"><a href="start.html#getting-started"><i class="fa fa-check"></i><b>1.1</b> Getting Started</a></li>
+<li class="chapter" data-level="1.2" data-path="start.html"><a href="start.html#shutting-down-openrefine"><i class="fa fa-check"></i><b>1.2</b> Shutting Down OpenRefine</a></li>
+<li class="chapter" data-level="1.3" data-path="start.html"><a href="start.html#facets-cluster"><i class="fa fa-check"></i><b>1.3</b> Facets &amp; Cluster</a><ul>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#facet-cluster"><i class="fa fa-check"></i>Facet &amp; Cluster</a></li>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#compound-facets"><i class="fa fa-check"></i>Compound Facets</a></li>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#mass-editing"><i class="fa fa-check"></i>Mass Editing</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="start.html"><a href="start.html#split-data-in-cells"><i class="fa fa-check"></i><b>1.4</b> Split data in cells</a></li>
+<li class="chapter" data-level="1.5" data-path="start.html"><a href="start.html#concatenate-cells-together"><i class="fa fa-check"></i><b>1.5</b> Concatenate cells together</a></li>
+<li class="chapter" data-level="1.6" data-path="start.html"><a href="start.html#more-transformations"><i class="fa fa-check"></i><b>1.6</b> More Transformations</a><ul>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#data-types"><i class="fa fa-check"></i>Data Types</a></li>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#whitespace"><i class="fa fa-check"></i>Whitespace</a></li>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#search-replace"><i class="fa fa-check"></i>Search &amp; Replace</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="start.html"><a href="start.html#web-scraping"><i class="fa fa-check"></i><b>1.7</b> Web Scraping</a><ul>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#subset"><i class="fa fa-check"></i>Select a subset</a></li>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#api"><i class="fa fa-check"></i>API</a></li>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#parse"><i class="fa fa-check"></i>Parse</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="grel.html"><a href="grel.html"><i class="fa fa-check"></i><b>2</b> Hands-on: GREL</a><ul>
+<li class="chapter" data-level="2.1" data-path="grel.html"><a href="grel.html#custom-facets"><i class="fa fa-check"></i><b>2.1</b> Custom Facets</a><ul>
+<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#download-new-data-then-create-a-new-openrefine-project"><i class="fa fa-check"></i>Download new Data then Create a new OpenRefine Project:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="grel.html"><a href="grel.html#grel-to-transform-and-normalize"><i class="fa fa-check"></i><b>2.2</b> GREL to Transform and Normalize</a><ul>
+<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#regular-expression"><i class="fa fa-check"></i>Regular Expression</a></li>
+<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#filter"><i class="fa fa-check"></i>Filter</a></li>
+<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#facet"><i class="fa fa-check"></i>Facet</a></li>
+<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#cluster"><i class="fa fa-check"></i>Cluster</a></li>
+<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#mass-editing-1"><i class="fa fa-check"></i>Mass Editing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="hands-on-reshape.html"><a href="hands-on-reshape.html"><i class="fa fa-check"></i><b>3</b> Hands-on: reshape</a><ul>
+<li class="chapter" data-level="3.1" data-path="hands-on-reshape.html"><a href="hands-on-reshape.html#ingest-excel-data"><i class="fa fa-check"></i><b>3.1</b> Ingest Excel data</a></li>
+<li class="chapter" data-level="3.2" data-path="hands-on-reshape.html"><a href="hands-on-reshape.html#facets-1"><i class="fa fa-check"></i><b>3.2</b> Facets</a></li>
+<li class="chapter" data-level="3.3" data-path="hands-on-reshape.html"><a href="hands-on-reshape.html#text-filter-1"><i class="fa fa-check"></i><b>3.3</b> Text Filter</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="hands-on-dates.html"><a href="hands-on-dates.html"><i class="fa fa-check"></i><b>4</b> Hands-on: dates</a><ul>
+<li class="chapter" data-level="4.1" data-path="hands-on-dates.html"><a href="hands-on-dates.html#dates"><i class="fa fa-check"></i><b>4.1</b> Dates</a></li>
+<li class="chapter" data-level="4.2" data-path="hands-on-dates.html"><a href="hands-on-dates.html#logic"><i class="fa fa-check"></i><b>4.2</b> Logic</a></li>
+<li class="chapter" data-level="4.3" data-path="hands-on-dates.html"><a href="hands-on-dates.html#reproducible"><i class="fa fa-check"></i><b>4.3</b> Reproducible</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span><ul>
+<li class="chapter" data-level="" data-path=""><a href="#additional-documentation"><i class="fa fa-check"></i>Additional Documentation</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cleaning Data with OpenRefine</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Cleaning Data with OpenRefine</h1>
+<h4 class="author"><em>John Little</em></h4>
+<h4 class="date"><em>2018-04-18</em></h4>
+</div>
+<div id="preface" class="section level1 unnumbered">
+<h1>Preface</h1>
+<p>This lab workbook contains hands-on material supplementing the OpenRefine workshops taught by John Little and hosted by the Data &amp; Visualization Services Department, Duke University Libraries.</p>
+<p><img src="images/data-cleaning.png" alt="cover image" class="center" /></p>
+<p> </p>
+<p><img src="https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png" title="This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" alt="This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License." /> Data and workbook are shareable under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a>(CC BY-NC-SA license)</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="workshop-outline.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
