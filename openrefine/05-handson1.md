@@ -97,7 +97,7 @@ Goal 1:  Create a facet of authorized work.  Cluster & Merge types of authorized
     - <ul class="no-bullet">
     <div class="challenge">
     <li>Now how many matching rows exist?</li>
-    <p>78 matching rows</p>
+    <p>578 matching rows</p>
     </div>
     </ul>
 
@@ -132,7 +132,7 @@ Goal 1:  Create a facet of authorized work.  Cluster & Merge types of authorized
 ### Mass Editing {-}
 It's important to understand OpenRefine was designed to transform data in bulk.  It is possible to edit single data cells but it is not as convenient as some other, more WYSWIG, tools.  This exercise will help you learn how to accomplish these kinds of mass data transformations
 
-1. Make a facet on the work_type_description column
+1. Make a *Text facet* on the work_type_description column
 2. There are two facets for new buildings:  “NEW BUILDING” and “New Building”.
     - <ul class="no-bullet">
     <div class="challenge">
@@ -147,7 +147,7 @@ It's important to understand OpenRefine was designed to transform data in bulk. 
     </div>
     </ul>
 
-3. Select “NEW BUILDING” facet, limiting to 3 matching rows.  Hover your mouse over the all caps “NEW BUILDING” facet until you see the “edit” feature appear; click “edit” and alter the text to title case:  “New Building” ; click Apply
+3. Select “NEW BUILDING” facet, limiting to 3 matching rows. To the right of the “NEW BUILDING” facet,  hover your mouse over   the “edit” feature; click “edit” and alter the text to title case:  “New Building” ; click Apply
     - <ul class="no-bullet">
     <div class="challenge">
     <li>How many “New Building” rows exist now?</li>
@@ -156,7 +156,7 @@ It's important to understand OpenRefine was designed to transform data in bulk. 
     </ul>
 
 4. Mass edit “OTHER” & “Other” so they have the same value
-5. Mass edit “ALTERNATIONS/REPAIRS” and “Alternations/repairs” so they have 
+5. Mass edit “ALTERATIONS/REPAIRS” and “Alterations/repairs” so they have 
 the same value
 6. Click “Remove All” to remove the facet window
 

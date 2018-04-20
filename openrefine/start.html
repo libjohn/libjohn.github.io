@@ -25,7 +25,7 @@
 <meta name="author" content="John Little">
 
 
-<meta name="date" content="2018-04-18">
+<meta name="date" content="2018-04-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -134,6 +134,10 @@
 <li class="chapter" data-level="4.1" data-path="hands-on-dates.html"><a href="hands-on-dates.html#dates"><i class="fa fa-check"></i><b>4.1</b> Dates</a></li>
 <li class="chapter" data-level="4.2" data-path="hands-on-dates.html"><a href="hands-on-dates.html#logic"><i class="fa fa-check"></i><b>4.2</b> Logic</a></li>
 <li class="chapter" data-level="4.3" data-path="hands-on-dates.html"><a href="hands-on-dates.html#reproducible"><i class="fa fa-check"></i><b>4.3</b> Reproducible</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="hands-on-reconciliation.html"><a href="hands-on-reconciliation.html"><i class="fa fa-check"></i><b>5</b> Hands On: Reconciliation</a><ul>
+<li class="chapter" data-level="5.1" data-path="hands-on-reconciliation.html"><a href="hands-on-reconciliation.html#reconciliation"><i class="fa fa-check"></i><b>5.1</b> Reconciliation</a></li>
+<li class="chapter" data-level="5.2" data-path="hands-on-reconciliation.html"><a href="hands-on-reconciliation.html#reconciliation-resources"><i class="fa fa-check"></i><b>5.2</b> Reconciliation Resources</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span><ul>
 <li class="chapter" data-level="" data-path=""><a href="#additional-documentation"><i class="fa fa-check"></i>Additional Documentation</a></li>
@@ -288,7 +292,7 @@ How many matching rows match the Deck Facet?
 Now how many matching rows exist?
 </li>
 <p>
-78 matching rows
+578 matching rows
 </p>
 </div>
 </ul></li>
@@ -341,7 +345,7 @@ How many matching rows are in the dataset now?
 <h3>Mass Editing</h3>
 <p>It’s important to understand OpenRefine was designed to transform data in bulk. It is possible to edit single data cells but it is not as convenient as some other, more WYSWIG, tools. This exercise will help you learn how to accomplish these kinds of mass data transformations</p>
 <ol style="list-style-type: decimal">
-<li>Make a facet on the work_type_description column</li>
+<li>Make a <em>Text facet</em> on the work_type_description column</li>
 <li>There are two facets for new buildings: “NEW BUILDING” and “New Building”.
 <ul>
 <li><ul class="no-bullet">
@@ -365,7 +369,7 @@ how many “New Building” rows exist?
 </div>
 </ul></li>
 </ul></li>
-<li>Select “NEW BUILDING” facet, limiting to 3 matching rows. Hover your mouse over the all caps “NEW BUILDING” facet until you see the “edit” feature appear; click “edit” and alter the text to title case: “New Building” ; click Apply
+<li>Select “NEW BUILDING” facet, limiting to 3 matching rows. To the right of the “NEW BUILDING” facet, hover your mouse over the “edit” feature; click “edit” and alter the text to title case: “New Building” ; click Apply
 <ul>
 <li><ul class="no-bullet">
 <div class="challenge">
@@ -379,7 +383,7 @@ How many “New Building” rows exist now?
 </ul></li>
 </ul></li>
 <li>Mass edit “OTHER” &amp; “Other” so they have the same value</li>
-<li>Mass edit “ALTERNATIONS/REPAIRS” and “Alternations/repairs” so they have the same value</li>
+<li>Mass edit “ALTERATIONS/REPAIRS” and “Alterations/repairs” so they have the same value</li>
 <li>Click “Remove All” to remove the facet window</li>
 </ol>
 <div class="video">

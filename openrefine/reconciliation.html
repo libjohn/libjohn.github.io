@@ -25,15 +25,15 @@
 <meta name="author" content="John Little">
 
 
-<meta name="date" content="2018-04-20">
+<meta name="date" content="2018-04-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="start.html">
-<link rel="next" href="hands-on-reshape.html">
+<link rel="prev" href="hands-on-dates.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -135,9 +135,9 @@
 <li class="chapter" data-level="4.2" data-path="hands-on-dates.html"><a href="hands-on-dates.html#logic"><i class="fa fa-check"></i><b>4.2</b> Logic</a></li>
 <li class="chapter" data-level="4.3" data-path="hands-on-dates.html"><a href="hands-on-dates.html#reproducible"><i class="fa fa-check"></i><b>4.3</b> Reproducible</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="hands-on-reconciliation.html"><a href="hands-on-reconciliation.html"><i class="fa fa-check"></i><b>5</b> Hands On: Reconciliation</a><ul>
-<li class="chapter" data-level="5.1" data-path="hands-on-reconciliation.html"><a href="hands-on-reconciliation.html#reconciliation"><i class="fa fa-check"></i><b>5.1</b> Reconciliation</a></li>
-<li class="chapter" data-level="5.2" data-path="hands-on-reconciliation.html"><a href="hands-on-reconciliation.html#reconciliation-resources"><i class="fa fa-check"></i><b>5.2</b> Reconciliation Resources</a></li>
+<li class="chapter" data-level="5" data-path="reconciliation.html"><a href="reconciliation.html"><i class="fa fa-check"></i><b>5</b> Reconciliation</a><ul>
+<li class="chapter" data-level="5.1" data-path="reconciliation.html"><a href="reconciliation.html#hands-on"><i class="fa fa-check"></i><b>5.1</b> Hand’s On</a></li>
+<li class="chapter" data-level="5.2" data-path="reconciliation.html"><a href="reconciliation.html#lipsum-more-foo-text"><i class="fa fa-check"></i><b>5.2</b> Lipsum More Foo Text</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span><ul>
 <li class="chapter" data-level="" data-path=""><a href="#additional-documentation"><i class="fa fa-check"></i>Additional Documentation</a></li>
@@ -159,286 +159,82 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="grel" class="section level1">
-<h1><span class="header-section-number">2</span> Hands-on: GREL</h1>
-<p>The goal of this project is to create custom facets and perform basic transformations, introduce you to the General Refine Expression Language, and develop practical skills in transforming and normalizing data.</p>
-<p>In this example you will open a new data set to practice importing a different type of data, this time comma separated value, or CSV. Last time you imported a tab separated value, or TSV. OpenRefine will important many types of data. Being aware of different data formats, and having the ability to open those data are valuable skills. In fact, one of the most frequently stumbling blocks with data tools is the simple problem of importing the data. Practice and learn…</p>
-<div id="custom-facets" class="section level2">
-<h2><span class="header-section-number">2.1</span> Custom Facets</h2>
-<div id="download-new-data-then-create-a-new-openrefine-project" class="section level3 unnumbered">
-<h3>Download new Data then Create a new OpenRefine Project:</h3>
-<p>We’ll use a <strong>subset</strong><a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a> of data from the Raleigh Open Data portal: “Raleigh Police Incident Data 2005plus2014.csv”.</p>
+<div id="reconciliation" class="section level1">
+<h1><span class="header-section-number">5</span> Reconciliation</h1>
+<p>ipsum lupsum <a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> and <a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p>
+<div id="hands-on" class="section level2">
+<h2><span class="header-section-number">5.1</span> Hand’s On</h2>
 <ol style="list-style-type: decimal">
-<li>Open Data
+<li><p>Open <code>https://raw.githubusercontent.com/libjohn/openrefine/master/data/AA-authors-you-should-read.csv</code></p></li>
+<li><p>authors &gt; Edit column &gt; Add column based on this column… ; Name = “Reconciled Authors”</p></li>
+<li><p>authors &gt; Reconcile &gt; Start reconcilling…</p>
+<ol style="list-style-type: lower-alpha">
+<li>One Time…</li>
+<li>documentation: <a href="http://refine.codefork.com/" class="uri">http://refine.codefork.com/</a></li>
+<li>Click: <code>Add Standard Service ...</code></li>
+<li>From the refine.codefork.com, use VIAF <code>http://refine.codefork.com/reconcile/viaf</code> And if you use it a lot, read the documentation follow the install instructions: <a href="https://github.com/codeforkjeff/refine_viaf" class="uri">https://github.com/codeforkjeff/refine_viaf</a></li>
+<li>Rest of Time…</li>
+<li>VIAF &gt; Person &gt; Start Reconciling</li>
+<li>reconciled authors &gt; Reconcile &gt; Actions &gt; Match each cell to it’s best candidate</li>
+<li>Choose New Match for James Baldwin</li>
+<li>Choose new match for Richard Wright &gt; Create new item</li>
+</ol></li>
+<li>Can Export as CSV (Excel, etc.) with Reconciled info.</li>
+<li><p>Remove all facets</p></li>
+<li>Convert 12PM to 00PM
 <ul>
-<li><span class="or-menu">Create Project &gt; Web Addresses (URLs) &gt;</span> <code>https://github.com/libjohn/openrefine/raw/master/data/Raleigh%20Police%20Incident%20Data%202005plus2014.csv</code><br />
-</li>
-<li><span class="or-menu">Next &gt;&gt;</span><br />
-</li>
-<li>You many want to give your project a pretty title</li>
-<li>Create Project &gt;&gt;<br />
-</li>
-</ul></li>
-<li><strong>Isolate data</strong>: you have incident data without location information
+<li><span class="or-menu">date2 Edit cells &gt; transform </span>
 <ul>
-<li><span class="or-menu">Location &gt; Facet &gt; Customized facets &gt; Facet by blank</span></li>
-<li>Click true (True = cell is blank ; False = cell has data)</li>
-<li><ul class="no-bullet">
-<div class="challenge">
-<li>
-How many matching rows have no location data?
-</li>
-<p>
-10,576
-</p>
-</div>
+<li>Expression = <code>value.replace(&quot; 12:&quot;,&quot; 00:&quot;)</code></li>
 </ul></li>
 </ul></li>
-</ol>
-<blockquote>
-<p>Explanation<br />
-In the step above, you limited your data set to find all the police incident data where there is no location information. That is, when the cell is blank,there there is no location information.</p>
-</blockquote>
-<blockquote>
-<p>Explanation for the next step: You’ll create a custom facet (by Year) without altering any data. To do this, you’ll use a very simple expression which takes a slice of data based on fixed position, starting in position 6 (counting begins at 0) and ending four character positions later at 10* (6 + 4=10). Given the data, find the year value within the “INC DATETIME” field.</p>
-</blockquote>
-<pre>
-DATA:      12/31/2014 11:05:00 PM
-Position:  0123  6    1        2
-                      1        0
-</pre>
-<blockquote>
-<p>For Example…<br />
-- To take the year“2014”, use expression: <code>value[6,10]</code><a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a><br />
-- To take the hour, use <code>value[11,13]</code><br />
-- To take PM (or AM), use <code>value[20,22]</code></p>
-</blockquote>
-<ol start="3" style="list-style-type: decimal">
-<li>Create a Custom Facet to Sort by Year
+<li>Now make a date facet
 <ul>
-<li><span class="or-menu">INC DATETIME &gt; Facet &gt; Custom text facet … </span><br />
-</li>
-<li>Expression = <code>value[6,10]</code> <span class="or-menu"> &gt; OK </span></li>
+<li><span class="or-menu">date2 &gt; Facet &gt; Timeline facet </span></li>
 </ul></li>
 </ol>
-<ol start="4">
-<li>
-Sort the facet by Count
-</li>
+</div>
+<div id="lipsum-more-foo-text" class="section level2">
+<h2><span class="header-section-number">5.2</span> Lipsum More Foo Text</h2>
+<p><strong>Goal</strong>: Make the same data transformations as in the previous slide’s steps 2-7, but this time you’ll do it in one step. Think about how GREL allows you to take shortcuts.</p>
+<ol style="list-style-type: decimal">
+<li><span class="or-menu">issue_date &gt; Edit Column &gt; Add column based on this column… </span>
 <ul>
-<div class="challenge">
-<li>
-Which year has the most missing data?
+<li>New Column Name = <code>date3</code><br />
 </li>
-<p>
-2005
-</p>
+<li>Expression = <code>if(value.slice(20,22) == &quot;PM&quot;, value.replace(/(.*\s)12(:\d\d:.*)/,&quot;$100$2&quot;), value).toDate()</code><br />
+</li>
+</ul></li>
+<li>Now make a date facet
+<ul>
+<li><span class="or-menu">date3 &gt; Facet &gt; Timeline facet </span></li>
+</ul></li>
+</ol>
+
 </div>
-<div class="challenge">
-<li>
-How many rows match that year?
-</li>
-<p>
-10,007 rows with missing location data
-</p>
 </div>
-<li>
-Click “<strong>Remove All</strong>” in the Facet/Filter sidebar
-</li>
+
+
+
+<h2>Additional Documentation</h2>
+<ul>
+<li><a href="http://openrefine.org/documentation.html">Documentaion, “The Book”, and Mailing List</a></li>
 </ul>
-</ol>
-<ol start="5" style="list-style-type: decimal">
-<li>Keep only the data with location values, i.e. delete all rows that have<br />
-no location data…
-<ul>
-<li><span class="or-menu">Location &gt; Facet &gt; Customized facets &gt; Facet by blank </span><br />
-</li>
-<li>Limit to “<strong>true</strong>”<br />
-</li>
-<li><span class="or-menu">All &gt; Edit rows &gt; Remove all matching rows </span><br />
-</li>
-<li>Close (“X out”) the facets</li>
-</ul></li>
-</ol>
-</div>
-</div>
-<div id="grel-to-transform-and-normalize" class="section level2">
-<h2><span class="header-section-number">2.2</span> GREL to Transform and Normalize</h2>
-<p>The <a href="https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language">General Refine Expression Language</a> (GREL) is a powerful and extensible language to manipulate data. In these next steps we will learn GREL by using practical steps to improve the structure of the data.</p>
-<ol start="6" style="list-style-type: decimal">
-<li><strong>Split</strong> the LOCATION Column into two columns (Latitude and Longitude)
-<ul>
-<li><span class="or-menu">LOCATION &gt; Edit column &gt; Split into several columns… &gt; OK </span> (i.e. Accept the defaults)<br />
-</li>
-<li>Rename Columns
-<ul>
-<li><span class="or-menu">Location 1 &gt; Edit column &gt; Rename this column &gt; <code>Latitude</code> </span><br />
-</li>
-<li><span class="or-menu">Location 2 &gt; Edit column &gt; Rename this column &gt; <code>Longitude</code> </span><br />
-</li>
-</ul></li>
-<li>Remove parenthesis and trim whitespace
-<ul>
-<li><span class="or-menu">Latitude &gt; Edit cells &gt; Transform … </span>
-<ol style="list-style-type: decimal">
-<li>Expression = <code>value.replace(&quot;(&quot;,&quot;&quot;)</code> <span class="or-menu">&gt; OK </span><br />
-</li>
-<li><span class="or-menu">Latitude &gt; Edit cells &gt; Common transformations &gt; Trim leading and trailing whitespace </span><br />
-</li>
-</ol></li>
-<li><span class="or-menu">Longitude &gt; Edit cells &gt; Transform … </span>
-<ol style="list-style-type: decimal">
-<li>Expression = <code>value.replace(&quot;)&quot;,&quot;&quot;)</code> <span class="or-menu">&gt; OK </span><br />
-</li>
-<li><span class="or-menu">Longitude &gt; Edit cells &gt; Common transformations &gt; Trim leading and trailing whitespace </span></li>
-</ol></li>
-</ul></li>
-</ul></li>
-</ol>
-<div id="regular-expression" class="section level3 unnumbered">
-<h3>Regular Expression</h3>
-<p>Regular Expressions are very powerful and flexible codes used for matching patterns. Often there is more than one way to compose a regex pattern-match. Importantly for OpenRefine, much of Refine’s extensible and advanced power comes from regular expressions. Essentially the key to advanced level OpenRefine is regular expressions and looping. To learn more about regular expressions see my <a href="http://libjohn.github.io/regex/regex.html">handout on regex</a>. For now you can refer to these <strong>few commands</strong> and symbols summed up on this <a href="http://libjohn.github.io/regex/cheat-sheet.html">quick-sheet</a>.</p>
-<ol start="7" style="list-style-type: decimal">
-<li>Create New Column from Existing Column using a regular expression to match a pattern
-<ul>
-<li><span class="or-menu">INC DATETIME &gt; Edit column &gt; Add column based on this column … </span>
-<ol style="list-style-type: decimal">
-<li>New column name = <code>YEAR</code><br />
-</li>
-<li>Expression = <code>value.match(/.*\/(\d{4}).*/)[0]</code> &gt; <span class="or-menu">OK</span><a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a></li>
-</ol></li>
-</ul></li>
-</ol>
-</div>
-<div id="filter" class="section level3 unnumbered">
-<h3>Filter</h3>
-<ol start="8" style="list-style-type: decimal">
-<li>Create a Text Filter: Explore your data to find how many incident descriptions involve bicycles<br />
-
-<ol type="1">
-<li>
-<span class="or-menu">LCR DESC &gt;Text filter </span>
-</li>
-<li>
-In the filter box, enter the term <code>bicycle</code>
-</li>
-<div class="challenge">
-<li>
-How many matching rows of data use the word “bicycle” in the description?
-</li>
-<p>
-251
-</p></li>
-</ol>
-</div>
-</ol>
-</div>
-<div id="facet" class="section level3 unnumbered">
-<h3>Facet</h3>
-<ol start="9">
-<li>
-Make a Text Facet on the LCR DESC column
-</li>
-<ol>
-<li>
-<span class="or-menu">LCR DESC &gt; Facet &gt; Text facet</span>
-</li>
-<div class="challenge">
-<li>
-How many Bicycle categories exist in the facet window?
-</li>
-<p>
-6
-</p>
-</div>
-<div class="challenge">
-<li>
-Which facet is most often used “LCR DESC” facet?
-</li>
-<p>
-LARCENY/BICYCLES ($50-$199) - 119
-</p>
-</div>
-</ol>
-</ol>
-</div>
-<div id="cluster" class="section level3 unnumbered">
-<h3>Cluster</h3>
-<ol start="10" style="list-style-type: decimal">
-<li>Look for Cluster variations in the FELONY Column
-<ul>
-<li><a href="https://github.com/OpenRefine/OpenRefine/wiki/Clustering-In-Depth">Clustering</a> refers to the operation of finding groups of different values that might be alternative representations of the same thing. For example “Gödel” and “Godel”. This is a handy way to find spelling variations.<br />
-</li>
-<li><span class="or-menu">FELONY &gt; Facet &gt; Text facet </span><br />
-</li>
-<li><span class="or-menu">FELONY &gt; Edit cells &gt; Cluster and edit … </span>
-<ul>
-<li>Method = “key collision” ; Key Function = “metaphone3”<br />
-</li>
-</ul></li>
-<li>For each row, check “Merge?” and change the “New Cell Value”
-<ol style="list-style-type: lower-roman">
-<li>to <code>Felony</code> in the first row<br />
-</li>
-<li>to <code>Not Felony</code> in the second row<br />
-</li>
-<li>click the “Merge Selected &amp; Re-Cluster” button<br />
-</li>
-<li>Try other “Methods” and “Keying Functions”. “Merge Selected &amp; Re-Cluster” after each operation<br />
-</li>
-<li>Close</li>
-<li><ul class="no-bullet">
-<div class="challenge">
-<li>
-How many “Not Felony” bicycle larcenies were recorded?
-</li>
-<p>
-There are 234 “Not Felony” items after clustering using both “key collision” and “nearest neighbor” methods of clustering
-</p>
-</div>
-</ul></li>
-</ol></li>
-</ul></li>
-</ol>
-</div>
-<div id="mass-editing-1" class="section level3 unnumbered">
-<h3>Mass Editing</h3>
-<ol start="11" style="list-style-type: decimal">
-<li>Mass Edit cells in LCR DESC Facet: <span class="or-menu">LCR DESC &gt; Facet &gt; Text facet</span>
-<ul>
-<li>Mouseover &amp; Edit “LARCENY/BICYCLE/FELONY/$200- …”<br />
-</li>
-<li>delete “/FELONY”</li>
-<li>Add an “S” to ‘BICYCLE’ &gt; Apply</li>
-</ul></li>
-<li><ul class="no-bullet">
-<div class="challenge">
-<li>
-How many rows match the “LARCENY/BICYCLES ($200-$1000)” Category
-</li>
-<p>
-There are 115 observatins (or rows) matching “LARCENY/BICYCLES ($200-$1,000)” category
-</p>
-</div>
-</ul></li>
-<li>Export as an Excel File
-<ul>
-<li><span class="or-menu">Export &gt; Excel </span></li>
-</ul></li>
-</ol>
-<!-- special thanks to the folks at software carpentry.  I riffed from their
-workshop template to create the Q&A javacript/style.  See https://github.com/swcarpentry/workshop-template -->
-<script src="assets/js/qa.js"></script>
 
 </div>
 </div>
-</div>
+
+
+
+
+
+
+
 <div class="footnotes">
 <hr />
-<ol start="6">
-<li id="fn6"><p>Original Data Source: <a href="https://data.raleighnc.gov/">Raleigh Open Data</a><a href="grel.html#fnref6">↩</a></p></li>
-<li id="fn7"><p>You may notice what seems to be either a math or logic error in how this second value is “counted.” The simple explanation is the first number counts from zero. Add to that number the string length counting from 1 to get the second value.<a href="grel.html#fnref7">↩</a></p></li>
-<li id="fn8"><p>Here’s another GREL example that captures the same data: <code>value.match(/(\d\d)\/\d{2}\/(\d{4})\s.*\s([A|P][M])/)[1]</code><a href="grel.html#fnref8">↩</a></p></li>
+<ol start="1">
+<li id="fn1"><p><a href="https://data-lessons.github.io/dh-openrefine/05-advance-functions/" class="uri">https://data-lessons.github.io/dh-openrefine/05-advance-functions/</a><a href="reconciliation.html#fnref1">↩</a></p></li>
+<li id="fn2"><p><a href="http://refine.codefork.com/" class="uri">http://refine.codefork.com/</a><a href="reconciliation.html#fnref2">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -446,8 +242,8 @@ workshop template to create the Q&A javacript/style.  See https://github.com/swc
           </div>
         </div>
       </div>
-<a href="start.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="hands-on-reshape.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="hands-on-dates.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
