@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="workshop-outline.html">
+<link rel="prev" href="grel.html">
+<link rel="next" href="hands-on-dates.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -159,26 +159,289 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Cleaning Data with OpenRefine</h1>
-<h4 class="author"><em>John Little</em></h4>
-<h4 class="date"><em>2018-04-20</em></h4>
+<div id="hands-on-reshape" class="section level1">
+<h1><span class="header-section-number">3</span> Hands-on: reshape</h1>
+<p><strong>Reshaping Your Data</strong></p>
+<p>For this project you will take data in one format and reshape into a more optimal format for analysis. We’ll assume the analysis will be done in another tool. OpenRefine can export data in multiple formats after the data has been wrangled into the proper structure. In this lab we continue exploring how OpenRefine can import various data formats, this time Excel.</p>
+<p><strong>Goals</strong><br />
+1. Import Excel worksheets<br />
+2. Faceting &amp; Filtering for select data cleaning<br />
+3. Transforming: Adding columns and using fill-down to fill in data</p>
+<p>Basically you are making minor changes to the shape of the data by transforming some horizontal data into a more vertical format. This is a common data wrangling need. Below are two tables, cropped, to briefly illustrate the before data wrangling table <a href="#tab:before-table"><strong>??</strong></a> and after data wrangling result <a href="#tab:wrangled-table"><strong>??</strong></a>. I encourage you to <a href="https://github.com/libjohn/openrefine/raw/master/data/salary.xlsx">download</a> the Excel spreadsheet to look through the raw data.<a href="#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a> Doing so will help you see how the data transformation progresses.</p>
+<table>
+<caption>Unprocessed: A selective 10 rows of the 2013-2014 Salary.xls data</caption>
+<thead>
+<tr class="header">
+<th align="left">X__1</th>
+<th align="left">X__2</th>
+<th align="left">X__3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Cartier Martin</td>
+<td align="left">876332</td>
+<td align="left">c$754,250, r1/7, s2/1-2/18, s2/21</td>
+</tr>
+<tr class="even">
+<td align="left">Mike Scott</td>
+<td align="left">778872</td>
+<td align="left">minimum</td>
+</tr>
+<tr class="odd">
+<td align="left">Mike Muscala</td>
+<td align="left">57668</td>
+<td align="left">signed 2/27, released 3/23</td>
+</tr>
+<tr class="even">
+<td align="left">James Nunnally</td>
+<td align="left">57668</td>
+<td align="left">signed 1/11, released 2/1</td>
+</tr>
+<tr class="odd">
+<td align="left">Dexter Pittman</td>
+<td align="left">53888</td>
+<td align="left">c $52,017, signed 2/22, rel 2/27</td>
+</tr>
+<tr class="even">
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">—-</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Boston Celtics</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Kris Humphries</td>
+<td align="left">12000000</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
+<pre><code>## Warning: package &#39;bindrcpp&#39; was built under R version 3.4.4</code></pre>
+<table>
+<caption>Wrangled: same 10 rows of the 2013-2014 Salary.xls data</caption>
+<thead>
+<tr class="header">
+<th align="left">Player</th>
+<th align="left">Team</th>
+<th align="left">Salary</th>
+<th align="left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Cartier Martin</td>
+<td align="left">Atlanta Hawks</td>
+<td align="left">876332</td>
+<td align="left">c$754,250, r1/7, s2/1-2/18, s2/21</td>
+</tr>
+<tr class="even">
+<td align="left">Mike Scott</td>
+<td align="left">Atlanta Hawks</td>
+<td align="left">778872</td>
+<td align="left">minimum</td>
+</tr>
+<tr class="odd">
+<td align="left">Mike Muscala</td>
+<td align="left">Atlanta Hawks</td>
+<td align="left">57668</td>
+<td align="left">signed 2/27, released 3/23</td>
+</tr>
+<tr class="even">
+<td align="left">James Nunnally</td>
+<td align="left">Atlanta Hawks</td>
+<td align="left">57668</td>
+<td align="left">signed 1/11, released 2/1</td>
+</tr>
+<tr class="odd">
+<td align="left">Dexter Pittman</td>
+<td align="left">Atlanta Hawks</td>
+<td align="left">53888</td>
+<td align="left">c $52,017, signed 2/22, rel 2/27</td>
+</tr>
+<tr class="even">
+<td align="left">Kris Humphries</td>
+<td align="left">Boston Celtics</td>
+<td align="left">12000000</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Rajon Rondo</td>
+<td align="left">Boston Celtics</td>
+<td align="left">12000000</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Gerald Wallace</td>
+<td align="left">Boston Celtics</td>
+<td align="left">10105855</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Jeff Green</td>
+<td align="left">Boston Celtics</td>
+<td align="left">8700000</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Brandon Bass</td>
+<td align="left">Boston Celtics</td>
+<td align="left">6450000</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
+<div id="ingest-excel-data" class="section level2">
+<h2><span class="header-section-number">3.1</span> Ingest Excel data</h2>
+<ol style="list-style-type: decimal">
+<li>Open Data
+<ul>
+<li><span class="or-menu">Create Project &gt; Web Addresses (URLs) &gt; </span> <code>https://github.com/libjohn/openrefine/raw/master/data/salary.xlsx</code></li>
+<li><span class="or-menu">Next &gt;&gt; </span><br />
+</li>
+<li>You many want to give your project a pretty title</li>
+<li>Parse data as
+<ol style="list-style-type: decimal">
+<li>Worksheets to Import:
+<ul>
+<li><strong>Check</strong> “2013-2014 666 rows”</li>
+<li><strong>UnCheck</strong> “2014-2015 599 rows”<br />
+</li>
+</ul></li>
+<li><strong>UnCheck</strong> “Store blank rows”
+<ul>
+<li>Notice lines 20 &amp; 22 disappear<br />
+</li>
+</ul></li>
+<li><strong>UnCheck</strong> “Parse Next” 1 lines as column headers
+<ul>
+<li>Notice the “Atlanta Hawks” are no longer the column header for the first column<br />
+</li>
+</ul></li>
+</ol></li>
+<li>Project name = <code>salary data</code> <span class="or-menu">&gt; Create Project </span><br />
+</li>
+</ul></li>
+<li>Rename Columns: “Player”, “Salary”, “Notes” <a href="#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a><br />
+</li>
+<li>Show as: rows to ‘25’ (notice row 21)</li>
+</ol>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>This lab workbook contains hands-on material supplementing the OpenRefine workshops taught by John Little and hosted by the Data &amp; Visualization Services Department, Duke University Libraries.</p>
-<p><img src="images/data-cleaning.png" alt="cover image" class="center" /></p>
-<p> </p>
-<p><img src="https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png" title="This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" alt="This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License." /> Data and workbook are shareable under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a>(CC BY-NC-SA license)</p>
+<div id="facets-1" class="section level2">
+<h2><span class="header-section-number">3.2</span> Facets</h2>
+<ol start="4" style="list-style-type: decimal">
+<li>Remove all rows where ‘—-’ exist in the Player column
+<ul>
+<li><span class="or-menu">Player &gt; Facet &gt; Text Facet** &gt; </span>
+<ul>
+<li>Sort by: count &gt; click: ‘—-’ :<br />
+</li>
+<li>You should now have 29 matching rows that begin ‘—-’<br />
+</li>
+</ul></li>
+<li><span class="or-menu">All &gt; Edit rows &gt; Remove all matching rows </span><br />
+</li>
+<li>Click: <strong>Remove All</strong> in the <strong>Facet/Filter</strong> sidebar</li>
+</ul></li>
+</ol>
+<blockquote>
+<p>Notice: in the next step, team names precede each team roster and are followed by two blank cells in the same row. Scroll through the screens (Click “next &gt;”) a few times; return to the first screen</p>
+</blockquote>
+<ol start="5" style="list-style-type: decimal">
+<li>Make a column for team name and fill it.
+<ul>
+<li>Isolate team-name rows using a facet on the blank cells in the Salary column
+<ol style="list-style-type: decimal">
+<li><span class="or-menu">Salary &gt; Facet &gt; Customized facets &gt; Facet by blank </span>
+<ul>
+<li><ul class="no-bullet">
+<div class="challenge">
+<li>
+Why do you think <strong>this doesn’t work</strong>?
+</li>
+<p>
+Those cells are actually filled with whitespace – invisible to the naked eye but legitimate characters for a computer: a space (<code>\s</code>). They’re not actually blank and only appear blank. So, <strong>regular expressions</strong> to the rescue!
+</p>
+</div>
+</ul></li>
+</ul></li>
+<li>Close the facet<br />
+</li>
+</ol></li>
+<li><span class="or-menu">Salary &gt; Text filter &gt; check “regular expression” &gt; <code>^\s</code> </span>
+<ul>
+<li><code>\s</code> means “a space”; <code>^</code> means “must begin the line”<br />
+</li>
+</ul></li>
+<li><strong>Mouseover</strong> the the “Cleveland Cavaliers” <strong>Salary cell</strong>:
+<ul>
+<li>edit &gt; highlight all the text EXCEPT the first space: “Tot $66,611,520” &gt; &lt;&lt;cut to clipboard&gt;&gt; &gt; Apply<br />
+</li>
+<li>BE SURE to leave a blank space where the Salary data was<br />
+</li>
+</ul></li>
+<li>Edit the individual Notes cell for the “Cleveland Cavaliers” cell:
+<ul>
+<li>edit &gt; &lt;&lt;paste from clipboard&gt;&gt; “Tot $66,611,520” &gt; Apply<br />
+</li>
+<li>This time you do not need a leading blank space</li>
+</ul></li>
+</ul></li>
+</ol>
+</div>
+<div id="text-filter-1" class="section level2">
+<h2><span class="header-section-number">3.3</span> Text Filter</h2>
+<ol start="6" style="list-style-type: decimal">
+<li>Add the team name as a new column for each player then remove team name from the Player Column
+<ol style="list-style-type: decimal">
+<li><span class="or-menu">Player &gt; Edit column &gt; Add column based on this column … &gt; New column name = <code>Team</code> &gt; OK </span><br />
+</li>
+<li>Remove All facets<br />
+</li>
+<li><span class="or-menu">Team &gt; Edit cells &gt; Fill down </span><br />
+</li>
+<li><span class="or-menu">Salary &gt; Text filter &gt; check “regular expression” &gt; <code>^\s</code> </span><br />
+</li>
+<li><span class="or-menu">All &gt; Edit rows &gt; Remove all matching rows </span><br />
+</li>
+<li>Close (or “X out”) the Salary text filter</li>
+</ol></li>
+</ol>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/20plnBsmz_A?list=PLIUcX1JrVUNXSgBbyMCluwaJYTWJ--fDd" frameborder="0" allowfullscreen>
+</iframe>
+<!-- special thanks to the folks at software carpentry.  I riffed from their
+workshop template to create the Q&A javacript/style.  See https://github.com/swcarpentry/workshop-template -->
+<script src="assets/js/qa.js"></script>
 
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="9">
+<li id="fn9"><p>The data, “Salary.xslx”, are NBA salary data.<a href="hands-on-reshape.html#fnref9">↩</a></p></li>
+<li id="fn10"><p><span class="or-menu">Column Header &gt; Edit Column &gt; Rename this column </span><a href="hands-on-reshape.html#fnref10">↩</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="workshop-outline.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="grel.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="hands-on-dates.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

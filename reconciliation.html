@@ -25,15 +25,15 @@
 <meta name="author" content="John Little">
 
 
-<meta name="date" content="2018-04-20">
+<meta name="date" content="2018-04-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
+<link rel="prev" href="hands-on-dates.html">
 
-<link rel="next" href="workshop-outline.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -135,9 +135,9 @@
 <li class="chapter" data-level="4.2" data-path="hands-on-dates.html"><a href="hands-on-dates.html#logic"><i class="fa fa-check"></i><b>4.2</b> Logic</a></li>
 <li class="chapter" data-level="4.3" data-path="hands-on-dates.html"><a href="hands-on-dates.html#reproducible"><i class="fa fa-check"></i><b>4.3</b> Reproducible</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="hands-on-reconciliation.html"><a href="hands-on-reconciliation.html"><i class="fa fa-check"></i><b>5</b> Hands On: Reconciliation</a><ul>
-<li class="chapter" data-level="5.1" data-path="hands-on-reconciliation.html"><a href="hands-on-reconciliation.html#reconciliation"><i class="fa fa-check"></i><b>5.1</b> Reconciliation</a></li>
-<li class="chapter" data-level="5.2" data-path="hands-on-reconciliation.html"><a href="hands-on-reconciliation.html#reconciliation-resources"><i class="fa fa-check"></i><b>5.2</b> Reconciliation Resources</a></li>
+<li class="chapter" data-level="5" data-path="reconciliation.html"><a href="reconciliation.html"><i class="fa fa-check"></i><b>5</b> Reconciliation</a><ul>
+<li class="chapter" data-level="5.1" data-path="reconciliation.html"><a href="reconciliation.html#hands-on"><i class="fa fa-check"></i><b>5.1</b> Hand’s On</a></li>
+<li class="chapter" data-level="5.2" data-path="reconciliation.html"><a href="reconciliation.html#lipsum-more-foo-text"><i class="fa fa-check"></i><b>5.2</b> Lipsum More Foo Text</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span><ul>
 <li class="chapter" data-level="" data-path=""><a href="#additional-documentation"><i class="fa fa-check"></i>Additional Documentation</a></li>
@@ -159,26 +159,91 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Cleaning Data with OpenRefine</h1>
-<h4 class="author"><em>John Little</em></h4>
-<h4 class="date"><em>2018-04-20</em></h4>
+<div id="reconciliation" class="section level1">
+<h1><span class="header-section-number">5</span> Reconciliation</h1>
+<p>ipsum lupsum <a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> and <a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p>
+<div id="hands-on" class="section level2">
+<h2><span class="header-section-number">5.1</span> Hand’s On</h2>
+<ol style="list-style-type: decimal">
+<li><p>Open <code>https://raw.githubusercontent.com/libjohn/openrefine/master/data/AA-authors-you-should-read.csv</code></p></li>
+<li><p>authors &gt; Edit column &gt; Add column based on this column… ; Name = “Reconciled Authors”</p></li>
+<li><p>authors &gt; Reconcile &gt; Start reconcilling…</p>
+<ol style="list-style-type: lower-alpha">
+<li>One Time…</li>
+<li>documentation: <a href="http://refine.codefork.com/" class="uri">http://refine.codefork.com/</a></li>
+<li>Click: <code>Add Standard Service ...</code></li>
+<li>From the refine.codefork.com, use VIAF <code>http://refine.codefork.com/reconcile/viaf</code> And if you use it a lot, read the documentation follow the install instructions: <a href="https://github.com/codeforkjeff/refine_viaf" class="uri">https://github.com/codeforkjeff/refine_viaf</a></li>
+<li>Rest of Time…</li>
+<li>VIAF &gt; Person &gt; Start Reconciling</li>
+<li>reconciled authors &gt; Reconcile &gt; Actions &gt; Match each cell to it’s best candidate</li>
+<li>Choose New Match for James Baldwin</li>
+<li>Choose new match for Richard Wright &gt; Create new item</li>
+</ol></li>
+<li>Can Export as CSV (Excel, etc.) with Reconciled info.</li>
+<li><p>Remove all facets</p></li>
+<li>Convert 12PM to 00PM
+<ul>
+<li><span class="or-menu">date2 Edit cells &gt; transform </span>
+<ul>
+<li>Expression = <code>value.replace(&quot; 12:&quot;,&quot; 00:&quot;)</code></li>
+</ul></li>
+</ul></li>
+<li>Now make a date facet
+<ul>
+<li><span class="or-menu">date2 &gt; Facet &gt; Timeline facet </span></li>
+</ul></li>
+</ol>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>This lab workbook contains hands-on material supplementing the OpenRefine workshops taught by John Little and hosted by the Data &amp; Visualization Services Department, Duke University Libraries.</p>
-<p><img src="images/data-cleaning.png" alt="cover image" class="center" /></p>
-<p> </p>
-<p><img src="https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png" title="This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" alt="This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License." /> Data and workbook are shareable under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a>(CC BY-NC-SA license)</p>
+<div id="lipsum-more-foo-text" class="section level2">
+<h2><span class="header-section-number">5.2</span> Lipsum More Foo Text</h2>
+<p><strong>Goal</strong>: Make the same data transformations as in the previous slide’s steps 2-7, but this time you’ll do it in one step. Think about how GREL allows you to take shortcuts.</p>
+<ol style="list-style-type: decimal">
+<li><span class="or-menu">issue_date &gt; Edit Column &gt; Add column based on this column… </span>
+<ul>
+<li>New Column Name = <code>date3</code><br />
+</li>
+<li>Expression = <code>if(value.slice(20,22) == &quot;PM&quot;, value.replace(/(.*\s)12(:\d\d:.*)/,&quot;$100$2&quot;), value).toDate()</code><br />
+</li>
+</ul></li>
+<li>Now make a date facet
+<ul>
+<li><span class="or-menu">date3 &gt; Facet &gt; Timeline facet </span></li>
+</ul></li>
+</ol>
 
+</div>
+</div>
+
+
+
+<h2>Additional Documentation</h2>
+<ul>
+<li><a href="http://openrefine.org/documentation.html">Documentaion, “The Book”, and Mailing List</a></li>
+</ul>
+
+</div>
+</div>
+
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p><a href="https://data-lessons.github.io/dh-openrefine/05-advance-functions/" class="uri">https://data-lessons.github.io/dh-openrefine/05-advance-functions/</a><a href="reconciliation.html#fnref1">↩</a></p></li>
+<li id="fn2"><p><a href="http://refine.codefork.com/" class="uri">http://refine.codefork.com/</a><a href="reconciliation.html#fnref2">↩</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
+<a href="hands-on-dates.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="workshop-outline.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

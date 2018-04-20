@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="workshop-outline.html">
+<link rel="prev" href="workshop-outline.html">
+<link rel="next" href="start.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -159,26 +159,155 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Cleaning Data with OpenRefine</h1>
-<h4 class="author"><em>John Little</em></h4>
-<h4 class="date"><em>2018-04-20</em></h4>
+<div id="demonstration" class="section level1 unnumbered">
+<h1>Demonstration</h1>
+<div id="load-data" class="section level2 unnumbered">
+<h2>Load Data</h2>
+<ol style="list-style-type: decimal">
+<li><span class="or-menu">Create Project &gt; Web Addresses (URLs) &gt; </span> <code>https://raw.githubusercontent.com/libjohn/openrefine/master/data/bicycle-subset-phm-collection.tsv</code></li>
+<li>Uncheck - “Quotation marks are used to enclose” (bottom-right)</li>
+<li>Project Name to “bicycle categories”</li>
+</ol>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>This lab workbook contains hands-on material supplementing the OpenRefine workshops taught by John Little and hosted by the Data &amp; Visualization Services Department, Duke University Libraries.</p>
-<p><img src="images/data-cleaning.png" alt="cover image" class="center" /></p>
-<p> </p>
-<p><img src="https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png" title="This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" alt="This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License." /> Data and workbook are shareable under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.</a>(CC BY-NC-SA license)</p>
+<div id="navigating-the-project" class="section level2 unnumbered">
+<h2>Navigating the “Project”</h2>
+<ul>
+<li>Notice there are 72 rows<br />
+</li>
+<li>Notice there are two views: rows and records<br />
+</li>
+<li>The “records” view is for advanced manipulation</li>
+<li>You can
+<ul>
+<li>“Show” 5-50 rows at a time</li>
+<li>Navigate screens “&lt; Previous” &amp; “next &gt;”</li>
+</ul></li>
+</ul>
+</div>
+<div id="facets" class="section level2 unnumbered">
+<h2>Facets</h2>
+<ul>
+<li><span class="or-menu">Categories &gt; Facet &gt; Text facet</span>
+<ol style="list-style-type: decimal">
+<li>Notice mashup of “pipe delimited” text facets</li>
+<li><em>Why are there Pipe delimiters?</em></li>
+<li><em>How many Category choices exist?</em></li>
+<li>Switch between the “name” and “count” sorting options.</li>
+</ol></li>
+<li>Export a CSV file</li>
+<li><span class="or-menu">Export &gt; Comma-separated value</span></li>
+<li><em>How many rows will export: 4, 16, 72, 180?</em></li>
+</ul>
+</div>
+<div id="rows-vs.records" class="section level2 unnumbered">
+<h2>Rows vs. Records</h2>
+<ul>
+<li><p>Row v Records <a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p></li>
+<li><span class="or-menu">Categories &gt; edit cells &gt; split multi-valued cells &gt;</span> separator = <code>|</code>
+<ol style="list-style-type: decimal">
+<li><em>Now how many Category choices exist?</em></li>
+<li>Click <strong>records</strong> to switch to the records view</li>
+<li>Click <strong>count</strong> What is the most popular Category term?</li>
+<li>Click <strong>name</strong> Limit to the “Juvenilia” facet; How many matching records?</li>
+</ol></li>
+</ul>
+</div>
+<div id="web-scrape-api" class="section level2 unnumbered">
+<h2>Web Scrape &amp; API</h2>
+<p><em>Scraping data from an API or Webpage</em></p>
+<ul>
+<li><span class="or-menu">new_link &gt; Edit column &gt; Add column by fetching URLs…</span></li>
+<li>New column name = <code>Web Data</code></li>
+<li><em>Notice</em> Throttle delay
+<ol style="list-style-type: decimal">
+<li><code>2000</code> milliseconds is good. Less than 2 seconds and you <em>might</em> get booted, blocked, cast out!</li>
+</ol></li>
+<li>Click OK and wait</li>
+<li>When done, you’ve got all the source data for each page associated with the link in the “Persistent Link” column</li>
+</ul>
+</div>
+<div id="parsing-data" class="section level2 unnumbered">
+<h2>Parsing Data</h2>
+<p>A Brief Introduction</p>
+<ul>
+<li>Look fora big block of gobbly text in the “Web Data” column. That is HTML formatted data<br />
+</li>
+<li>Typically, after fetching data, you’ll need to parse it<br />
+</li>
+<li>You can use GREL <a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> to parse data and isolate a specific bit of desired information
+<ul>
+<li><strong>GREL</strong> is the advanced power of OpenRefine. <a href="grel.html#grel">We will come back to this</a></li>
+</ul></li>
+<li>For example, you can transform the data in the retrieved cells with a <a href="https://github.com/libjohn/guides/blob/master/regex/regex.Rmd">regular expression</a> to gather only the title of each object<br />
+</li>
+<li><span class="or-menu">Web Data &gt; Edit column &gt; Add column based on this column…</span>
+<ol style="list-style-type: decimal">
+<li>New Column Name = <code>Web Page Title</code></li>
+<li>Expression = <code>value.parseHtml().select(&quot;h1.object-page__title&quot;)[0].htmlText()</code></li>
+</ol></li>
+</ul>
+</div>
+<div id="split" class="section level2 unnumbered">
+<h2>Split</h2>
+<ul>
+<li><p>remove faceting: click <span class="or-menu">Remove All</span> in the facet sidebar</p></li>
+<li><span class="or-menu"> Production Date &gt; Edit column &gt; Split into several columns…</span>
+<ol style="list-style-type: decimal">
+<li>Seperator = <code>-</code> (i.e. “space dash space”)</li>
+</ol></li>
+</ul>
+</div>
+<div id="concatenate" class="section level2 unnumbered">
+<h2>Concatenate</h2>
+<ul>
+<li><span class="or-menu">Height &gt; Edit column &gt; Add column based on this column</span></li>
+<li>GREL Expression = <code>value + &quot; x &quot; + cells[&quot;Width&quot;].value</code></li>
+</ul>
+</div>
+<div id="find-replace" class="section level2 unnumbered">
+<h2>Find &amp; Replace</h2>
+<ul>
+<li><span class="or-menu">Dimension &gt; Edit cells &gt; Transform</span></li>
+<li>GREL Expression = <code>value.replace(&quot;mm&quot;,&quot;&quot;)</code></li>
+</ul>
+</div>
+<div id="facet-by-blank" class="section level2 unnumbered">
+<h2>Facet by Blank</h2>
+<ul>
+<li><span class="or-menu">Dimension &gt; Facet &gt; Customized facet &gt; facet by blank</span></li>
+</ul>
+</div>
+<div id="text-filter" class="section level2 unnumbered">
+<h2>Text filter</h2>
+<ul>
+<li>Clear all facets</li>
+<li>Title = <code>bmx</code></li>
+</ul>
+</div>
+<div id="custom-facet" class="section level2 unnumbered">
+<h2>Custom Facet</h2>
+<ul>
+<li>Production date</li>
+<li><span class="or-menu">Facet &gt; custom text facet</span></li>
+<li><code>value.match(/(\d\d).*/)[0]</code></li>
+</ul>
 
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="2">
+<li id="fn2"><p>Row v Records <a href="http://kb.refinepro.com/2012/03/difference-between-record-and-row.html">Explained</a><a href="demonstration.html#fnref2">↩</a></p></li>
+<li id="fn3"><p><a href="https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language">General Refine Expression Language</a><a href="demonstration.html#fnref3">↩</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="workshop-outline.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="workshop-outline.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="start.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
