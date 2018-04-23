@@ -117,13 +117,12 @@
 <li class="chapter" data-level="2.1" data-path="grel.html"><a href="grel.html#custom-facets"><i class="fa fa-check"></i><b>2.1</b> Custom Facets</a><ul>
 <li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#download-new-data-then-create-a-new-openrefine-project"><i class="fa fa-check"></i>Download new Data then Create a new OpenRefine Project:</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="grel.html"><a href="grel.html#grel-to-transform-and-normalize"><i class="fa fa-check"></i><b>2.2</b> GREL to Transform and Normalize</a><ul>
+<li class="chapter" data-level="2.2" data-path="grel.html"><a href="grel.html#grel-to-transform-and-normalize"><i class="fa fa-check"></i><b>2.2</b> GREL to Transform and Normalize</a></li>
 <li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#regular-expression"><i class="fa fa-check"></i>Regular Expression</a></li>
-<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#filter"><i class="fa fa-check"></i>Filter</a></li>
+<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#filter-text"><i class="fa fa-check"></i>Filter Text</a></li>
 <li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#facet"><i class="fa fa-check"></i>Facet</a></li>
 <li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#cluster"><i class="fa fa-check"></i>Cluster</a></li>
-<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#mass-editing-1"><i class="fa fa-check"></i>Mass Editing</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#mass-editing-via-facets"><i class="fa fa-check"></i>Mass Editing via Facets</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="hands-on-reshape.html"><a href="hands-on-reshape.html"><i class="fa fa-check"></i><b>3</b> Hands-on: reshape</a><ul>
 <li class="chapter" data-level="3.1" data-path="hands-on-reshape.html"><a href="hands-on-reshape.html#ingest-excel-data"><i class="fa fa-check"></i><b>3.1</b> Ingest Excel data</a></li>
@@ -295,8 +294,9 @@ no location data…
 </ul></li>
 </ul></li>
 </ol>
-<div id="regular-expression" class="section level3 unnumbered">
-<h3>Regular Expression</h3>
+</div>
+<div id="regular-expression" class="section level2 unnumbered">
+<h2>Regular Expression</h2>
 <p>Regular Expressions are very powerful and flexible codes used for matching patterns. Often there is more than one way to compose a regex pattern-match. Importantly for OpenRefine, much of Refine’s extensible and advanced power comes from regular expressions. Essentially the key to advanced level OpenRefine is regular expressions and looping. To learn more about regular expressions see my <a href="http://libjohn.github.io/regex/regex.html">handout on regex</a>. For now you can refer to these <strong>few commands</strong> and symbols summed up on this <a href="http://libjohn.github.io/regex/cheat-sheet.html">quick-sheet</a>.</p>
 <ol start="7" style="list-style-type: decimal">
 <li>Create New Column from Existing Column using a regular expression to match a pattern
@@ -310,8 +310,8 @@ no location data…
 </ul></li>
 </ol>
 </div>
-<div id="filter" class="section level3 unnumbered">
-<h3>Filter</h3>
+<div id="filter-text" class="section level2 unnumbered">
+<h2>Filter Text</h2>
 <ol start="8" style="list-style-type: decimal">
 <li>Create a Text Filter: Explore your data to find how many incident descriptions involve bicycles<br />
 
@@ -333,8 +333,8 @@ How many matching rows of data use the word “bicycle” in the description?
 </div>
 </ol>
 </div>
-<div id="facet" class="section level3 unnumbered">
-<h3>Facet</h3>
+<div id="facet" class="section level2 unnumbered">
+<h2>Facet</h2>
 <ol start="9">
 <li>
 Make a Text Facet on the LCR DESC column
@@ -362,8 +362,8 @@ LARCENY/BICYCLES ($50-$199) - 119
 </ol>
 </ol>
 </div>
-<div id="cluster" class="section level3 unnumbered">
-<h3>Cluster</h3>
+<div id="cluster" class="section level2 unnumbered">
+<h2>Cluster</h2>
 <ol start="10" style="list-style-type: decimal">
 <li>Look for Cluster variations in the FELONY Column
 <ul>
@@ -401,8 +401,8 @@ There are 234 “Not Felony” items after clustering using both “key collisio
 </ul></li>
 </ol>
 </div>
-<div id="mass-editing-1" class="section level3 unnumbered">
-<h3>Mass Editing</h3>
+<div id="mass-editing-via-facets" class="section level2 unnumbered">
+<h2>Mass Editing via Facets</h2>
 <ol start="11" style="list-style-type: decimal">
 <li>Mass Edit cells in LCR DESC Facet: <span class="or-menu">LCR DESC &gt; Facet &gt; Text facet</span>
 <ul>
@@ -430,7 +430,6 @@ There are 115 observatins (or rows) matching “LARCENY/BICYCLES ($200-$1,000)�
 workshop template to create the Q&A javacript/style.  See https://github.com/swcarpentry/workshop-template -->
 <script src="assets/js/qa.js"></script>
 
-</div>
 </div>
 </div>
 <div class="footnotes">

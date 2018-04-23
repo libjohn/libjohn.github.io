@@ -117,13 +117,12 @@
 <li class="chapter" data-level="2.1" data-path="grel.html"><a href="grel.html#custom-facets"><i class="fa fa-check"></i><b>2.1</b> Custom Facets</a><ul>
 <li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#download-new-data-then-create-a-new-openrefine-project"><i class="fa fa-check"></i>Download new Data then Create a new OpenRefine Project:</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="grel.html"><a href="grel.html#grel-to-transform-and-normalize"><i class="fa fa-check"></i><b>2.2</b> GREL to Transform and Normalize</a><ul>
+<li class="chapter" data-level="2.2" data-path="grel.html"><a href="grel.html#grel-to-transform-and-normalize"><i class="fa fa-check"></i><b>2.2</b> GREL to Transform and Normalize</a></li>
 <li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#regular-expression"><i class="fa fa-check"></i>Regular Expression</a></li>
-<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#filter"><i class="fa fa-check"></i>Filter</a></li>
+<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#filter-text"><i class="fa fa-check"></i>Filter Text</a></li>
 <li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#facet"><i class="fa fa-check"></i>Facet</a></li>
 <li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#cluster"><i class="fa fa-check"></i>Cluster</a></li>
-<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#mass-editing-1"><i class="fa fa-check"></i>Mass Editing</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#mass-editing-via-facets"><i class="fa fa-check"></i>Mass Editing via Facets</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="hands-on-reshape.html"><a href="hands-on-reshape.html"><i class="fa fa-check"></i><b>3</b> Hands-on: reshape</a><ul>
 <li class="chapter" data-level="3.1" data-path="hands-on-reshape.html"><a href="hands-on-reshape.html#ingest-excel-data"><i class="fa fa-check"></i><b>3.1</b> Ingest Excel data</a></li>
@@ -167,7 +166,7 @@
 1. Import Excel worksheets<br />
 2. Faceting &amp; Filtering for select data cleaning<br />
 3. Transforming: Adding columns and using fill-down to fill in data</p>
-<p>The changes outline above are minor changes to the shape of the data. The content of the data remains unchanged. Basically you will transform the data to remove confusion in the first column. You can see how the data will change by looking at the <em>before</em> and <em>after</em> examples, below. In the <em>before</em> example (table <a href="hands-on-reshape.html#tab:beforetable">3.1</a>) there are different variable concepts in the first column: <strong>team</strong> and <strong>player</strong>. In the <em>after</em> example (table <a href="hands-on-reshape.html#tab:wrangled-table">3.2</a>) we move each concept (variable) into its own column. I encourage you to <a href="https://github.com/libjohn/openrefine/raw/master/data/salary.xlsx">download</a> the Excel spreadsheet and look through the raw data. <a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> Doing so will help you see how the data transformation progresses.</p>
+<p>The changes outline above are minor changes to the shape of the data. The content of the data remains unchanged. Basically you will transform the data to remove confusion in the first column. You can see how the data will change by looking at the <em>before</em> and <em>after</em> examples, below. In the <em>before</em> example (table <a href="hands-on-reshape.html#tab:beforetable">3.1</a>) there are different variable concepts in the first column: <strong>team</strong> and <strong>player</strong>. In the <em>after</em> example (table <a href="hands-on-reshape.html#tab:wrangled-table">3.2</a>) we move each concept (variable) into its own column. I encourage you to <a href="https://github.com/libjohn/openrefine/raw/master/data/salary.xlsx">download</a> the Excel spreadsheet and look through the raw data. <a href="#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a> Doing so will help you see how the data transformation progresses.</p>
 <div class="video">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/20plnBsmz_A?list=PLIUcX1JrVUNXSgBbyMCluwaJYTWJ--fDd" frameborder="0" allowfullscreen>
 </iframe>
@@ -340,7 +339,7 @@ The video demonstrates how the data will be transformed in this exercise.
 <li>Project name = <code>salary data</code> <span class="or-menu">&gt; Create Project </span><br />
 </li>
 </ul></li>
-<li>Rename Columns: “Player”, “Salary”, “Notes” <a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a><br />
+<li>Rename Columns: “Player”, “Salary”, “Notes” <a href="#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a><br />
 </li>
 <li>Show as: rows to ‘25’ (notice row 21)</li>
 </ol>
@@ -433,9 +432,9 @@ workshop template to create the Q&A javacript/style.  See https://github.com/swc
 </div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>The data, “Salary.xslx”, are NBA salary data.<a href="hands-on-reshape.html#fnref1">↩</a></p></li>
-<li id="fn2"><p><span class="or-menu">Column Header &gt; Edit Column &gt; Rename this column </span><a href="hands-on-reshape.html#fnref2">↩</a></p></li>
+<ol start="9">
+<li id="fn9"><p>The data, “Salary.xslx”, are NBA salary data.<a href="hands-on-reshape.html#fnref9">↩</a></p></li>
+<li id="fn10"><p><span class="or-menu">Column Header &gt; Edit Column &gt; Rename this column </span><a href="hands-on-reshape.html#fnref10">↩</a></p></li>
 </ol>
 </div>
             </section>
