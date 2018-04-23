@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Cleaning Data with OpenRefine</title>
+  <meta name="description" content="This lab workbook contains hands-on material supplementing the OpenRefine workshops">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Cleaning Data with OpenRefine" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This lab workbook contains hands-on material supplementing the OpenRefine workshops" />
+  <meta name="github-repo" content="libjohn/openrefine" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Cleaning Data with OpenRefine" />
+  
+  <meta name="twitter:description" content="This lab workbook contains hands-on material supplementing the OpenRefine workshops" />
+  
+
+<meta name="author" content="John Little">
+
+
+<meta name="date" content="2018-04-23">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="grel.html">
+<link rel="next" href="hands-on-dates.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html"><i class="fa fa-check"></i>Workshop Outline</a><ul>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#workshop-structure"><i class="fa fa-check"></i>Workshop Structure</a><ul>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#testimonial"><i class="fa fa-check"></i>Testimonial</a></li>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#workshop-philosophy"><i class="fa fa-check"></i>Workshop Philosophy</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#workshop-video"><i class="fa fa-check"></i>Workshop Video</a></li>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#for-best-results"><i class="fa fa-check"></i>For best results</a></li>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#overview"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#comparative-advantage"><i class="fa fa-check"></i>Comparative Advantage</a></li>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#characteristics"><i class="fa fa-check"></i>Characteristics</a><ul>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#general"><i class="fa fa-check"></i>General</a></li>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#video"><i class="fa fa-check"></i>Video</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html"><i class="fa fa-check"></i>Demonstration</a><ul>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#load-data"><i class="fa fa-check"></i>Load Data</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#navigating-the-project"><i class="fa fa-check"></i>Navigating the “Project”</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#facets"><i class="fa fa-check"></i>Facets</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#rows-vs.records"><i class="fa fa-check"></i>Rows vs. Records</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#web-scrape-api"><i class="fa fa-check"></i>Web Scrape &amp; API</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#parsing-data"><i class="fa fa-check"></i>Parsing Data</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#split"><i class="fa fa-check"></i>Split</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#concatenate"><i class="fa fa-check"></i>Concatenate</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#find-replace"><i class="fa fa-check"></i>Find &amp; Replace</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#facet-by-blank"><i class="fa fa-check"></i>Facet by Blank</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#text-filter"><i class="fa fa-check"></i>Text filter</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#custom-facet"><i class="fa fa-check"></i>Custom Facet</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="start.html"><a href="start.html"><i class="fa fa-check"></i><b>1</b> Hands-on: basic transformations</a><ul>
+<li class="chapter" data-level="1.1" data-path="start.html"><a href="start.html#getting-started"><i class="fa fa-check"></i><b>1.1</b> Getting Started</a></li>
+<li class="chapter" data-level="1.2" data-path="start.html"><a href="start.html#shutting-down-openrefine"><i class="fa fa-check"></i><b>1.2</b> Shutting Down OpenRefine</a></li>
+<li class="chapter" data-level="1.3" data-path="start.html"><a href="start.html#facets-cluster"><i class="fa fa-check"></i><b>1.3</b> Facets &amp; Cluster</a><ul>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#facet-cluster"><i class="fa fa-check"></i>Facet &amp; Cluster</a></li>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#compound-facets"><i class="fa fa-check"></i>Compound Facets</a></li>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#mass-editing"><i class="fa fa-check"></i>Mass Editing</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="start.html"><a href="start.html#split-data-in-cells"><i class="fa fa-check"></i><b>1.4</b> Split data in cells</a></li>
+<li class="chapter" data-level="1.5" data-path="start.html"><a href="start.html#concatenate-cells-together"><i class="fa fa-check"></i><b>1.5</b> Concatenate cells together</a></li>
+<li class="chapter" data-level="1.6" data-path="start.html"><a href="start.html#search-replace-plus-more"><i class="fa fa-check"></i><b>1.6</b> Search &amp; Replace, Plus More</a><ul>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#convert-data-types"><i class="fa fa-check"></i>Convert Data Types</a></li>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#remove-whitespace"><i class="fa fa-check"></i>Remove Whitespace</a></li>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#search-replace"><i class="fa fa-check"></i>Search &amp; Replace</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="start.html"><a href="start.html#web-scraping"><i class="fa fa-check"></i><b>1.7</b> Web Scraping</a><ul>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#subset"><i class="fa fa-check"></i>Select a subset</a></li>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#api"><i class="fa fa-check"></i>API</a></li>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#parse"><i class="fa fa-check"></i>Parse</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="grel.html"><a href="grel.html"><i class="fa fa-check"></i><b>2</b> Hands-on: GREL</a><ul>
+<li class="chapter" data-level="2.1" data-path="grel.html"><a href="grel.html#custom-facets"><i class="fa fa-check"></i><b>2.1</b> Custom Facets</a><ul>
+<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#download-new-data-then-create-a-new-openrefine-project"><i class="fa fa-check"></i>Download new Data then Create a new OpenRefine Project:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="grel.html"><a href="grel.html#grel-to-transform-and-normalize"><i class="fa fa-check"></i><b>2.2</b> GREL to Transform and Normalize</a><ul>
+<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#regular-expression"><i class="fa fa-check"></i>Regular Expression</a></li>
+<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#filter"><i class="fa fa-check"></i>Filter</a></li>
+<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#facet"><i class="fa fa-check"></i>Facet</a></li>
+<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#cluster"><i class="fa fa-check"></i>Cluster</a></li>
+<li class="chapter" data-level="" data-path="grel.html"><a href="grel.html#mass-editing-1"><i class="fa fa-check"></i>Mass Editing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="hands-on-reshape.html"><a href="hands-on-reshape.html"><i class="fa fa-check"></i><b>3</b> Hands-on: reshape</a><ul>
+<li class="chapter" data-level="3.1" data-path="hands-on-reshape.html"><a href="hands-on-reshape.html#ingest-excel-data"><i class="fa fa-check"></i><b>3.1</b> Ingest Excel data</a></li>
+<li class="chapter" data-level="3.2" data-path="hands-on-reshape.html"><a href="hands-on-reshape.html#facets-1"><i class="fa fa-check"></i><b>3.2</b> Facets</a></li>
+<li class="chapter" data-level="3.3" data-path="hands-on-reshape.html"><a href="hands-on-reshape.html#text-filter-1"><i class="fa fa-check"></i><b>3.3</b> Text Filter</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="hands-on-dates.html"><a href="hands-on-dates.html"><i class="fa fa-check"></i><b>4</b> Hands-on: dates</a><ul>
+<li class="chapter" data-level="4.1" data-path="hands-on-dates.html"><a href="hands-on-dates.html#dates"><i class="fa fa-check"></i><b>4.1</b> Dates</a></li>
+<li class="chapter" data-level="4.2" data-path="hands-on-dates.html"><a href="hands-on-dates.html#logic"><i class="fa fa-check"></i><b>4.2</b> Logic</a></li>
+<li class="chapter" data-level="4.3" data-path="hands-on-dates.html"><a href="hands-on-dates.html#reproducible"><i class="fa fa-check"></i><b>4.3</b> Reproducible</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="hands-on-reconciliation.html"><a href="hands-on-reconciliation.html"><i class="fa fa-check"></i><b>5</b> Hands-on: Reconciliation</a><ul>
+<li class="chapter" data-level="5.1" data-path="hands-on-reconciliation.html"><a href="hands-on-reconciliation.html#reconciliation"><i class="fa fa-check"></i><b>5.1</b> Reconciliation</a></li>
+<li class="chapter" data-level="5.2" data-path="hands-on-reconciliation.html"><a href="hands-on-reconciliation.html#reconciliation-resources"><i class="fa fa-check"></i><b>5.2</b> Reconciliation Resources</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span><ul>
+<li class="chapter" data-level="" data-path=""><a href="#additional-documentation"><i class="fa fa-check"></i>Additional Documentation</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cleaning Data with OpenRefine</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="hands-on-reshape" class="section level1">
+<h1><span class="header-section-number">3</span> Hands-on: reshape</h1>
+<p><strong>Reshaping Your Data</strong></p>
+<p>For this project you will take data in one format and reshape into a more optimal format for analysis. We’ll assume the analysis will be done in another tool. OpenRefine can export data in multiple formats after the data has been wrangled into the proper structure. In this lab we continue exploring how OpenRefine can import various data formats, this time Excel.</p>
+<p><strong>Goals</strong><br />
+1. Import Excel worksheets<br />
+2. Faceting &amp; Filtering for select data cleaning<br />
+3. Transforming: Adding columns and using fill-down to fill in data</p>
+<p>The changes outline above are minor changes to the shape of the data. The content of the data remains unchanged. Basically you will transform the data to remove confusion in the first column. You can see how the data will change by looking at the <em>before</em> and <em>after</em> examples, below. In the <em>before</em> example (table <a href="hands-on-reshape.html#tab:beforetable">3.1</a>) there are different variable concepts in the first column: <strong>team</strong> and <strong>player</strong>. In the <em>after</em> example (table <a href="hands-on-reshape.html#tab:wrangled-table">3.2</a>) we move each concept (variable) into its own column. I encourage you to <a href="https://github.com/libjohn/openrefine/raw/master/data/salary.xlsx">download</a> the Excel spreadsheet and look through the raw data. <a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> Doing so will help you see how the data transformation progresses.</p>
+<div class="video">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/20plnBsmz_A?list=PLIUcX1JrVUNXSgBbyMCluwaJYTWJ--fDd" frameborder="0" allowfullscreen>
+</iframe>
+</div>
+<center>
+The video demonstrates how the data will be transformed in this exercise.
+</center>
+<div id="before" class="section level4 unnumbered">
+<h4>Before</h4>
+<table>
+<caption><span id="tab:beforetable">Table 3.1: </span>Unprocessed: A selective 10 rows of the 2013-2014 Salary.xls data</caption>
+<tbody>
+<tr class="odd">
+<td align="left">Cartier Martin</td>
+<td align="left">876332</td>
+<td align="left">c$754,250, r1/7, s2/1-2/18, s2/21</td>
+</tr>
+<tr class="even">
+<td align="left">Mike Scott</td>
+<td align="left">778872</td>
+<td align="left">minimum</td>
+</tr>
+<tr class="odd">
+<td align="left">Mike Muscala</td>
+<td align="left">57668</td>
+<td align="left">signed 2/27, released 3/23</td>
+</tr>
+<tr class="even">
+<td align="left">James Nunnally</td>
+<td align="left">57668</td>
+<td align="left">signed 1/11, released 2/1</td>
+</tr>
+<tr class="odd">
+<td align="left">Dexter Pittman</td>
+<td align="left">53888</td>
+<td align="left">c $52,017, signed 2/22, rel 2/27</td>
+</tr>
+<tr class="even">
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">—-</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Boston Celtics</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Kris Humphries</td>
+<td align="left">12000000</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="after" class="section level4 unnumbered">
+<h4>After</h4>
+<table>
+<caption><span id="tab:wrangled-table">Table 3.2: </span>Wrangled: same 10 rows of the 2013-2014 Salary.xls data</caption>
+<thead>
+<tr class="header">
+<th align="left">Player</th>
+<th align="left">Team</th>
+<th align="left">Salary</th>
+<th align="left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Cartier Martin</td>
+<td align="left">Atlanta Hawks</td>
+<td align="left">876332</td>
+<td align="left">c$754,250, r1/7, s2/1-2/18, s2/21</td>
+</tr>
+<tr class="even">
+<td align="left">Mike Scott</td>
+<td align="left">Atlanta Hawks</td>
+<td align="left">778872</td>
+<td align="left">minimum</td>
+</tr>
+<tr class="odd">
+<td align="left">Mike Muscala</td>
+<td align="left">Atlanta Hawks</td>
+<td align="left">57668</td>
+<td align="left">signed 2/27, released 3/23</td>
+</tr>
+<tr class="even">
+<td align="left">James Nunnally</td>
+<td align="left">Atlanta Hawks</td>
+<td align="left">57668</td>
+<td align="left">signed 1/11, released 2/1</td>
+</tr>
+<tr class="odd">
+<td align="left">Dexter Pittman</td>
+<td align="left">Atlanta Hawks</td>
+<td align="left">53888</td>
+<td align="left">c $52,017, signed 2/22, rel 2/27</td>
+</tr>
+<tr class="even">
+<td align="left">Kris Humphries</td>
+<td align="left">Boston Celtics</td>
+<td align="left">12000000</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Rajon Rondo</td>
+<td align="left">Boston Celtics</td>
+<td align="left">12000000</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Gerald Wallace</td>
+<td align="left">Boston Celtics</td>
+<td align="left">10105855</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Jeff Green</td>
+<td align="left">Boston Celtics</td>
+<td align="left">8700000</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Brandon Bass</td>
+<td align="left">Boston Celtics</td>
+<td align="left">6450000</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="ingest-excel-data" class="section level2">
+<h2><span class="header-section-number">3.1</span> Ingest Excel data</h2>
+<ol style="list-style-type: decimal">
+<li>Open Data
+<ul>
+<li><span class="or-menu">Create Project &gt; Web Addresses (URLs) &gt; </span> <code>https://github.com/libjohn/openrefine/raw/master/data/salary.xlsx</code></li>
+<li><span class="or-menu">Next &gt;&gt; </span><br />
+</li>
+<li>You many want to give your project a pretty title</li>
+<li>Parse data as
+<ol style="list-style-type: decimal">
+<li>Worksheets to Import:
+<ul>
+<li><strong>Check</strong> “2013-2014 666 rows”</li>
+<li><strong>UnCheck</strong> “2014-2015 599 rows”<br />
+</li>
+</ul></li>
+<li><strong>UnCheck</strong> “Store blank rows”
+<ul>
+<li>Notice lines 20 &amp; 22 disappear<br />
+</li>
+</ul></li>
+<li><strong>UnCheck</strong> “Parse Next” 1 lines as column headers
+<ul>
+<li>Notice the “Atlanta Hawks” are no longer the column header for the first column<br />
+</li>
+</ul></li>
+</ol></li>
+<li>Project name = <code>salary data</code> <span class="or-menu">&gt; Create Project </span><br />
+</li>
+</ul></li>
+<li>Rename Columns: “Player”, “Salary”, “Notes” <a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a><br />
+</li>
+<li>Show as: rows to ‘25’ (notice row 21)</li>
+</ol>
+</div>
+<div id="facets-1" class="section level2">
+<h2><span class="header-section-number">3.2</span> Facets</h2>
+<ol start="4" style="list-style-type: decimal">
+<li>Remove all rows where ‘—-’ exist in the Player column
+<ul>
+<li><span class="or-menu">Player &gt; Facet &gt; Text Facet** &gt; </span>
+<ul>
+<li>Sort by: count &gt; click: ‘—-’ :<br />
+</li>
+<li>You should now have 29 matching rows that begin ‘—-’<br />
+</li>
+</ul></li>
+<li><span class="or-menu">All &gt; Edit rows &gt; Remove all matching rows </span><br />
+</li>
+<li>Click: <strong>Remove All</strong> in the <strong>Facet/Filter</strong> sidebar</li>
+</ul></li>
+</ol>
+<blockquote>
+<p>Notice: in the next step, team names precede each team roster and are followed by two blank cells in the same row. Scroll through the screens (Click “next &gt;”) a few times; return to the first screen</p>
+</blockquote>
+<ol start="5" style="list-style-type: decimal">
+<li>Make a column for team name and fill it.
+<ul>
+<li>Isolate team-name rows using a facet on the blank cells in the Salary column
+<ol style="list-style-type: decimal">
+<li><span class="or-menu">Salary &gt; Facet &gt; Customized facets &gt; Facet by blank </span>
+<ul>
+<li><ul class="no-bullet">
+<div class="challenge">
+<li>
+Why do you think <strong>this doesn’t work</strong>?
+</li>
+<p>
+Those cells are actually filled with whitespace – invisible to the naked eye but legitimate characters for a computer: a space (<code>\s</code>). They’re not actually blank and only appear blank. So, <strong>regular expressions</strong> to the rescue!
+</p>
+</div>
+</ul></li>
+</ul></li>
+<li>Close the facet<br />
+</li>
+</ol></li>
+<li><span class="or-menu">Salary &gt; Text filter &gt; check “regular expression” &gt; <code>^\s</code> </span>
+<ul>
+<li><code>\s</code> means “a space”; <code>^</code> means “must begin the line”<br />
+</li>
+</ul></li>
+<li><strong>Mouseover</strong> the the “Cleveland Cavaliers” <strong>Salary cell</strong>:
+<ul>
+<li>edit &gt; highlight all the text EXCEPT the first space: “Tot $66,611,520” &gt; &lt;&lt;cut to clipboard&gt;&gt; &gt; Apply<br />
+</li>
+<li>BE SURE to leave a blank space where the Salary data was<br />
+</li>
+</ul></li>
+<li>Edit the individual Notes cell for the “Cleveland Cavaliers” cell:
+<ul>
+<li>edit &gt; &lt;&lt;paste from clipboard&gt;&gt; “Tot $66,611,520” &gt; Apply<br />
+</li>
+<li>This time you do not need a leading blank space</li>
+</ul></li>
+</ul></li>
+</ol>
+</div>
+<div id="text-filter-1" class="section level2">
+<h2><span class="header-section-number">3.3</span> Text Filter</h2>
+<ol start="6" style="list-style-type: decimal">
+<li>Add the team name as a new column for each player then remove team name from the Player Column
+<ol style="list-style-type: decimal">
+<li><span class="or-menu">Player &gt; Edit column &gt; Add column based on this column … &gt; New column name = <code>Team</code> &gt; OK </span><br />
+</li>
+<li>Remove All facets<br />
+</li>
+<li><span class="or-menu">Team &gt; Edit cells &gt; Fill down </span><br />
+</li>
+<li><span class="or-menu">Salary &gt; Text filter &gt; check “regular expression” &gt; <code>^\s</code> </span><br />
+</li>
+<li><span class="or-menu">All &gt; Edit rows &gt; Remove all matching rows </span><br />
+</li>
+<li>Close (or “X out”) the Salary text filter</li>
+</ol></li>
+</ol>
+<!-- special thanks to the folks at software carpentry.  I riffed from their
+workshop template to create the Q&A javacript/style.  See https://github.com/swcarpentry/workshop-template -->
+<script src="assets/js/qa.js"></script>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>The data, “Salary.xslx”, are NBA salary data.<a href="hands-on-reshape.html#fnref1">↩</a></p></li>
+<li id="fn2"><p><span class="or-menu">Column Header &gt; Edit Column &gt; Rename this column </span><a href="hands-on-reshape.html#fnref2">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="grel.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="hands-on-dates.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
