@@ -25,7 +25,7 @@
 <meta name="author" content="John Little">
 
 
-<meta name="date" content="2018-04-18">
+<meta name="date" content="2018-04-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -102,9 +102,9 @@
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="start.html"><a href="start.html#split-data-in-cells"><i class="fa fa-check"></i><b>1.4</b> Split data in cells</a></li>
 <li class="chapter" data-level="1.5" data-path="start.html"><a href="start.html#concatenate-cells-together"><i class="fa fa-check"></i><b>1.5</b> Concatenate cells together</a></li>
-<li class="chapter" data-level="1.6" data-path="start.html"><a href="start.html#more-transformations"><i class="fa fa-check"></i><b>1.6</b> More Transformations</a><ul>
-<li class="chapter" data-level="" data-path="start.html"><a href="start.html#data-types"><i class="fa fa-check"></i>Data Types</a></li>
-<li class="chapter" data-level="" data-path="start.html"><a href="start.html#whitespace"><i class="fa fa-check"></i>Whitespace</a></li>
+<li class="chapter" data-level="1.6" data-path="start.html"><a href="start.html#search-replace-plus-more"><i class="fa fa-check"></i><b>1.6</b> Search &amp; Replace, Plus More</a><ul>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#convert-data-types"><i class="fa fa-check"></i>Convert Data Types</a></li>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#remove-whitespace"><i class="fa fa-check"></i>Remove Whitespace</a></li>
 <li class="chapter" data-level="" data-path="start.html"><a href="start.html#search-replace"><i class="fa fa-check"></i>Search &amp; Replace</a></li>
 </ul></li>
 <li class="chapter" data-level="1.7" data-path="start.html"><a href="start.html#web-scraping"><i class="fa fa-check"></i><b>1.7</b> Web Scraping</a><ul>
@@ -135,6 +135,10 @@
 <li class="chapter" data-level="4.2" data-path="hands-on-dates.html"><a href="hands-on-dates.html#logic"><i class="fa fa-check"></i><b>4.2</b> Logic</a></li>
 <li class="chapter" data-level="4.3" data-path="hands-on-dates.html"><a href="hands-on-dates.html#reproducible"><i class="fa fa-check"></i><b>4.3</b> Reproducible</a></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="hands-on-reconciliation.html"><a href="hands-on-reconciliation.html"><i class="fa fa-check"></i><b>5</b> Hands-on: Reconciliation</a><ul>
+<li class="chapter" data-level="5.1" data-path="hands-on-reconciliation.html"><a href="hands-on-reconciliation.html#reconciliation"><i class="fa fa-check"></i><b>5.1</b> Reconciliation</a></li>
+<li class="chapter" data-level="5.2" data-path="hands-on-reconciliation.html"><a href="hands-on-reconciliation.html#reconciliation-resources"><i class="fa fa-check"></i><b>5.2</b> Reconciliation Resources</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span><ul>
 <li class="chapter" data-level="" data-path=""><a href="#additional-documentation"><i class="fa fa-check"></i>Additional Documentation</a></li>
 </ul></li>
@@ -163,16 +167,18 @@
 1. Import Excel worksheets<br />
 2. Faceting &amp; Filtering for select data cleaning<br />
 3. Transforming: Adding columns and using fill-down to fill in data</p>
-<p>Basically you are making minor changes to the shape of the data by transforming some horizontal data into a more vertical format. This is a common data wrangling need. Below are two tables, cropped, to briefly illustrate the before data wrangling table <a href="#tab:before-table"><strong>??</strong></a> and after data wrangling result <a href="#tab:wrangled-table"><strong>??</strong></a>. I encourage you to <a href="https://github.com/libjohn/openrefine/raw/master/data/salary.xlsx">download</a> the Excel spreadsheet to look through the raw data.<a href="#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a> Doing so will help you see how the data transformation progresses.</p>
+<p>The changes outline above are minor changes to the shape of the data. The content of the data remains unchanged. Basically you will transform the data to remove confusion in the first column. You can see how the data will change by looking at the <em>before</em> and <em>after</em> examples, below. In the <em>before</em> example (table <a href="hands-on-reshape.html#tab:beforetable">3.1</a>) there are different variable concepts in the first column: <strong>team</strong> and <strong>player</strong>. In the <em>after</em> example (table <a href="hands-on-reshape.html#tab:wrangled-table">3.2</a>) we move each concept (variable) into its own column. I encourage you to <a href="https://github.com/libjohn/openrefine/raw/master/data/salary.xlsx">download</a> the Excel spreadsheet and look through the raw data. <a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> Doing so will help you see how the data transformation progresses.</p>
+<div class="video">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/20plnBsmz_A?list=PLIUcX1JrVUNXSgBbyMCluwaJYTWJ--fDd" frameborder="0" allowfullscreen>
+</iframe>
+</div>
+<center>
+The video demonstrates how the data will be transformed in this exercise.
+</center>
+<div id="before" class="section level4 unnumbered">
+<h4>Before</h4>
 <table>
-<caption>Unprocessed: A selective 10 rows of the 2013-2014 Salary.xls data</caption>
-<thead>
-<tr class="header">
-<th align="left">X__1</th>
-<th align="left">X__2</th>
-<th align="left">X__3</th>
-</tr>
-</thead>
+<caption><span id="tab:beforetable">Table 3.1: </span>Unprocessed: A selective 10 rows of the 2013-2014 Salary.xls data</caption>
 <tbody>
 <tr class="odd">
 <td align="left">Cartier Martin</td>
@@ -226,9 +232,11 @@
 </tr>
 </tbody>
 </table>
-<pre><code>## Warning: package &#39;bindrcpp&#39; was built under R version 3.4.4</code></pre>
+</div>
+<div id="after" class="section level4 unnumbered">
+<h4>After</h4>
 <table>
-<caption>Wrangled: same 10 rows of the 2013-2014 Salary.xls data</caption>
+<caption><span id="tab:wrangled-table">Table 3.2: </span>Wrangled: same 10 rows of the 2013-2014 Salary.xls data</caption>
 <thead>
 <tr class="header">
 <th align="left">Player</th>
@@ -300,6 +308,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <div id="ingest-excel-data" class="section level2">
 <h2><span class="header-section-number">3.1</span> Ingest Excel data</h2>
 <ol style="list-style-type: decimal">
@@ -331,7 +340,7 @@
 <li>Project name = <code>salary data</code> <span class="or-menu">&gt; Create Project </span><br />
 </li>
 </ul></li>
-<li>Rename Columns: “Player”, “Salary”, “Notes” <a href="#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a><br />
+<li>Rename Columns: “Player”, “Salary”, “Notes” <a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a><br />
 </li>
 <li>Show as: rows to ‘25’ (notice row 21)</li>
 </ol>
@@ -416,8 +425,6 @@ Those cells are actually filled with whitespace – invisible to the naked eye b
 <li>Close (or “X out”) the Salary text filter</li>
 </ol></li>
 </ol>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/20plnBsmz_A?list=PLIUcX1JrVUNXSgBbyMCluwaJYTWJ--fDd" frameborder="0" allowfullscreen>
-</iframe>
 <!-- special thanks to the folks at software carpentry.  I riffed from their
 workshop template to create the Q&A javacript/style.  See https://github.com/swcarpentry/workshop-template -->
 <script src="assets/js/qa.js"></script>
@@ -426,9 +433,9 @@ workshop template to create the Q&A javacript/style.  See https://github.com/swc
 </div>
 <div class="footnotes">
 <hr />
-<ol start="9">
-<li id="fn9"><p>The data, “Salary.xslx”, are NBA salary data.<a href="hands-on-reshape.html#fnref9">↩</a></p></li>
-<li id="fn10"><p><span class="or-menu">Column Header &gt; Edit Column &gt; Rename this column </span><a href="hands-on-reshape.html#fnref10">↩</a></p></li>
+<ol start="1">
+<li id="fn1"><p>The data, “Salary.xslx”, are NBA salary data.<a href="hands-on-reshape.html#fnref1">↩</a></p></li>
+<li id="fn2"><p><span class="or-menu">Column Header &gt; Edit Column &gt; Rename this column </span><a href="hands-on-reshape.html#fnref2">↩</a></p></li>
 </ol>
 </div>
             </section>

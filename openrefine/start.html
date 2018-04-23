@@ -25,7 +25,7 @@
 <meta name="author" content="John Little">
 
 
-<meta name="date" content="2018-04-18">
+<meta name="date" content="2018-04-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -102,9 +102,9 @@
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="start.html"><a href="start.html#split-data-in-cells"><i class="fa fa-check"></i><b>1.4</b> Split data in cells</a></li>
 <li class="chapter" data-level="1.5" data-path="start.html"><a href="start.html#concatenate-cells-together"><i class="fa fa-check"></i><b>1.5</b> Concatenate cells together</a></li>
-<li class="chapter" data-level="1.6" data-path="start.html"><a href="start.html#more-transformations"><i class="fa fa-check"></i><b>1.6</b> More Transformations</a><ul>
-<li class="chapter" data-level="" data-path="start.html"><a href="start.html#data-types"><i class="fa fa-check"></i>Data Types</a></li>
-<li class="chapter" data-level="" data-path="start.html"><a href="start.html#whitespace"><i class="fa fa-check"></i>Whitespace</a></li>
+<li class="chapter" data-level="1.6" data-path="start.html"><a href="start.html#search-replace-plus-more"><i class="fa fa-check"></i><b>1.6</b> Search &amp; Replace, Plus More</a><ul>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#convert-data-types"><i class="fa fa-check"></i>Convert Data Types</a></li>
+<li class="chapter" data-level="" data-path="start.html"><a href="start.html#remove-whitespace"><i class="fa fa-check"></i>Remove Whitespace</a></li>
 <li class="chapter" data-level="" data-path="start.html"><a href="start.html#search-replace"><i class="fa fa-check"></i>Search &amp; Replace</a></li>
 </ul></li>
 <li class="chapter" data-level="1.7" data-path="start.html"><a href="start.html#web-scraping"><i class="fa fa-check"></i><b>1.7</b> Web Scraping</a><ul>
@@ -134,6 +134,10 @@
 <li class="chapter" data-level="4.1" data-path="hands-on-dates.html"><a href="hands-on-dates.html#dates"><i class="fa fa-check"></i><b>4.1</b> Dates</a></li>
 <li class="chapter" data-level="4.2" data-path="hands-on-dates.html"><a href="hands-on-dates.html#logic"><i class="fa fa-check"></i><b>4.2</b> Logic</a></li>
 <li class="chapter" data-level="4.3" data-path="hands-on-dates.html"><a href="hands-on-dates.html#reproducible"><i class="fa fa-check"></i><b>4.3</b> Reproducible</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="hands-on-reconciliation.html"><a href="hands-on-reconciliation.html"><i class="fa fa-check"></i><b>5</b> Hands-on: Reconciliation</a><ul>
+<li class="chapter" data-level="5.1" data-path="hands-on-reconciliation.html"><a href="hands-on-reconciliation.html#reconciliation"><i class="fa fa-check"></i><b>5.1</b> Reconciliation</a></li>
+<li class="chapter" data-level="5.2" data-path="hands-on-reconciliation.html"><a href="hands-on-reconciliation.html#reconciliation-resources"><i class="fa fa-check"></i><b>5.2</b> Reconciliation Resources</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span><ul>
 <li class="chapter" data-level="" data-path=""><a href="#additional-documentation"><i class="fa fa-check"></i>Additional Documentation</a></li>
@@ -288,7 +292,7 @@ How many matching rows match the Deck Facet?
 Now how many matching rows exist?
 </li>
 <p>
-78 matching rows
+578 matching rows
 </p>
 </div>
 </ul></li>
@@ -341,7 +345,7 @@ How many matching rows are in the dataset now?
 <h3>Mass Editing</h3>
 <p>It’s important to understand OpenRefine was designed to transform data in bulk. It is possible to edit single data cells but it is not as convenient as some other, more WYSWIG, tools. This exercise will help you learn how to accomplish these kinds of mass data transformations</p>
 <ol style="list-style-type: decimal">
-<li>Make a facet on the work_type_description column</li>
+<li>Make a <em>Text facet</em> on the work_type_description column</li>
 <li>There are two facets for new buildings: “NEW BUILDING” and “New Building”.
 <ul>
 <li><ul class="no-bullet">
@@ -365,7 +369,7 @@ how many “New Building” rows exist?
 </div>
 </ul></li>
 </ul></li>
-<li>Select “NEW BUILDING” facet, limiting to 3 matching rows. Hover your mouse over the all caps “NEW BUILDING” facet until you see the “edit” feature appear; click “edit” and alter the text to title case: “New Building” ; click Apply
+<li>Select “NEW BUILDING” facet, limiting to 3 matching rows. To the right of the “NEW BUILDING” facet, hover your mouse over the “edit” feature; click “edit” and alter the text to title case: “New Building” ; click Apply
 <ul>
 <li><ul class="no-bullet">
 <div class="challenge">
@@ -379,7 +383,7 @@ How many “New Building” rows exist now?
 </ul></li>
 </ul></li>
 <li>Mass edit “OTHER” &amp; “Other” so they have the same value</li>
-<li>Mass edit “ALTERNATIONS/REPAIRS” and “Alternations/repairs” so they have the same value</li>
+<li>Mass edit “ALTERATIONS/REPAIRS” and “Alterations/repairs” so they have the same value</li>
 <li>Click “Remove All” to remove the facet window</li>
 </ol>
 <div class="video">
@@ -428,23 +432,24 @@ How many “New Building” rows exist now?
 <li>Expression = <code>value + &quot; sq ft. &quot; + cells[&quot;proposed_work&quot;].value</code> &gt; OK</li>
 </ol>
 </div>
-<div id="more-transformations" class="section level2">
-<h2><span class="header-section-number">1.6</span> More Transformations</h2>
+<div id="search-replace-plus-more" class="section level2">
+<h2><span class="header-section-number">1.6</span> Search &amp; Replace, Plus More</h2>
 <p>Looking at the latitude and longitude cells, one column appears in green text (indicating OpenRefine considers data those cells as numbers) and one column appears in black with a closing parenthesis in the last position. Convert both columns to text, trim leading and trailing spaces, and then find and replace the parenthesis</p>
-<div id="data-types" class="section level3 unnumbered">
-<h3>Data Types</h3>
+<div id="convert-data-types" class="section level3 unnumbered">
+<h3>Convert Data Types</h3>
 <ol style="list-style-type: decimal">
 <li><span class="or-menu">latitude &gt; Edit cells &gt; common transformations &gt; To text</span></li>
 </ol>
 </div>
-<div id="whitespace" class="section level3 unnumbered">
-<h3>Whitespace</h3>
+<div id="remove-whitespace" class="section level3 unnumbered">
+<h3>Remove Whitespace</h3>
 <ol start="2" style="list-style-type: decimal">
 <li><span class="or-menu">longitude &gt; Edit cells &gt; common transformations &gt; Trim leading and trailing whitespace </span></li>
 </ol>
 </div>
 <div id="search-replace" class="section level3 unnumbered">
 <h3>Search &amp; Replace</h3>
+<p><strong>Search and Replace</strong> is commonly performed as a data transformation using the following function: <code>value.search(&quot;old text&quot;,&quot;new text&quot;)</code>. In the example below we replace a closing parenthesis with nothing, effectively removing the trailing parenthesis. The example may appear strange since the <code>replace</code> function exists within a set of parenthesis. Remember the text you are replacing is idnetified within the first set of quotation marks You will identify as the replacing text within the second set of quotation marks. I’ve draw red circles around the function, as well as the before and after text preview to clarify how the process will work.</p>
 <ol start="3" style="list-style-type: decimal">
 <li><span class="or-menu">longitude &gt; Edit cells &gt; Transform… </span>
 <ul>
