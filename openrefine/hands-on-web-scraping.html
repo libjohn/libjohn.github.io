@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="workshop-outline.html">
-<link rel="next" href="start.html">
+<link rel="prev" href="hands-on-reconciliation.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -166,146 +166,163 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="demonstration" class="section level1 unnumbered">
-<h1>Demonstration</h1>
-<div id="load-data" class="section level2 unnumbered">
-<h2>Load Data</h2>
+<div id="hands-on-web-scraping" class="section level1">
+<h1><span class="header-section-number">6</span> Hands-on: Web Scraping</h1>
+<p>Goal: We want to gather the FIPS code for some data by matching a county name to a government server which maintains a server that enables FIPS lookups. The government server returns data in a JSON format. After gathering the data we’ll parse the JSON format and isolate the particular data from the data wrapper.</p>
 <ol style="list-style-type: decimal">
-<li><span class="or-menu">Create Project &gt; Web Addresses (URLs) &gt; </span> <code>https://raw.githubusercontent.com/libjohn/openrefine/master/data/bicycle-subset-phm-collection.tsv</code></li>
-<li>Uncheck - “Quotation marks are used to enclose” (bottom-right)</li>
-<li>Project Name to “bicycle categories”</li>
+<li>Open Data
+<ul>
+<li><span class="or-menu">Create Project &gt; Web Addresses (URLs) &gt;</span> <code>https://raw.githubusercontent.com/libjohn/openrefine/master/data/subset-Raleigh-Building-Permits-for-API-JSON-parsing.csv</code><br />
+</li>
+<li><span class="or-menu">Next &gt;&gt;</span><br />
+</li>
+<li>You many want to give your project a pretty title</li>
+<li>Create Project &gt;&gt;</li>
+</ul></li>
+</ol>
+<p>You should now have 6 matching rows.</p>
+<div id="api-1" class="section level2">
+<h2><span class="header-section-number">6.1</span> API</h2>
+<p>Now let’s fetch the data from a <a href="http://www.broadbandmap.gov/developer/">Web API</a> made available via the National Broadband Map (<a href="http://www.broadbandmap.gov/">NBM</a> | <a href="https://www.broadbandmap.gov/developer">NBM Developer</a>). This API returns a FIPS code, given a county name (or in this case, even a partial county name.)</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Fetch JSON data from the National Broadband Map. We’ll use the <a href="http://www.broadbandmap.gov/developer/api/census-api-by-geography-name">API documentation for Geography by Name API</a><a href="#fn14" class="footnoteRef" id="fnref14"><sup>14</sup></a> which returns Census geography for a geography name (e.g. Durham). In this case we simply use the County <code>value</code> as the search string wrapped in the API query protocol.
+<ul>
+<li><span class="or-menu"> county &gt; Edit column &gt; Add column by fetching URLs… </span></li>
+<li>New column name = <code>JSON data</code></li>
+<li>Throttle delay = <code>2000</code></li>
+<li>Expression = <br> <code>'https://www.broadbandmap.gov/broadbandmap/census/county/'+value+'?format=json'</code></li>
+<li><span class="or-menu">OK</span></li>
+</ul></li>
 </ol>
 </div>
-<div id="navigating-the-project" class="section level2 unnumbered">
-<h2>Navigating the “Project”</h2>
+<div id="parse-1" class="section level2">
+<h2><span class="header-section-number">6.2</span> Parse</h2>
+<p>Now parse the value of the JSON data “fips” element; call the “<span class="highlight-yellow-fixed">fips</span>” key when traversing the “<span class="highlight-turq-fixed">county</span>” objects from the <span class="highlight-green-fixed">Results</span> set.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><span class="or-menu"> JSON data &gt; Edit column &gt; Add column based on this column … </span>
 <ul>
-<li>Notice there are 72 rows<br />
+<li>New column name = <code>FIPS Code</code><br />
 </li>
-<li>Notice there are two views: rows and records<br />
-</li>
-<li>The “records” view is for advanced manipulation</li>
-<li>You can
-<ul>
-<li>“Show” 5-50 rows at a time</li>
-<li>Navigate screens “&lt; Previous” &amp; “next &gt;”</li>
+<li>expression = <code>value.parseJson().Results.county[0].fips</code> <a href="#fn15" class="footnoteRef" id="fnref15"><sup>15</sup></a></li>
+<li><span class="or-menu">OK</span></li>
 </ul></li>
-</ul>
+</ol>
+<div class="video">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DbjpmVEpMiI" frameborder="0" allowfullscreen>
+</iframe>
+<div class="video">
+
+<div id="json-data-example-1" class="section level4 unnumbered">
+<h4>JSON Data Example</h4>
+<p>JSON <a href="#fn16" class="footnoteRef" id="fnref16"><sup>16</sup></a> is JavaScript Object Notation a data wrapper. The API, in this case, returns the data in a JSON format.</p>
+<pre>
+{
+  "status": "OK",  
+  "responseTime": 14,  
+  "message": [  ],  
+  "<span class="highlight-green-fixed">Results</span>": {  
+    "<span class="highlight-turq-fixed">county</span>": [  
+      {  
+        "geographyType": "COUNTY2010",  
+        "stateFips": "37",  
+        "<span class="highlight-yellow-fixed">fips</span>": "37063",  
+        "name": "Durham"  
+      }  
+    ]  
+  }  
+}  
+</pre>
 </div>
-<div id="facets" class="section level2 unnumbered">
-<h2>Facets</h2>
-<ul>
-<li><span class="or-menu">Categories &gt; Facet &gt; Text facet</span>
-<ol style="list-style-type: decimal">
-<li>Notice mashup of “pipe delimited” text facets</li>
-<li><em>Why are there Pipe delimiters?</em></li>
-<li><em>How many Category choices exist?</em></li>
-<li>Switch between the “name” and “count” sorting options.</li>
-</ol></li>
-<li>Export a CSV file</li>
-<li><span class="or-menu">Export &gt; Comma-separated value</span></li>
-<li><em>How many rows will export: 4, 16, 72, 180?</em></li>
-</ul>
 </div>
-<div id="rows-vs.records" class="section level2 unnumbered">
-<h2>Rows vs. Records</h2>
-<ul>
-<li><p>Row v Records <a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p></li>
-<li><span class="or-menu">Categories &gt; edit cells &gt; split multi-valued cells &gt;</span> separator = <code>|</code>
-<ol style="list-style-type: decimal">
-<li><em>Now how many Category choices exist?</em></li>
-<li>Click <strong>records</strong> to switch to the records view</li>
-<li>Click <strong>count</strong> What is the most popular Category term?</li>
-<li>Click <strong>name</strong> Limit to the “Juvenilia” facet; How many matching records?</li>
-</ol></li>
-</ul>
+<div id="keys" class="section level2">
+<h2><span class="header-section-number">6.3</span> Keys</h2>
+<p>Web API keys are typically issued by the API service to help identify the origin of the API request. Contrary to the above example, most API services require keys. In this next example you’ll practice getting and using a key. In this case the key is free. They are not always free.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Go to the <a href="http://www.omdbapi.com/apikey.aspx">OMDB API key request page</a>. Enter your email and choose the <strong>free key</strong> option.</li>
+<li>Check your email for your key. You’ll use this key appended to your search query. The documentation for this API can found at their <a href="http://www.omdbapi.com/">Parameters</a> section. It’s also helpful to have a look at the <strong>Examples</strong> section.</li>
+</ol>
 </div>
-<div id="web-scrape-api" class="section level2 unnumbered">
-<h2>Web Scrape &amp; API</h2>
-<p><em>Scraping data from an API or Webpage</em></p>
+<div id="exercise-2" class="section level2">
+<h2><span class="header-section-number">6.4</span> Exercise 2</h2>
+<p>You’ll need your API key from the preceding steps.</p>
+<ol start="6" style="list-style-type: decimal">
+<li>Create a new project in OpenRefine</li>
+<li>Click the <code>Clipboard</code> option, under <em>Get data from</em> and paste in the following:</li>
+</ol>
+<pre><code>The Warriors
+Rocky
+Bambi</code></pre>
+<ol start="8" style="list-style-type: decimal">
+<li>Give your project a nice name (e.g. “Movies”) and <span class="or-menu">Create Project &gt;&gt;</span></li>
+<li><p>Fetch JSON data from the OMDB API</p>
 <ul>
-<li><span class="or-menu">new_link &gt; Edit column &gt; Add column by fetching URLs…</span></li>
-<li>New column name = <code>Web Data</code></li>
-<li><em>Notice</em> Throttle delay
-<ol style="list-style-type: decimal">
-<li><code>2000</code> milliseconds is good. Less than 2 seconds and you <em>might</em> get booted, blocked, cast out!</li>
-</ol></li>
-<li>Click OK and wait</li>
-<li>When done, you’ve got all the source data for each page associated with the link in the “Persistent Link” column</li>
-</ul>
-</div>
-<div id="parsing-data" class="section level2 unnumbered">
-<h2>Parsing Data</h2>
-<p>A Brief Introduction</p>
-<ul>
-<li>Look fora big block of gobbly text in the “Web Data” column. That is HTML formatted data<br />
-</li>
-<li>Typically, after fetching data, you’ll need to parse it<br />
-</li>
-<li>You can use GREL <a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> to parse data and isolate a specific bit of desired information
-<ul>
-<li><strong>GREL</strong> is the advanced power of OpenRefine. <a href="grel.html#grel">We will come back to this</a></li>
+<li><span class="or-menu"> Column 1 &gt; Edit column &gt; Add column by fetching URLs… </span></li>
+<li>New column name = <code>JSON data</code></li>
+<li>Throttle delay = <code>2000</code></li>
+<li>Expression = <br><code>'http://www.omdbapi.com/?t=' + escape(value, &quot;url&quot;) + '&amp;' + 'apikey=BOOBOOBOY'</code></li>
+<li>Be sure to substitute your actual api key (see above) for <code>BOOBOOBOY</code></li>
+<li><span class="or-menu">OK</span></li>
 </ul></li>
-<li>For example, you can transform the data in the retrieved cells with a <a href="https://github.com/libjohn/guides/blob/master/regex/regex.Rmd">regular expression</a> to gather only the title of each object<br />
+</ol>
+<div id="parse-2" class="section level3 unnumbered">
+<h3>Parse</h3>
+<ol start="10" style="list-style-type: decimal">
+<li><p><span class="or-menu"> JSON data &gt; Edit column &gt; Add column based on this column … </span></p>
+<ul>
+<li>New column name = <code>Year</code><br />
 </li>
-<li><span class="or-menu">Web Data &gt; Edit column &gt; Add column based on this column…</span>
-<ol style="list-style-type: decimal">
-<li>New Column Name = <code>Web Page Title</code></li>
-<li>Expression = <code>value.parseHtml().select(&quot;h1.object-page__title&quot;)[0].htmlText()</code></li>
-</ol></li>
-</ul>
-</div>
-<div id="split" class="section level2 unnumbered">
-<h2>Split</h2>
+<li>expression = <code>value.parseJson().Year</code></li>
+<li><span class="or-menu">OK</span></li>
+</ul></li>
+<li><p><span class="or-menu"> JSON data &gt; Edit column &gt; Add column based on this column … </span></p>
 <ul>
-<li><p>remove faceting: click <span class="or-menu">Remove All</span> in the facet sidebar</p></li>
-<li><span class="or-menu"> Production Date &gt; Edit column &gt; Split into several columns…</span>
-<ol style="list-style-type: decimal">
-<li>Seperator = <code>-</code> (i.e. “space dash space”)</li>
-</ol></li>
-</ul>
+<li>New column name = <code>Poster</code><br />
+</li>
+<li>expression = <code>value.parseJson().Poster</code></li>
+<li><span class="or-menu">OK</span></li>
+</ul></li>
+</ol>
+
 </div>
-<div id="concatenate" class="section level2 unnumbered">
-<h2>Concatenate</h2>
-<ul>
-<li><span class="or-menu">Height &gt; Edit column &gt; Add column based on this column</span></li>
-<li>GREL Expression = <code>value + &quot; x &quot; + cells[&quot;Width&quot;].value</code></li>
-</ul>
 </div>
-<div id="find-replace" class="section level2 unnumbered">
-<h2>Find &amp; Replace</h2>
-<ul>
-<li><span class="or-menu">Dimension &gt; Edit cells &gt; Transform</span></li>
-<li>GREL Expression = <code>value.replace(&quot;mm&quot;,&quot;&quot;)</code></li>
-</ul>
 </div>
-<div id="facet-by-blank" class="section level2 unnumbered">
-<h2>Facet by Blank</h2>
+
+
+
+<h2>Additional Documentation</h2>
 <ul>
-<li><span class="or-menu">Dimension &gt; Facet &gt; Customized facet &gt; facet by blank</span></li>
-</ul>
-</div>
-<div id="text-filter" class="section level2 unnumbered">
-<h2>Text filter</h2>
-<ul>
-<li>Clear all facets</li>
-<li>Title = <code>bmx</code></li>
-</ul>
-</div>
-<div id="custom-facet" class="section level2 unnumbered">
-<h2>Custom Facet</h2>
-<ul>
-<li>Production date</li>
-<li><span class="or-menu">Facet &gt; custom text facet</span></li>
-<li><code>value.match(/(\d\d).*/)[0]</code></li>
+<li><a href="http://openrefine.org/documentation.html">Documentaion, “The Book”, and Mailing List</a></li>
 </ul>
 
 </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="footnotes">
 <hr />
-<ol start="2">
-<li id="fn2"><p>Row v Records <a href="http://kb.refinepro.com/2012/03/difference-between-record-and-row.html">Explained</a><a href="demonstration.html#fnref2">↩</a></p></li>
-<li id="fn3"><p><a href="https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language">General Refine Expression Language</a><a href="demonstration.html#fnref3">↩</a></p></li>
+<ol start="14">
+<li id="fn14"><p>The documentation informs us that the format of the URL we want to construct is as follows: <a href="http://www.broadbandmap.gov/broadbandmap/census/county/durh?format=json" class="uri">http://www.broadbandmap.gov/broadbandmap/census/county/durh?format=json</a><a href="hands-on-web-scraping.html#fnref14">↩</a></p></li>
+<li id="fn15"><p>Note the square-bracket (<code>[0]</code>) notation in the <code>ParseJson()</code> function denotes and identifies the first array element. It’s the first element because in OpenRefine counting begins with zero (e.g. 0,1,2,3,4,5). The <span class="highlight-turq-fixed">county</span> array in the example below consists of only 1 value element (consisting of four, named key/value pairs; of which fips is one key). Since the JSON notation indicates county is an array, in this case of quantity 1, we identify that first element of the array by the number ‘0’. See the JSON example below<a href="hands-on-web-scraping.html#fnref15">↩</a></p></li>
+<li id="fn16"><p><a href="https://en.wikipedia.org/wiki/JSON">Wikipedia entry for JSON</a><a href="hands-on-web-scraping.html#fnref16">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -313,8 +330,8 @@
           </div>
         </div>
       </div>
-<a href="workshop-outline.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="start.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="hands-on-reconciliation.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

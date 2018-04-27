@@ -25,7 +25,7 @@
 <meta name="author" content="John Little">
 
 
-<meta name="date" content="2018-04-23">
+<meta name="date" content="2018-04-27">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -138,6 +138,14 @@
 <li class="chapter" data-level="5.1" data-path="hands-on-reconciliation.html"><a href="hands-on-reconciliation.html#reconciliation"><i class="fa fa-check"></i><b>5.1</b> Reconciliation</a></li>
 <li class="chapter" data-level="5.2" data-path="hands-on-reconciliation.html"><a href="hands-on-reconciliation.html#reconciliation-resources"><i class="fa fa-check"></i><b>5.2</b> Reconciliation Resources</a></li>
 </ul></li>
+<li class="chapter" data-level="6" data-path="hands-on-web-scraping.html"><a href="hands-on-web-scraping.html"><i class="fa fa-check"></i><b>6</b> Hands-on: Web Scraping</a><ul>
+<li class="chapter" data-level="6.1" data-path="hands-on-web-scraping.html"><a href="hands-on-web-scraping.html#api-1"><i class="fa fa-check"></i><b>6.1</b> API</a></li>
+<li class="chapter" data-level="6.2" data-path="hands-on-web-scraping.html"><a href="hands-on-web-scraping.html#parse-1"><i class="fa fa-check"></i><b>6.2</b> Parse</a></li>
+<li class="chapter" data-level="6.3" data-path="hands-on-web-scraping.html"><a href="hands-on-web-scraping.html#keys"><i class="fa fa-check"></i><b>6.3</b> Keys</a></li>
+<li class="chapter" data-level="6.4" data-path="hands-on-web-scraping.html"><a href="hands-on-web-scraping.html#exercise-2"><i class="fa fa-check"></i><b>6.4</b> Exercise 2</a><ul>
+<li class="chapter" data-level="" data-path="hands-on-web-scraping.html"><a href="hands-on-web-scraping.html#parse-2"><i class="fa fa-check"></i>Parse</a></li>
+</ul></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span><ul>
 <li class="chapter" data-level="" data-path=""><a href="#additional-documentation"><i class="fa fa-check"></i>Additional Documentation</a></li>
 </ul></li>
@@ -160,8 +168,8 @@
             <section class="normal" id="section-">
 <div id="grel" class="section level1">
 <h1><span class="header-section-number">2</span> Hands-on: GREL</h1>
-<p>The goal of this project is to create custom facets and perform basic transformations, introduce you to the General Refine Expression Language, and develop practical skills in transforming and normalizing data.</p>
-<p>In this example you will open a new data set to practice importing a different type of data, this time comma separated value, or CSV. Last time you imported a tab separated value, or TSV. OpenRefine will important many types of data. Being aware of different data formats, and having the ability to open those data are valuable skills. In fact, one of the most frequently stumbling blocks with data tools is the simple problem of importing the data. Practice and learn…</p>
+<p>The goal of this project is to create custom facets and perform basic transformations, introduce you to <a href="https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language">GREL</a> – the General Refine Expression Language – and develop practical skills in transforming and normalizing data. You’ve used GREL several times getting to this point in this workbook, but lets look a little deeper.</p>
+<p>In this example you will open a new data set to practice importing a different type of data, this time comma separated value, or CSV. Last time you imported a tab separated value, or TSV. OpenRefine will important many types of data. Being aware of different data formats, and having the ability to open those data are valuable skills. In fact, one of the most frequent stumbling blocks when using new data tools is the simple problem of importing the data. Practice and learn…</p>
 <div id="custom-facets" class="section level2">
 <h2><span class="header-section-number">2.1</span> Custom Facets</h2>
 <div id="download-new-data-then-create-a-new-openrefine-project" class="section level3 unnumbered">
@@ -297,7 +305,7 @@ no location data…
 </div>
 <div id="regular-expression" class="section level2 unnumbered">
 <h2>Regular Expression</h2>
-<p>Regular Expressions are very powerful and flexible codes used for matching patterns. Often there is more than one way to compose a regex pattern-match. Importantly for OpenRefine, much of Refine’s extensible and advanced power comes from regular expressions. Essentially the key to advanced level OpenRefine is regular expressions and looping. To learn more about regular expressions see my <a href="http://libjohn.github.io/regex/regex.html">handout on regex</a>. For now you can refer to these <strong>few commands</strong> and symbols summed up on this <a href="http://libjohn.github.io/regex/cheat-sheet.html">quick-sheet</a>.</p>
+<p>Regular Expressions are very powerful and flexible codes used for matching patterns. Often there is more than one way to compose a regex pattern-match. Importantly for OpenRefine, much of Refine’s extensible and advanced power comes from regular expressions. Essentially the key to advanced level OpenRefine is regular expressions and looping. To learn more about regular expressions see my <a href="https://www.johnlittle.info/project/custom/regex/regex.html">handout on regex</a>. For now you can refer to these <strong>few commands</strong> and symbols summed up on this <a href="http://libjohn.github.io/regex/cheat-sheet.html">quick-sheet</a>.</p>
 <ol start="7" style="list-style-type: decimal">
 <li>Create New Column from Existing Column using a regular expression to match a pattern
 <ul>
@@ -305,7 +313,7 @@ no location data…
 <ol style="list-style-type: decimal">
 <li>New column name = <code>YEAR</code><br />
 </li>
-<li>Expression = <code>value.match(/.*\/(\d{4}).*/)[0]</code> &gt; <span class="or-menu">OK</span><a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a></li>
+<li>Expression = <code>value.match(/.*\/(\d\d\d\d).*/)[0]</code> &gt; <span class="or-menu">OK</span><a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a></li>
 </ol></li>
 </ul></li>
 </ol>

@@ -10,10 +10,10 @@ For this project you will take data in one format and reshape into a more optima
 3. Transforming:  Adding columns and using fill-down to fill in data  
 
 
-Basically you are making minor changes to the shape of the data by transforming some horizontal data into a more vertical format.  This is a common data wrangling need.  Below are two tables, cropped, to briefly illustrate the before data wrangling table \@ref(tab:before-table) and after data wrangling result \@ref(tab:wrangled-table). I encourage you to [download](https://github.com/libjohn/openrefine/raw/master/data/salary.xlsx) the Excel spreadsheet to look through the raw data.^[The data, “Salary.xslx”, are NBA salary data.]  Doing so will help you see how the data transformation progresses.  
 
 
 
+Basically you are making minor changes to the shape of the data by transforming some horizontal data into a more vertical format.  This is a common data wrangling need.  Below are two tables, cropped, to briefly illustrate the before data wrangling table \@ref(tab:beforetable) and after data wrangling result \@ref(tab:wrangled-table). I encourage you to [download](https://github.com/libjohn/openrefine/raw/master/data/salary.xlsx) the Excel spreadsheet to look through the raw data.^[The data, “Salary.xslx”, are NBA salary data.]  Doing so will help you see how the data transformation progresses.  
 
 
 
@@ -32,14 +32,6 @@ NA               NA         NA
 NA               NA         NA                                
 Boston Celtics   NA         NA                                
 Kris Humphries   12000000   NA                                
-
-
-
-
-```
-## Warning: package 'bindrcpp' was built under R version 3.4.4
-```
-
 
 
 Table: Wrangled:  same 10 rows of the 2013-2014 Salary.xls data

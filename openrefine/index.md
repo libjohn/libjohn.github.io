@@ -1,7 +1,7 @@
 ---
 title: "Cleaning Data with OpenRefine"
 author: "John Little"
-date: "2018-04-19"
+date: "2018-04-23"
 site: bookdown::bookdown_site
 output: 
   bookdown::gitbook:

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>OpenRefine for Data Cleaning</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="This lab workbook contains hands-on material supplementing the OpenRefine workshops taught by John Little and hosted by the Data &amp; Visualization Services Department, Duke University Libraries.">
+  <meta name="generator" content="bookdown 0.3.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="OpenRefine for Data Cleaning" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This lab workbook contains hands-on material supplementing the OpenRefine workshops taught by John Little and hosted by the Data &amp; Visualization Services Department, Duke University Libraries." />
+  <meta name="github-repo" content="libjohn/openrefine" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="OpenRefine for Data Cleaning" />
+  
+  <meta name="twitter:description" content="This lab workbook contains hands-on material supplementing the OpenRefine workshops taught by John Little and hosted by the Data &amp; Visualization Services Department, Duke University Libraries." />
+  
+
+<meta name="author" content="John Little">
+
+
+<meta name="date" content="2016-12-17">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="hands-on-basic-transformations.html">
+<link rel="next" href="hands-on-reshape-text-filter.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html"><i class="fa fa-check"></i>Workshop Outline</a><ul>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#workshop-structure"><i class="fa fa-check"></i>Workshop Structure</a><ul>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#testimonial"><i class="fa fa-check"></i>Testimonial</a></li>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#for-best-results"><i class="fa fa-check"></i>For best results</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#workshop-philosophy"><i class="fa fa-check"></i>Workshop Philosophy</a></li>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#overview"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#comparative-advantage"><i class="fa fa-check"></i>Comparative Advantage</a></li>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#characteristics"><i class="fa fa-check"></i>Characteristics</a><ul>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#general"><i class="fa fa-check"></i>General</a></li>
+<li class="chapter" data-level="" data-path="workshop-outline.html"><a href="workshop-outline.html#video"><i class="fa fa-check"></i>Video</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html"><i class="fa fa-check"></i>Demonstration</a><ul>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#navigating-the-project"><i class="fa fa-check"></i>Navigating the “Project”</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#facets"><i class="fa fa-check"></i>Facets</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#rows-vs.records"><i class="fa fa-check"></i>Rows vs. Records</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#web-scrape-api"><i class="fa fa-check"></i>Web Scrape &amp; API</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#parsing-data"><i class="fa fa-check"></i>Parsing Data</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#split"><i class="fa fa-check"></i>Split</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#concatenate"><i class="fa fa-check"></i>Concatenate</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#find-replace"><i class="fa fa-check"></i>Find &amp; Replace</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#facet-by-blank"><i class="fa fa-check"></i>Facet by Blank</a></li>
+<li class="chapter" data-level="" data-path="demonstration.html"><a href="demonstration.html#custom-facet"><i class="fa fa-check"></i>Custom Facet</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="hands-on-basic-transformations.html"><a href="hands-on-basic-transformations.html"><i class="fa fa-check"></i><b>1</b> Hands-on: basic transformations</a><ul>
+<li class="chapter" data-level="1.1" data-path="hands-on-basic-transformations.html"><a href="hands-on-basic-transformations.html#getting-started"><i class="fa fa-check"></i><b>1.1</b> Getting Started</a></li>
+<li class="chapter" data-level="1.2" data-path="hands-on-basic-transformations.html"><a href="hands-on-basic-transformations.html#shutting-down-openrefine"><i class="fa fa-check"></i><b>1.2</b> Shutting Down OpenRefine</a></li>
+<li class="chapter" data-level="1.3" data-path="hands-on-basic-transformations.html"><a href="hands-on-basic-transformations.html#facets-cluster"><i class="fa fa-check"></i><b>1.3</b> Facets &amp; Cluster</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="hands-on-basic-transformations.html"><a href="hands-on-basic-transformations.html#facets-1"><i class="fa fa-check"></i><b>1.3.1</b> Facets</a></li>
+<li class="chapter" data-level="1.3.2" data-path="hands-on-basic-transformations.html"><a href="hands-on-basic-transformations.html#clustering"><i class="fa fa-check"></i><b>1.3.2</b> Clustering</a></li>
+<li class="chapter" data-level="1.3.3" data-path="hands-on-basic-transformations.html"><a href="hands-on-basic-transformations.html#mass-editing"><i class="fa fa-check"></i><b>1.3.3</b> Mass Editing</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="hands-on-basic-transformations.html"><a href="hands-on-basic-transformations.html#split-data-in-cells"><i class="fa fa-check"></i><b>1.4</b> Split data in cells</a></li>
+<li class="chapter" data-level="1.5" data-path="hands-on-basic-transformations.html"><a href="hands-on-basic-transformations.html#concatenate-cells-together"><i class="fa fa-check"></i><b>1.5</b> Concatenate cells together</a></li>
+<li class="chapter" data-level="1.6" data-path="hands-on-basic-transformations.html"><a href="hands-on-basic-transformations.html#more-transformations"><i class="fa fa-check"></i><b>1.6</b> More Transformations</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="hands-on-basic-transformations.html"><a href="hands-on-basic-transformations.html#data-types"><i class="fa fa-check"></i><b>1.6.1</b> Data Types</a></li>
+<li class="chapter" data-level="1.6.2" data-path="hands-on-basic-transformations.html"><a href="hands-on-basic-transformations.html#whitespace"><i class="fa fa-check"></i><b>1.6.2</b> Whitespace</a></li>
+<li class="chapter" data-level="1.6.3" data-path="hands-on-basic-transformations.html"><a href="hands-on-basic-transformations.html#search-replace"><i class="fa fa-check"></i><b>1.6.3</b> Search &amp; Replace</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="hands-on-basic-transformations.html"><a href="hands-on-basic-transformations.html#web-scraping"><i class="fa fa-check"></i><b>1.7</b> Web Scraping</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="hands-on-basic-transformations.html"><a href="hands-on-basic-transformations.html#select-a-subset"><i class="fa fa-check"></i><b>1.7.1</b> Select a subset</a></li>
+<li class="chapter" data-level="1.7.2" data-path="hands-on-basic-transformations.html"><a href="hands-on-basic-transformations.html#api"><i class="fa fa-check"></i><b>1.7.2</b> API</a></li>
+<li class="chapter" data-level="1.7.3" data-path="hands-on-basic-transformations.html"><a href="hands-on-basic-transformations.html#parse"><i class="fa fa-check"></i><b>1.7.3</b> Parse</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="hands-on-grel.html"><a href="hands-on-grel.html"><i class="fa fa-check"></i><b>2</b> Hands-on: GREL</a><ul>
+<li class="chapter" data-level="2.1" data-path="hands-on-grel.html"><a href="hands-on-grel.html#custom-facets"><i class="fa fa-check"></i><b>2.1</b> Custom Facets</a><ul>
+<li class="chapter" data-level="" data-path="hands-on-grel.html"><a href="hands-on-grel.html#download-new-data-then-create-a-new-openrefine-project"><i class="fa fa-check"></i>Download new Data then Create a new OpenRefine Project:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="hands-on-grel.html"><a href="hands-on-grel.html#grel-to-transform-and-normalize"><i class="fa fa-check"></i><b>2.2</b> GREL to Transform and Normalize</a><ul>
+<li class="chapter" data-level="" data-path="hands-on-grel.html"><a href="hands-on-grel.html#regular-expression"><i class="fa fa-check"></i>Regular Expression</a></li>
+<li class="chapter" data-level="" data-path="hands-on-grel.html"><a href="hands-on-grel.html#filter"><i class="fa fa-check"></i>Filter</a></li>
+<li class="chapter" data-level="" data-path="hands-on-grel.html"><a href="hands-on-grel.html#facet"><i class="fa fa-check"></i>Facet</a></li>
+<li class="chapter" data-level="" data-path="hands-on-grel.html"><a href="hands-on-grel.html#cluster"><i class="fa fa-check"></i>Cluster</a></li>
+<li class="chapter" data-level="" data-path="hands-on-grel.html"><a href="hands-on-grel.html#mass-editing-1"><i class="fa fa-check"></i>Mass Editing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="hands-on-reshape-text-filter.html"><a href="hands-on-reshape-text-filter.html"><i class="fa fa-check"></i><b>3</b> Hands-on: reshape &amp; text filter</a><ul>
+<li class="chapter" data-level="3.1" data-path="hands-on-reshape-text-filter.html"><a href="hands-on-reshape-text-filter.html#ingest-excel-data"><i class="fa fa-check"></i><b>3.1</b> Ingest Excel data</a></li>
+<li class="chapter" data-level="3.2" data-path="hands-on-reshape-text-filter.html"><a href="hands-on-reshape-text-filter.html#facets-2"><i class="fa fa-check"></i><b>3.2</b> Facets</a></li>
+<li class="chapter" data-level="3.3" data-path="hands-on-reshape-text-filter.html"><a href="hands-on-reshape-text-filter.html#text-filter"><i class="fa fa-check"></i><b>3.3</b> Text Filter</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="hands-on-dates.html"><a href="hands-on-dates.html"><i class="fa fa-check"></i><b>4</b> Hands-on: dates</a><ul>
+<li class="chapter" data-level="4.1" data-path="hands-on-dates.html"><a href="hands-on-dates.html#dates"><i class="fa fa-check"></i><b>4.1</b> Dates</a></li>
+<li class="chapter" data-level="4.2" data-path="hands-on-dates.html"><a href="hands-on-dates.html#logic"><i class="fa fa-check"></i><b>4.2</b> Logic</a></li>
+<li class="chapter" data-level="4.3" data-path="hands-on-dates.html"><a href="hands-on-dates.html#reproducible"><i class="fa fa-check"></i><b>4.3</b> Reproducible</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span><ul>
+<li class="chapter" data-level="" data-path=""><a href="#hands-on-answers"><i class="fa fa-check"></i>Hands-on Answers</a><ul>
+<li class="chapter" data-level="" data-path="hands-on-dates.html"><a href="hands-on-dates.html#goal-1"><i class="fa fa-check"></i>Goal 1</a></li>
+<li class="chapter" data-level="" data-path="hands-on-dates.html"><a href="hands-on-dates.html#goal-2"><i class="fa fa-check"></i>Goal 2</a></li>
+<li class="chapter" data-level="" data-path="hands-on-dates.html"><a href="hands-on-dates.html#goal-mass-edit-cells"><i class="fa fa-check"></i>Goal Mass edit cells</a></li>
+<li class="chapter" data-level="A.3.1" data-path="hands-on-dates.html"><a href="hands-on-dates.html#custom-facets-1"><i class="fa fa-check"></i><b>A.3.1</b> Custom Facets</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">OpenRefine for Data Cleaning</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="hands-on-grel" class="section level1">
+<h1><span class="header-section-number">2</span> Hands-on: GREL</h1>
+<p>The goal of this project is to create custom facets and perform basic transformations, introduce you to the General Refine Expression Language, and develop practical skills in transforming and normalizing data.</p>
+<p>In this example you will open a new data set to practice importing a different type of data, this time comma separated value, or CSV. Last time you imported a tab separated value, or TSV. OpenRefine will important many types of data. Being aware of different data formats, and having the ability to open those data are valuable skills. In fact, one of the most frequently stumbling blocks with data tools is the simple problem of importing the data. Practice and learn…</p>
+<div id="custom-facets" class="section level2">
+<h2><span class="header-section-number">2.1</span> Custom Facets</h2>
+<div id="download-new-data-then-create-a-new-openrefine-project" class="section level3 unnumbered">
+<h3>Download new Data then Create a new OpenRefine Project:</h3>
+<p>We’ll use a <strong>subset</strong><a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> of data from the Raleigh Open Data portal: “Raleigh Police Incident Data 2005plus2014.csv”.</p>
+<ol style="list-style-type: decimal">
+<li>Open Data
+<ul>
+<li><span class="or-menu">Create Project &gt; Web Addresses (URLs) &gt;</span> <code>https://github.com/libjohn/openrefine/raw/master/data/Raleigh%20Police%20Incident%20Data%202005plus2014.csv</code><br />
+</li>
+<li><span class="or-menu">Next &gt;&gt;</span><br />
+</li>
+<li>You many want to give your project a pretty title</li>
+<li>Create Project &gt;&gt;<br />
+</li>
+</ul></li>
+<li><strong>Isolate data</strong>: you have incident data without location information
+<ul>
+<li><span class="or-menu">Location &gt; Facet &gt; Customized facets &gt; Facet by blank</span></li>
+<li>Click true (True = cell is blank ; False = cell has data)<br />
+</li>
+<li><em>How many matching rows have no location data?</em></li>
+</ul></li>
+</ol>
+<blockquote>
+<p>Explanation<br />
+In the step above, you limited your data set to find all the police incident data where there is no location information. That is, when the cell is blank,there there is no location information.</p>
+</blockquote>
+<blockquote>
+<p>Explanation for the next step: You’ll create a custom facet (by Year) without altering any data. To do this, you’ll use a very simple expression which takes a slice of data based on fixed position, starting in position 6 (counting begins at 0) and ending four character positions later at 10* (6 + 4=10). Given the data, find the year value within the “INC DATETIME” field.</p>
+</blockquote>
+<pre>
+DATA:      12/31/2014 11:05:00 PM
+Position:  0123  6    1        2
+                      1        0
+</pre>
+<p>To take the year“2014”, use expression: <code>value[6,10]</code><a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a><br />
+To take the hour, use <code>value[11,13]</code><br />
+To take PM (or AM), use <code>value[20,22]</code></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Create a Custom Facet to Sort by Year
+<ul>
+<li><span class="or-menu">INC DATETIME &gt; Facet &gt; Custom text facet … </span><br />
+</li>
+<li>Expression = <code>value[6,10]</code> <span class="or-menu">&gt; OK </span><br />
+</li>
+</ul></li>
+<li>Sort the facet by Count
+<ul>
+<li><em>Which year has the most missing data?</em><br />
+</li>
+<li><em>How many rows match that year?</em><br />
+</li>
+<li>Click “<strong>Remove All</strong>” in the Facet/Filter sidebar<br />
+</li>
+</ul></li>
+<li>Keep only the data with location values, i.e. delete all rows that have<br />
+no location data…
+<ul>
+<li><span class="or-menu">Location &gt; Facet &gt; Customized facets &gt; Facet by blank </span><br />
+</li>
+<li>Limit to “<strong>true</strong>”<br />
+</li>
+<li><span class="or-menu">All &gt; Edit rows &gt; Remove all matching rows </span><br />
+</li>
+<li>Close (“X out”) the facets</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div id="grel-to-transform-and-normalize" class="section level2">
+<h2><span class="header-section-number">2.2</span> GREL to Transform and Normalize</h2>
+<p>The <a href="https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language">General Refine Expression Language</a> (GREL) is a powerful and extensible language to manipulate data. In these next steps we will learn GREL by using practical steps to improve the structure of the data.</p>
+<ol start="6" style="list-style-type: decimal">
+<li><strong>Split</strong> the LOCATION Column into two columns (Latitude and Longitude)
+<ul>
+<li><span class="or-menu">LOCATION &gt; Edit column &gt; Split into several columns… &gt; OK </span> (i.e. Accept the defaults)<br />
+</li>
+<li>Rename Columns
+<ul>
+<li><span class="or-menu">Location 1 &gt; Edit column &gt; Rename this column &gt; <code>Latitude</code> </span><br />
+</li>
+<li><span class="or-menu">Location 2 &gt; Edit column &gt; Rename this column &gt; <code>Longitude</code> </span><br />
+</li>
+</ul></li>
+<li>Remove parenthesis and trim whitespace
+<ul>
+<li><span class="or-menu">Latitude &gt; Edit cells &gt; Transform … </span>
+<ol style="list-style-type: decimal">
+<li>Expression - <code>value.replace(&quot;(&quot;,&quot;&quot;)</code> <span class="or-menu">&gt; OK </span><br />
+</li>
+<li><span class="or-menu">Latitude &gt; Edit cells &gt; Common transformations &gt; Trim leading and trailing whitespace </span><br />
+</li>
+</ol></li>
+<li><span class="or-menu">Longitude &gt; Edit cells &gt; Transform … </span>
+<ol style="list-style-type: decimal">
+<li>Expression - <code>value.replace(&quot;)&quot;,&quot;&quot;)</code> <span class="or-menu">&gt; OK </span><br />
+</li>
+<li><span class="or-menu">Longitude &gt; Edit cells &gt; Common transformations &gt; Trim leading and trailing whitespace </span></li>
+</ol></li>
+</ul></li>
+</ul></li>
+</ol>
+<div id="regular-expression" class="section level3 unnumbered">
+<h3>Regular Expression</h3>
+<p>Regular Expressions can vary a lot. You can match nearly any pattern with a “regex”.</p>
+<ol start="7" style="list-style-type: decimal">
+<li>Create New Column from Existing Column using a regular expression to match a pattern
+<ul>
+<li><span class="or-menu">INC DATETIME &gt; Edit column &gt; Add column based on this column … </span>
+<ol style="list-style-type: decimal">
+<li>New column name = <code>YEAR</code><br />
+</li>
+<li>Expression = <code>value.match(/.*\/(\d{4}).*/)[0]</code> &gt; <span class="or-menu">OK</span><a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a></li>
+</ol></li>
+</ul></li>
+</ol>
+</div>
+<div id="filter" class="section level3 unnumbered">
+<h3>Filter</h3>
+<ol start="8" style="list-style-type: decimal">
+<li>Create a Text Filter: Explore your data to find how many incident descriptions involve bicycles
+<ol style="list-style-type: decimal">
+<li><span class="or-menu">LCR DESC &gt;Text filter </span><br />
+</li>
+<li>In the filter box, enter the term bicycle<br />
+</li>
+<li><em>How many matching rows of data use the word “Bicycle” in the description?</em></li>
+</ol></li>
+</ol>
+</div>
+<div id="facet" class="section level3 unnumbered">
+<h3>Facet</h3>
+<ol start="9" style="list-style-type: decimal">
+<li>Make a Text Facet on the LCR DESC column
+<ol style="list-style-type: decimal">
+<li><span class="or-menu">LCR DESC &gt; Facet &gt; Text facet </span><br />
+</li>
+<li><em>How many Bicycle categories exist in the facet window?</em><br />
+</li>
+<li><em>Which facet is most often used “LCR DESC” facet?</em></li>
+</ol></li>
+</ol>
+</div>
+<div id="cluster" class="section level3 unnumbered">
+<h3>Cluster</h3>
+<ol start="10" style="list-style-type: decimal">
+<li>Look for Cluster variations in the FELONY Column
+<ul>
+<li><a href="https://github.com/OpenRefine/OpenRefine/wiki/Clustering-In-Depth">Clustering</a> refers to the operation of finding groups of different values that might be alternative representations of the same thing. For example “Gödel” and “Godel”. This is a handy way to find spelling variations.<br />
+</li>
+<li><span class="or-menu">FELONY &gt; Facet &gt; Text facet </span><br />
+</li>
+<li><span class="or-menu">FELONY &gt; Edit cells &gt; Cluster and edit … </span>
+<ul>
+<li>Method = “key collision” ; Key Function = “metaphone3”<br />
+</li>
+</ul></li>
+<li>For each row, check “Merge?” and change the “New Cell Value”
+<ol style="list-style-type: decimal">
+<li>to Felony in the first row<br />
+</li>
+<li>to Not Felony in the second row<br />
+</li>
+<li>Merge &amp; Re-Cluster<br />
+</li>
+<li>Try other Methods and Key Functions<br />
+</li>
+<li>Close<br />
+6.<em>How many “Not Felony” bicycle larcenies were recorded?</em></li>
+</ol></li>
+</ul></li>
+</ol>
+</div>
+<div id="mass-editing-1" class="section level3 unnumbered">
+<h3>Mass Editing</h3>
+<ol start="11" style="list-style-type: decimal">
+<li>Mass Edit cells in LCR DESC Facet
+<ul>
+<li>Mouseover &amp; Edit “LARCENY/BICYCLE/FELONY/$200- …”<br />
+</li>
+<li>delete “/FELONY”</li>
+<li>Add an “S” to ‘BICYCLE’ &gt; Apply</li>
+</ul></li>
+<li><em>How many rows match the “LARCENY/BICYCLES ($200-$1000)” Category</em><br />
+</li>
+<li>Export as an Excel File
+<ul>
+<li><span class="or-menu">Export &gt; Excel </span></li>
+</ul></li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="3">
+<li id="fn3"><p>Original Data Source: <a href="https://data.raleighnc.gov/">Raleigh Open Data</a><a href="hands-on-grel.html#fnref3">↩</a></p></li>
+<li id="fn4"><p>You may notice what seems to be either a math or logic error in how this second value is “counted.” The simple explanation is the first number counts from zero. Add to that number the string length counting from 1 to get the second value.<a href="hands-on-grel.html#fnref4">↩</a></p></li>
+<li id="fn5"><p>Here’s another GREL example that captures the same data: <code>value.match(/(\d\d)\/\d{2}\/(\d{4})\s.*\s([A|P][M])/)[1]</code><a href="hands-on-grel.html#fnref5">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="hands-on-basic-transformations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="hands-on-reshape-text-filter.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
