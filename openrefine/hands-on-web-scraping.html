@@ -203,12 +203,12 @@
 <ul>
 <li>New column name = <code>FIPS Code</code><br />
 </li>
-<li>expression = <code>value.parseJson().Results.county[0].fips</code> <a href="#fn15" class="footnoteRef" id="fnref15"><sup>15</sup></a></li>
+<li>expression = <code>value.parseJson().Results.county[0].fips</code>   <a href="#fn15" class="footnoteRef" id="fnref15"><sup>15</sup></a></li>
 <li><span class="or-menu">OK</span></li>
 </ul></li>
 </ol>
 <div class="video">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/DbjpmVEpMiI" frameborder="0" allowfullscreen>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DbjpmVEpMiI?start=31" frameborder="0" allowfullscreen>
 </iframe>
 <div class="video">
 
@@ -321,7 +321,7 @@ Bambi</code></pre>
 <hr />
 <ol start="14">
 <li id="fn14"><p>The documentation informs us that the format of the URL we want to construct is as follows: <a href="http://www.broadbandmap.gov/broadbandmap/census/county/durh?format=json" class="uri">http://www.broadbandmap.gov/broadbandmap/census/county/durh?format=json</a><a href="hands-on-web-scraping.html#fnref14">↩</a></p></li>
-<li id="fn15"><p>Note the square-bracket (<code>[0]</code>) notation in the <code>ParseJson()</code> function denotes and identifies the first array element. It’s the first element because in OpenRefine counting begins with zero (e.g. 0,1,2,3,4,5). The <span class="highlight-turq-fixed">county</span> array in the example below consists of only 1 value element (consisting of four, named key/value pairs; of which fips is one key). Since the JSON notation indicates county is an array, in this case of quantity 1, we identify that first element of the array by the number ‘0’. See the JSON example below<a href="hands-on-web-scraping.html#fnref15">↩</a></p></li>
+<li id="fn15"><p>Note the square-bracket (<code>[0]</code>) notation in the <code>ParseJson()</code> function denotes and identifies the first array element. It’s the first element because in OpenRefine counting begins with zero (e.g. 0,1,2,3,4,5). The <span class="highlight-turq-fixed">county</span> array in the example below consists of only 1 value element (consisting of four, named key/value pairs; of which fips is one key). Since the JSON notation indicates county is an array, in this case of quantity 1, we identify that first element of the array by the number ‘0’. See the JSON example.<a href="hands-on-web-scraping.html#fnref15">↩</a></p></li>
 <li id="fn16"><p><a href="https://en.wikipedia.org/wiki/JSON">Wikipedia entry for JSON</a><a href="hands-on-web-scraping.html#fnref16">↩</a></p></li>
 </ol>
 </div>
