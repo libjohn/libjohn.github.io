@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="start.html">
-<link rel="next" href="hands-on-reshape.html">
+<link rel="prev" href="hands-on-web-scraping.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -167,286 +167,133 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="grel" class="section level1">
-<h1><span class="header-section-number">2</span> Hands-on: GREL</h1>
-<p>The goal of this project is to create custom facets and perform basic transformations, introduce you to <a href="https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language">GREL</a> – the General Refine Expression Language – and develop practical skills in transforming and normalizing data. You’ve used GREL several times getting to this point in this workbook, but lets look a little deeper.</p>
-<p>In this example you will open a new data set to practice importing a different type of data, this time comma separated value, or CSV. Last time you imported a tab separated value, or TSV. OpenRefine will important many types of data. Being aware of different data formats, and having the ability to open those data are valuable skills. In fact, one of the most frequent stumbling blocks when using new data tools is the simple problem of importing the data. Practice and learn…</p>
-<div id="custom-facets" class="section level2">
-<h2><span class="header-section-number">2.1</span> Custom Facets</h2>
-<div id="download-new-data-then-create-a-new-openrefine-project" class="section level3 unnumbered">
-<h3>Download new Data then Create a new OpenRefine Project:</h3>
-<p>We’ll use a <strong>subset</strong><a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a> of data from the Raleigh Open Data portal: “Raleigh Police Incident Data 2005plus2014.csv”.</p>
+<div id="hands-on-html-parsing" class="section level1">
+<h1><span class="header-section-number">7</span> Hands-on: HTML Parsing</h1>
+<p>Goal: Learn how to use OpenRefine’s HTML parsing capabilities by fetching some <a href="https://price.house.gov/newsroom/press-releases">David Price press releases</a> and then parsing the content.</p>
 <ol style="list-style-type: decimal">
-<li>Import Data
+<li><p>Import Data</p>
 <ul>
-<li><span class="or-menu">Create Project &gt; Web Addresses (URLs) &gt;</span> <code>https://github.com/libjohn/openrefine/raw/master/data/Raleigh%20Police%20Incident%20Data%202005plus2014.csv</code><br />
+<li><span class="or-menu">Create Project &gt; Web Addresses (URLs) &gt;</span> <code>https://raw.githubusercontent.com/libjohn/openrefine/master/data/price-crawl-and-HTML-parse.csv</code><br />
 </li>
 <li><span class="or-menu">Next &gt;&gt;</span><br />
 </li>
 <li>You many want to give your project a pretty title</li>
-<li>Create Project &gt;&gt;<br />
-</li>
-</ul></li>
-<li><strong>Isolate data</strong>: you have incident data without location information
-<ul>
-<li><span class="or-menu">Location &gt; Facet &gt; Customized facets &gt; Facet by blank</span></li>
-<li>Click true (True = cell is blank ; False = cell has data)</li>
-<li><ul class="no-bullet">
-<div class="challenge">
-<li>
-How many matching rows have no location data?
-</li>
-<p>
-10,576
-</p>
-</div>
-</ul></li>
+<li>Create Project &gt;&gt;</li>
 </ul></li>
 </ol>
-<blockquote>
-<p>Explanation<br />
-In the step above, you limited your data set to find all the police incident data where there is no location information. That is, when the cell is blank,there there is no location information.</p>
-</blockquote>
-<blockquote>
-<p>Explanation for the next step: You’ll create a custom facet (by Year) without altering any data. To do this, you’ll use a very simple expression which takes a slice of data based on fixed position, starting in position 6 (counting begins at 0) and ending four character positions later at 10* (6 + 4=10). Given the data, find the year value within the “INC DATETIME” field.</p>
-</blockquote>
-<pre>
-DATA:      12/31/2014 11:05:00 PM
-Position:  0123  6    1        2
-                      1        0
-</pre>
-<blockquote>
-<p>For Example…<br />
-- To take the year“2014”, use expression: <code>value[6,10]</code><a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a><br />
-- To take the hour, use <code>value[11,13]</code><br />
-- To take PM (or AM), use <code>value[20,22]</code></p>
-</blockquote>
+<div id="fetch" class="section level2">
+<h2><span class="header-section-number">7.1</span> Fetch</h2>
+<p>Now let’s fetch the data by crawling a few links to Congressman Price’s press releases. This will return large amounts of raw HTML that can be hard to read. So, after fetching, we’ll parse the result.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Fetch HTML</p>
+<ul>
+<li><span class="or-menu"> prlink-href &gt; Edit column &gt; Add column by fetching URLs… </span></li>
+<li>New column name = <code>raw HTML</code></li>
+<li>Throttle delay = <code>2000</code></li>
+<li>Expression = <br> <code>value</code></li>
+<li><span class="or-menu">OK</span></li>
+</ul></li>
+</ol>
+</div>
+<div id="parse-3" class="section level2">
+<h2><span class="header-section-number">7.2</span> Parse</h2>
+<p>Now parse the HTML data.</p>
 <ol start="3" style="list-style-type: decimal">
-<li>Create a Custom Facet to Sort by Year
+<li><p><span class="or-menu"> raw HTML &gt; Edit column &gt; Add column based on this column … </span></p>
 <ul>
-<li><span class="or-menu">INC DATETIME &gt; Facet &gt; Custom text facet … </span><br />
+<li>New column name = <code>HTML title</code><br />
 </li>
-<li>Expression = <code>value[6,10]</code> <span class="or-menu"> &gt; OK </span></li>
+<li>expression = <code>value.parseHtml().select(&quot;title&quot;)[0].htmlText()</code>   <a href="#fn17" class="footnoteRef" id="fnref17"><sup>17</sup></a></li>
+<li><span class="or-menu">OK</span></li>
 </ul></li>
-</ol>
-<ol start="4">
-<li>
-Sort the facet by Count
-</li>
+<li><p><span class="or-menu"> raw HTML &gt; Edit column &gt; Add column based on this column … </span></p>
 <ul>
-<div class="challenge">
-<li>
-Which year has the most missing data?
+<li>New column name = <code>body title</code><br />
 </li>
-<p>
-2005
-</p>
-</div>
-<div class="challenge">
-<li>
-How many rows match that year?
-</li>
-<p>
-10,007 rows with missing location data
-</p>
-</div>
-<li>
-Click “<strong>Remove All</strong>” in the Facet/Filter sidebar
-</li>
-</ul>
-</ol>
-<ol start="5" style="list-style-type: decimal">
-<li>Keep only the data with location values, i.e. delete all rows that have<br />
-no location data…
-<ul>
-<li><span class="or-menu">Location &gt; Facet &gt; Customized facets &gt; Facet by blank </span><br />
-</li>
-<li>Limit to “<strong>true</strong>”<br />
-</li>
-<li><span class="or-menu">All &gt; Edit rows &gt; Remove all matching rows </span><br />
-</li>
-<li>Close (“X out”) the facets</li>
+<li>expression = <code>value.parseHtml().select(&quot;h1#page-title.title&quot;)[0].htmlText()</code></li>
+<li><span class="or-menu">OK</span></li>
 </ul></li>
-</ol>
-</div>
-</div>
-<div id="grel-to-transform-and-normalize" class="section level2">
-<h2><span class="header-section-number">2.2</span> GREL to Transform and Normalize</h2>
-<p>The <a href="https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language">General Refine Expression Language</a> (GREL) is a powerful and extensible language to manipulate data. In these next steps we will learn GREL by using practical steps to improve the structure of the data.</p>
-<ol start="6" style="list-style-type: decimal">
-<li><strong>Split</strong> the LOCATION Column into two columns (Latitude and Longitude)
+<li><p><span class="or-menu"> raw HTML &gt; Edit column &gt; Add column based on this column … </span></p>
 <ul>
-<li><span class="or-menu">LOCATION &gt; Edit column &gt; Split into several columns… &gt; OK </span> (i.e. Accept the defaults)<br />
+<li>New column name = <code>date2</code><br />
 </li>
-<li>Rename Columns
-<ul>
-<li><span class="or-menu">Location 1 &gt; Edit column &gt; Rename this column &gt; <code>Latitude</code> </span><br />
-</li>
-<li><span class="or-menu">Location 2 &gt; Edit column &gt; Rename this column &gt; <code>Longitude</code> </span><br />
-</li>
+<li>expression = <code>value.parseHtml().select(&quot;div.pane-content&quot;)[0].htmlText()</code></li>
+<li><span class="or-menu">OK</span></li>
 </ul></li>
-<li>Remove parenthesis and trim whitespace
+<li><p><span class="or-menu"> raw HTML &gt; Edit column &gt; Add column based on this column … </span></p>
 <ul>
-<li><span class="or-menu">Latitude &gt; Edit cells &gt; Transform … </span>
-<ol style="list-style-type: decimal">
-<li>Expression = <code>value.replace(&quot;(&quot;,&quot;&quot;)</code> <span class="or-menu">&gt; OK </span><br />
+<li>New column name = <code>dateline</code><br />
 </li>
-<li><span class="or-menu">Latitude &gt; Edit cells &gt; Common transformations &gt; Trim leading and trailing whitespace </span><br />
-</li>
-</ol></li>
-<li><span class="or-menu">Longitude &gt; Edit cells &gt; Transform … </span>
-<ol style="list-style-type: decimal">
-<li>Expression = <code>value.replace(&quot;)&quot;,&quot;&quot;)</code> <span class="or-menu">&gt; OK </span><br />
-</li>
-<li><span class="or-menu">Longitude &gt; Edit cells &gt; Common transformations &gt; Trim leading and trailing whitespace </span></li>
-</ol></li>
+<li>expression = <code>value.parseHtml().select(&quot;div.field-item.even p strong&quot;)[0].htmlText()</code></li>
+<li><span class="or-menu">OK</span></li>
 </ul></li>
+<li><p><span class="or-menu"> raw HTML &gt; Edit column &gt; Add column based on this column … </span></p>
+<ul>
+<li>New column name = <code>links</code><br />
+</li>
+<li><p>expression =</p>
+<pre><code>forEach(
+value.parseHtml().select(&quot;div#block-system-main&quot;)[0].select(&quot;a&quot;),
+e,
+e.htmlAttr(&quot;href&quot;)
+).join(&quot;|&quot;)</code></pre></li>
+<li><p><span class="or-menu">OK</span></p></li>
+</ul></li>
+<li><p><span class="or-menu"> raw HTML &gt; Edit column &gt; Add column based on this column … </span></p>
+<ul>
+<li>New column name = <code>link text</code><br />
+</li>
+<li><p>expression =</p>
+<pre><code>forEach(
+value.parseHtml().select(&quot;div#block-system-main&quot;)[0].select(&quot;a&quot;),
+e,
+e.htmlText()
+).join(&quot;|&quot;)</code></pre></li>
+<li><p><span class="or-menu">OK</span></p></li>
 </ul></li>
 </ol>
 </div>
-<div id="regular-expression" class="section level2 unnumbered">
-<h2>Regular Expression</h2>
-<p>Regular Expressions are very powerful and flexible codes used for matching patterns. Often there is more than one way to compose a regex pattern-match. Importantly for OpenRefine, much of Refine’s extensible and advanced power comes from regular expressions. Essentially the key to advanced level OpenRefine is regular expressions and looping. To learn more about regular expressions see my <a href="https://www.johnlittle.info/project/custom/regex/regex.html">handout on regex</a>. For now you can refer to these <strong>few commands</strong> and symbols summed up on this <a href="http://libjohn.github.io/regex/cheat-sheet.html">quick-sheet</a>.</p>
-<ol start="7" style="list-style-type: decimal">
-<li>Create New Column from Existing Column using a regular expression to match a pattern
+<div id="inspect-your-work" class="section level2">
+<h2><span class="header-section-number">7.3</span> Inspect your work…</h2>
+<ol start="9" style="list-style-type: decimal">
+<li><p><span class="or-menu"> raw HTML &gt; View &gt; Collapse this column </span></p></li>
+<li><p>Click the <code>records</code> link in the “Show as: <strong>rows</strong> records” section, above the column headers</p></li>
+<li><p><span class="or-menu"> links &gt; Edit cells &gt; Split multi-valued cells… </span></p>
 <ul>
-<li><span class="or-menu">INC DATETIME &gt; Edit column &gt; Add column based on this column … </span>
-<ol style="list-style-type: decimal">
-<li>New column name = <code>YEAR</code><br />
-</li>
-<li>Expression = <code>value.match(/.*\/(\d\d\d\d).*/)[0]</code> &gt; <span class="or-menu">OK</span><a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a></li>
-</ol></li>
+<li>for the <em>by separator</em> option, in the <em>Separator</em> textbox enter a pipe: <code>|</code></li>
+<li>repeate this step for the <code>link text</code> column</li>
 </ul></li>
+<li><p>Look around. Scroll left to right and wee what you’ve parsed.</p></li>
 </ol>
-</div>
-<div id="filter-text" class="section level2 unnumbered">
-<h2>Filter Text</h2>
-<ol start="8" style="list-style-type: decimal">
-<li>Create a Text Filter: Explore your data to find how many incident descriptions involve bicycles<br />
-
-<ol type="1">
-<li>
-<span class="or-menu">LCR DESC &gt;Text filter </span>
-</li>
-<li>
-In the filter box, enter the term <code>bicycle</code>
-</li>
-<div class="challenge">
-<li>
-How many matching rows of data use the word “bicycle” in the description?
-</li>
-<p>
-251
-</p></li>
-</ol>
-</div>
-</ol>
-</div>
-<div id="facet" class="section level2 unnumbered">
-<h2>Facet</h2>
-<ol start="9">
-<li>
-Make a Text Facet on the LCR DESC column
-</li>
-<ol>
-<li>
-<span class="or-menu">LCR DESC &gt; Facet &gt; Text facet</span>
-</li>
-<div class="challenge">
-<li>
-How many Bicycle categories exist in the facet window?
-</li>
-<p>
-6
-</p>
-</div>
-<div class="challenge">
-<li>
-Which facet is most often used “LCR DESC” facet?
-</li>
-<p>
-LARCENY/BICYCLES ($50-$199) - 119
-</p>
-</div>
-</ol>
-</ol>
-</div>
-<div id="cluster" class="section level2 unnumbered">
-<h2>Cluster</h2>
-<ol start="10" style="list-style-type: decimal">
-<li>Look for Cluster variations in the FELONY Column
-<ul>
-<li><a href="https://github.com/OpenRefine/OpenRefine/wiki/Clustering-In-Depth">Clustering</a> refers to the operation of finding groups of different values that might be alternative representations of the same thing. For example “Gödel” and “Godel”. This is a handy way to find spelling variations.<br />
-</li>
-<li><span class="or-menu">FELONY &gt; Facet &gt; Text facet </span><br />
-</li>
-<li><span class="or-menu">FELONY &gt; Edit cells &gt; Cluster and edit … </span>
-<ul>
-<li>Method = “key collision” ; Key Function = “metaphone3”<br />
-</li>
-</ul></li>
-<li>For each row, check “Merge?” and change the “New Cell Value”
-<ol style="list-style-type: lower-roman">
-<li>to <code>Felony</code> in the first row<br />
-</li>
-<li>to <code>Not Felony</code> in the second row<br />
-</li>
-<li>click the “Merge Selected &amp; Re-Cluster” button<br />
-</li>
-<li>Try other “Methods” and “Keying Functions”. “Merge Selected &amp; Re-Cluster” after each operation<br />
-</li>
-<li>Close</li>
-<li><ul class="no-bullet">
-<div class="challenge">
-<li>
-How many “Not Felony” bicycle larcenies were recorded?
-</li>
-<p>
-There are 234 “Not Felony” items after clustering using both “key collision” and “nearest neighbor” methods of clustering
-</p>
-</div>
-</ul></li>
-</ol></li>
-</ul></li>
-</ol>
-</div>
-<div id="mass-editing-via-facets" class="section level2 unnumbered">
-<h2>Mass Editing via Facets</h2>
-<ol start="11" style="list-style-type: decimal">
-<li>Mass Edit cells in LCR DESC Facet: <span class="or-menu">LCR DESC &gt; Facet &gt; Text facet</span>
-<ul>
-<li>Mouseover &amp; Edit “LARCENY/BICYCLE/FELONY/$200- …”<br />
-</li>
-<li>delete “/FELONY”</li>
-<li>Add an “S” to ‘BICYCLE’ &gt; Apply</li>
-</ul></li>
-<li><ul class="no-bullet">
-<div class="challenge">
-<li>
-How many rows match the “LARCENY/BICYCLES ($200-$1000)” Category
-</li>
-<p>
-There are 115 observatins (or rows) matching “LARCENY/BICYCLES ($200-$1,000)” category
-</p>
-</div>
-</ul></li>
-<li>Export as an Excel File
-<ul>
-<li><span class="or-menu">Export &gt; Excel </span></li>
-</ul></li>
-</ol>
-<!-- special thanks to the folks at software carpentry.  I riffed from their
-workshop template to create the Q&A javacript/style.  See https://github.com/swcarpentry/workshop-template -->
-<script src="assets/js/qa.js"></script>
 
 </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="footnotes">
 <hr />
-<ol start="6">
-<li id="fn6"><p>Original Data Source: <a href="https://data.raleighnc.gov/">Raleigh Open Data</a><a href="grel.html#fnref6">↩</a></p></li>
-<li id="fn7"><p>You may notice what seems to be either a math or logic error in how this second value is “counted.” The simple explanation is the first number counts from zero. Add to that number the string length counting from 1 to get the second value.<a href="grel.html#fnref7">↩</a></p></li>
-<li id="fn8"><p>Here’s another GREL example that captures the same data: <code>value.match(/(\d\d)\/\d{2}\/(\d{4})\s.*\s([A|P][M])/)[1]</code><a href="grel.html#fnref8">↩</a></p></li>
+<ol start="17">
+<li id="fn17"><p>Note the square-bracket (<code>[0]</code>) notation in the <code>ParseHtml()</code> function denotes and identifies the first array element. It’s the first element because in OpenRefine counting begins with zero (e.g. 0,1,2,3,4,5).<a href="hands-on-html-parsing.html#fnref17">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -454,8 +301,8 @@ workshop template to create the Q&A javacript/style.  See https://github.com/swc
           </div>
         </div>
       </div>
-<a href="start.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="hands-on-reshape.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="hands-on-web-scraping.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
