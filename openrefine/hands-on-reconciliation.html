@@ -195,7 +195,7 @@
 <li><p>First time / One time …</p>
 <ol style="list-style-type: lower-roman">
 <li><span class="or-menu"> Add Standard Service… </span></li>
-<li>In the <strong>Enter the service’s URL:</strong> textbox, enter: <code>http://refine.codefork.com/reconcile/viaf</code><a href="#fn12" class="footnoteRef" id="fnref12"><sup>12</sup></a></li>
+<li>In the <strong>Enter the service’s URL:</strong> textbox, enter: <code>http://refine.codefork.com/reconcile/viaf</code><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></li>
 <li>Name = “Reconciled Authors”</li>
 <li>click <strong>VIAF</strong></li>
 <li>Under <em>Reconcile each cell to an entity of one of these types:</em>, choose <strong>Work</strong></li>
@@ -204,7 +204,7 @@
 <li><p><span class="or-menu">authors &gt; Edit column &gt; Add column based on this column… </span></p>
 <ol style="list-style-type: lower-alpha">
 <li>New column name = <strong>major works</strong></li>
-<li>Expression = <code>cell.recon.candidates[0].name</code> <a href="#fn13" class="footnoteRef" id="fnref13"><sup>13</sup></a></li>
+<li>Expression = <code>cell.recon.candidates[0].name</code> <a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></li>
 <li><span class="or-menu"> OK </span></li>
 </ol></li>
 <li><p>In the left-hand sidebar, <span class="or-menu">Remove All</span> facets</p></li>
@@ -232,14 +232,20 @@
 <li><p>Add authoritative author data from VIAF</p>
 <ol style="list-style-type: lower-alpha">
 <li><span class="or-menu"> author &gt; Reconcile &gt; Start reconciling… </span></li>
+<li>Under <strong>Services</strong>, click <strong>VIAF</strong></li>
 <li>Under <em>Reconcile each cell to an entity of one of these types:</em>, choose <strong>Person</strong></li>
 <li>Click, <span class="or-menu">Start Reconciling</span></li>
 <li><span class="or-menu">authors &gt; Reconcile &gt; Actions &gt; Match each cell to its best candidate</span></li>
 <li>By useing the <em>Choose new match</em> option, fix row 2.</li>
 </ol></li>
-<li><p>Transform the “major works” column by splitting the column at the pipe: `|’</p></li>
-<li><p>Can Export as CSV (Excel, etc.) with Reconciled info.</p></li>
+<li><p>Transform the “major works” column by splitting the column at the pipe: `|’</p>
+<ol style="list-style-type: lower-alpha">
+<li><span class="or-menu"> major works &gt; Edit cells &gt; Trasnform… </span></li>
+<li>Expression = <code>value.split(&quot;|&quot;)[1]</code></li>
+<li><span class="or-menu"> OK </span></li>
+</ol></li>
 </ol>
+<p>Now, when you <span class="or-menu"> Export </span> as Comma-separated Value (Excel, etc.) All of the reconciled information will be with retained.</p>
 </div>
 <div id="reconciliation-resources" class="section level2">
 <h2><span class="header-section-number">5.2</span> Reconciliation Resources</h2>
@@ -258,9 +264,9 @@
 </div>
 <div class="footnotes">
 <hr />
-<ol start="12">
-<li id="fn12"><p><a href="http://refine.codefork.com/" class="uri">http://refine.codefork.com/</a><a href="hands-on-reconciliation.html#fnref12">↩</a></p></li>
-<li id="fn13"><p><a href="http://liwong.blogspot.com/2017/07/tutorial-on-objects-and-cellrecon-object.html" class="uri">http://liwong.blogspot.com/2017/07/tutorial-on-objects-and-cellrecon-object.html</a><a href="hands-on-reconciliation.html#fnref13">↩</a></p></li>
+<ol start="1">
+<li id="fn1"><p><a href="http://refine.codefork.com/" class="uri">http://refine.codefork.com/</a><a href="hands-on-reconciliation.html#fnref1">↩</a></p></li>
+<li id="fn2"><p><a href="http://liwong.blogspot.com/2017/07/tutorial-on-objects-and-cellrecon-object.html" class="uri">http://liwong.blogspot.com/2017/07/tutorial-on-objects-and-cellrecon-object.html</a><a href="hands-on-reconciliation.html#fnref2">↩</a></p></li>
 </ol>
 </div>
             </section>
